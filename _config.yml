@@ -1,55 +1,68 @@
 # Site settings
-title: Buzás Barnabás – Portfólió
-email: buzasbarnabas04@gmail.com
-url: https://barnabas47.github.io
-description: "Buzás Barnabás vagyok, programtervező informatikus hallgató a Pannon Egyetemen. Ezen az oldalon megtalálod a szakmai tapasztalataimat, technológiai ismereteimet és korábbi projektjeimet."
-keywords: "Buzás Barnabás, portfólió, programtervező informatikus, C#, Java, Flutter, webfejlesztés, mobilalkalmazás, GitHub"
-skills: "Programozás – Mobilfejlesztés – Adatbázis-kezelés"
-meta_author: Buzás Barnabás
+title: Freelancer
+email: your-email@domain.com
+url: https://github.com/jeromelachaud/freelancer-theme
+description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+keywords: "your keywords, separated by commas"
+skills: "Web Developer - Graphic Artist - User Experience Designer"
+meta_author: LastName FirstName
 
 # Google webmaster tools
 google_verify:
 
-# Bing site verification
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
 
-# Contact form
+# Contact form:
+# - static : pass through formspree.io to validate email sending
+# - disqus : replace contact form by disqus thread
+# - comment the line below if you want to stick with the default PHP contact form
 contact: static
 
-# Disqus (opcionálisan üresen hagyható)
-disqus_shortname:
+# If you use disqus you need disqus shortname
+# https://help.disqus.com/customer/portal/articles/466208
+disqus_shortname: myshortname
 
-# Color settings
+# Color settings (hex-codes without the leading hash-tag)
 color:
-  primary: 18bc9c
-  primary-rgb: "24,188,156"
-  secondary: 2c3e50
-  secondary-dark: 233140
+  primary: 18bc9c #80B3FF
+  primary-rgb: "24,288,156" #"128,179,255"
+  secondary: 2c3e50 #FD6E8A
+  secondary-dark: 233140 #A2122F
 
 # Footer settings
 footer:
-  copyright: Buzás Barnabás
-  location: Herend, Magyarország
-  social: Kapcsolat
-  credits: 'Az oldal a <a href="https://startbootstrap.com/theme/freelancer">Start Bootstrap Freelancer</a> sablonjára épül, és a Jekyll rendszerrel készült.'
+  copyright: Dr. Henry Jekyll
+  location: Location
+  social: Around the Web
+  credits: Credits
 
-# Social networks
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
+  - title: twitter
+    url: http://twitter.com/jekyllrb
+  - title: facebook
+    url:
+  - title: stack-overflow
+    url: http://stackoverflow.com/questions/tagged/jekyll
+  - title: bitbucket
+    url: http://bitbucket.org/jekyll
   - title: github
-    url: https://github.com/barnabas47
+    url: http://github.com/jekyll
 
-# Postal address
+# Postal address (add as many lines as necessary)
 address:
-  - line: Herend, Veszprém megye
-  - line: Telefon: +36202326414
-  - line: Email: buzasbarnabas04@gmail.com
-  - line: Születési dátum: 2004
+  - line: 3481 Melrose Place
+  - line: Beverly Hills, CA 90210
+
+# Credits content
+credits: 'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.'
 
 # Build settings
 markdown: kramdown
 permalink: pretty
 
-# Blogbejegyzések vagy projektek alapértelmezése
+#for posts
 defaults:
   - scope:
       path: ""
