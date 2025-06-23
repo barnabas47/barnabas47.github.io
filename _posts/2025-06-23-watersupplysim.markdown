@@ -7,6 +7,7 @@ alt: WaterSupplySimulator projekt logó
 project-date: 2024
 client: Személyes projekt
 category: Full Stack Webfejlesztés
+github_url: https://github.com/barnabas47/WaterSupplySim
 description: |
   [WaterSupplySimulator](https://github.com/barnabas47/WaterSupplySim) egy modern, biztonságos, jól strukturált .NET 8 backendből és egy Vite + React + TypeScript frontendből álló vízellátás-szimulátor rendszer. A cél egy fejlesztőbarát, reszponzív, sötét-kékes témájú admin felület, amely REST API-n keresztül kommunikál a backenddel, JWT alapú admin jogosultsággal.
 

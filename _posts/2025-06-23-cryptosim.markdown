@@ -7,6 +7,7 @@ alt: CryptoSim projekt logó
 project-date: 2024
 client: Személyes projekt
 category: Full Stack Webfejlesztés
+github_url: https://github.com/barnabas47/CryptoSim
 description: |
   [CryptoSim](https://github.com/barnabas47/CryptoSim) egy modern, full-stack kriptovaluta kereskedési szimulátor ASP.NET Core (C#) backenddel és React + TypeScript frontenddel.
 

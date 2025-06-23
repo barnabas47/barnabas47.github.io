@@ -7,6 +7,7 @@ alt: BerAuto projekt logó
 project-date: 2024
 client: Személyes projekt
 category: Full Stack Webfejlesztés
+github_url: https://github.com/barnabas47/BerAuto
 description: |
   [BerAuto](https://github.com/barnabas47/BerAuto) egy modern autókölcsönző rendszer, amely .NET 9 (ASP.NET Core) backendből és React + TypeScript frontendből áll. A projekt célja egy valósághű, több szerepkörös (ügyfél, alkalmazott, admin) autóbérlési platform megvalósítása.
 
