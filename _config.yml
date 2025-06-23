@@ -53,7 +53,7 @@ social:
 # Postal address
 address:
   - line: Herend, Veszprém megye
-  - line: Telefon: "+36202326414"
+#  - line: Telefon: "+36202326414"
   - line: Email: buzasbarnabas04@gmail.com
   - line: Születési dátum: 2004
 
