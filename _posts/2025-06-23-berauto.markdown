@@ -1,0 +1,43 @@
+---
+layout: default
+modal-id: 1
+date: 2025-06-23
+img: berauto.png
+alt: BerAuto projekt logó
+project-date: 2024
+client: Személyes projekt
+category: Full Stack Webfejlesztés
+description: |
+  [BerAuto](https://github.com/barnabas47/BerAuto) egy modern autókölcsönző rendszer, amely .NET 9 (ASP.NET Core) backendből és React + TypeScript frontendből áll. A projekt célja egy valósághű, több szerepkörös (ügyfél, alkalmazott, admin) autóbérlési platform megvalósítása.
+
+  **Főbb funkciók:**
+  - Autók listázása, szűrése, kategóriák kezelése
+  - Felhasználói regisztráció, bejelentkezés, jogosultságkezelés (JWT)
+  - Bérlési igény leadása, bérlések kezelése (ügyfél, alkalmazott, admin nézet)
+  - Adminisztráció: autók, kategóriák, felhasználók, jogosultságok kezelése
+  - Alkalmazotti panel: bérlések jóváhagyása/elutasítása, átadás/visszavétel, számlagenerálás
+  - Profilkezelés, címkezelés
+  - Reszponzív, letisztult, fekete-fehér-lila színvilágú UI
+
+  **Technológiák:**
+  - Backend: ASP.NET Core 9, Entity Framework Core, REST API, JWT autentikáció
+  - Frontend: React, TypeScript, React Router, Context API, modern CSS
+  - Adatbázis: MSSQL (EF migrációk, tesztadatok)
+  - Egyéb: Docker támogatás, többkörös jogosultság, letisztult kódstruktúra
+
+  **Futtatás:**
+  - Backend: lépj be a BerAuto mappába, indítsd el az ASP.NET Core szervert: `dotnet run` vagy Visual Studio-ban F5
+  - Frontend: lépj be a berauto-frontend mappába, `npm install`, majd `npm start` (http://localhost:3000)
+
+  **Felhasználói szerepkörök:**
+  - Vendég: autók böngészése, bérlési igény leadása
+  - Ügyfél: saját bérlések, profil, bérlési igény
+  - Alkalmazott: bérlések kezelése, átadás/visszavétel, számlázás
+  - Admin: autók, kategóriák, felhasználók, jogosultságok teljes körű kezelése
+
+  **Fejlesztői információk:**
+  - A frontend és backend külön-külön is futtatható.
+  - A projekt reszponzív, letisztult UI-t használ.
+  - A jogosultságkezelés Context API-n és JWT-n alapul.
+  - A backend REST API-k dokumentáltak, a frontend minden végpontot használ.
+---
