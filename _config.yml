@@ -31,6 +31,7 @@ footer:
   copyright: Buzás Barnabás
   location: Herend, Magyarország
   social: Kapcsolat
+  credits: 'Az oldal a <a href="https://startbootstrap.com/theme/freelancer">Start Bootstrap Freelancer</a> sablonjára épül, és a Jekyll rendszerrel készült.'
 
 # Social networks
 social:
