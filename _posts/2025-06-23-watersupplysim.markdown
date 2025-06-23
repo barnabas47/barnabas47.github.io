@@ -2,7 +2,7 @@
 layout: default
 modal-id: 3
 date: 2025-06-23
-img: watersupplysim.png
+img: water.png
 alt: WaterSupplySimulator projekt logó
 project-date: 2024
 client: Személyes projekt

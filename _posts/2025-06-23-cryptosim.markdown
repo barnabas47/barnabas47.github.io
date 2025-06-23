@@ -2,7 +2,7 @@
 layout: default
 modal-id: 2
 date: 2025-06-23
-img: cryptosim.png
+img: cryp.png
 alt: CryptoSim projekt logó
 project-date: 2024
 client: Személyes projekt

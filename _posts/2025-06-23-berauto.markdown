@@ -2,7 +2,7 @@
 layout: default
 modal-id: 1
 date: 2025-06-23
-img: berauto.png
+img: car.png
 alt: BerAuto projekt logó
 project-date: 2024
 client: Személyes projekt
