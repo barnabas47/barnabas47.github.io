@@ -1,10 +1,10 @@
 # Site settings
-title: Buzás Barnabás
+title: Buzás Barnabás – Portfólió
 email: buzasbarnabas04@gmail.com
 url: https://barnabas47.github.io
-description: "Buzás Barnabás vagyok, programtervező informatikus hallgató. Itt találhatók az eddigi projektjeim és szakmai portfólióm."
-keywords: "Buzás Barnabás, programozás, webfejlesztés, szoftverfejlesztés, C#, ASP.NET, portfólió"
-skills: "Programtervező informatikus - Webfejlesztő - Backend fejlesztés"
+description: "Buzás Barnabás vagyok, programtervező informatikus hallgató a Pannon Egyetemen. Ezen az oldalon megtalálod a szakmai tapasztalataimat, technológiai ismereteimet és korábbi projektjeimet."
+keywords: "Buzás Barnabás, portfólió, programtervező informatikus, C#, Java, Flutter, webfejlesztés, mobilalkalmazás, GitHub"
+skills: "Programozás – Mobilfejlesztés – Adatbázis-kezelés"
 meta_author: Buzás Barnabás
 
 # Google webmaster tools
@@ -16,10 +16,10 @@ bing_verify:
 # Contact form
 contact: static
 
-# If you use disqus you need disqus shortname
+# Disqus (opcionálisan üresen hagyható)
 disqus_shortname:
 
-# Color settings (hex-codes without the leading hash-tag)
+# Color settings
 color:
   primary: 18bc9c
   primary-rgb: "24,188,156"
@@ -29,32 +29,30 @@ color:
 # Footer settings
 footer:
   copyright: Buzás Barnabás
-  location: Magyarország
-  social: Elérhetőségek
-  credits: Köszönet
+  location: Herend, Magyarország
+  social: Kapcsolat
+  credits: 
 
-# Social networks usernames
+# Social networks
 social:
   - title: github
     url: https://github.com/barnabas47
-  - title: linkedin
-    url: https://www.linkedin.com/in/barnabas-buzas
-  - title: facebook
-    url: https://www.facebook.com/barnabas.buzas
 
-# Postal address (add as many lines as necessary)
+# Postal address (szabadon módosítható)
 address:
-  - line: Pannon Egyetem
-  - line: Veszprém, Magyarország
+  - line: Herend, Veszprém
+  - line: Telefon: +36202326414
+  - line: Email: buzasbarnabas04@gmail.com
+  - line: Születési dátum: 2004
 
 # Credits content
-credits: 'Ez az oldal a <a href="http://startbootstrap.com">Start Bootstrap</a> Freelancer sablonjára épül, és a Jekyll rendszerrel készült.'
+credits: 'Az oldal a <a href="https://startbootstrap.com/theme/freelancer">Start Bootstrap Freelancer</a> sablonjára épül, és a Jekyll rendszerrel készült.'
 
 # Build settings
 markdown: kramdown
 permalink: pretty
 
-# For posts (projektek)
+# Blogbejegyzések vagy projektek alapértelmezése
 defaults:
   - scope:
       path: ""
