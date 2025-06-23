@@ -45,9 +45,6 @@ address:
   - line: Email: buzasbarnabas04@gmail.com
   - line: Születési dátum: 2004
 
-# Credits content
-credits: 'Az oldal a <a href="https://startbootstrap.com/theme/freelancer">Start Bootstrap Freelancer</a> sablonjára épül, és a Jekyll rendszerrel készült.'
-
 # Build settings
 markdown: kramdown
 permalink: pretty
