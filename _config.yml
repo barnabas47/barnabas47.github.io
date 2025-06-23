@@ -1,7 +1,7 @@
 # Site settings
 title: Buzás Barnabás – Portfólió
 email: buzasbarnabas04@gmail.com
-url: https://barnabas47.github.io
+url: https://github.com/barnabas47/barnabas47.github.io
 description: "Buzás Barnabás vagyok, programtervező informatikus hallgató a Pannon Egyetemen. Ezen az oldalon megtalálod a szakmai tapasztalataimat, technológiai ismereteimet és korábbi projektjeimet."
 keywords: "Buzás Barnabás, portfólió, programtervező informatikus, C#, Java, Flutter, webfejlesztés, mobilalkalmazás, GitHub"
 skills: "Programozás – Mobilfejlesztés – Adatbázis-kezelés"
@@ -26,7 +26,7 @@ disqus_shortname: myshortname
 # Color settings (hex-codes without the leading hash-tag)
 color:
   primary: 18bc9c #80B3FF
-  primary-rgb: "24,188,156" #"128,179,255"
+  primary-rgb: "24,188,156"
   secondary: 2c3e50 #FD6E8A
   secondary-dark: 233140 #A2122F
 
@@ -35,12 +35,20 @@ footer:
   copyright: Buzás Barnabás
   location: Herend, Magyarország
   social: Kapcsolat
-  credits: 'Az oldal a <a href="https://startbootstrap.com/theme/freelancer">Start Bootstrap Freelancer</a> sablonjára épül, és a Jekyll rendszerrel készült.'
+  credits: Kredit
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
+  - title: twitter
+    url: http://twitter.com/jekyllrb
+  - title: facebook
+    url:
+  - title: stack-overflow
+    url: http://stackoverflow.com/questions/tagged/jekyll
+  - title: bitbucket
+    url: http://bitbucket.org/jekyll
   - title: github
-    url: https://github.com/barnabas47
+    url: http://github.com/jekyll
 
 # Postal address (add as many lines as necessary)
 address:
