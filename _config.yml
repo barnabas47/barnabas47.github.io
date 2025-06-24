@@ -41,7 +41,7 @@ footer:
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
   - title: github
-    url: https://github.com/barnabas47
+    url: https://github.com/barnabas47?tab=repositories
   - title: linkedin
     url: https://www.linkedin.com/in/barnabás-buzás-52324235a/
 
