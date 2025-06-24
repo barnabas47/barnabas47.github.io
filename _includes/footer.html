@@ -16,7 +16,7 @@
           <ul class="list-inline">
             {% for network in site.social %}
             <li>
-              <a href="{{ network.url }}" class="btn-social btn-outline"><i
+              <a href="{{ network.url }}" class="btn-social btn-outline" target="_blank"><i
                   class="fa-brands fa-fw fa-{{ network.title }}"></i></a>
             </li>
             {% endfor %}
@@ -24,7 +24,7 @@
         </div>
         <div class="footer-col col-md-4">
           <h3>{{ site.footer.credits }}</h3>
-          <p>{{ site.credits }}</p>
+          <p>{{ site.footer.credits_author }}</p>
         </div>
       </div>
     </div>

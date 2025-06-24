@@ -1,5 +1,5 @@
 # Site settings
-title: Buzás Barnabás – Portfólió
+title: Buzás Barnabás
 email: buzasbarnabas04@gmail.com
 url: https://github.com/barnabas47/barnabas47.github.io
 description: "Buzás Barnabás vagyok, programtervező informatikus hallgató a Pannon Egyetemen. Ezen az oldalon megtalálod a szakmai tapasztalataimat, technológiai ismereteimet és korábbi projektjeimet."
@@ -25,22 +25,25 @@ disqus_shortname: myshortname
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
-  primary: 18bc9c #80B3FF
-  primary-rgb: "24,188,156"
+  primary: 4fa3ff # világoskék
+  primary-rgb: "79,163,255"
   secondary: 2c3e50 #FD6E8A
   secondary-dark: 233140 #A2122F
 
 # Footer settings
 footer:
   copyright: Buzás Barnabás
-  location: Herend, Magyarország
+  location: Elérhetőség
   social: Kapcsolat
-  credits: jeromelachaud
+  credits: Kredit
+  credits_author: jeromelachaud
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
   - title: github
     url: https://github.com/barnabas47
+  - title: linkedin
+    url: https://www.linkedin.com/in/barnabás-buzás-52324235a/
 
 # Postal address
 address:
