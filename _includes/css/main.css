@@ -488,3 +488,8 @@ footer .footer-below {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
+
+/* Sorkizárt bemutatkozás szöveg */
+#about p {
+    text-align: justify;
+}
