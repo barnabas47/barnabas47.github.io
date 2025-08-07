@@ -18,9 +18,116 @@
       <a href="/" style="margin-right: 8px;">🇭🇺 Magyar</a>
       <a href="/en/">🇺🇸 English</a>
     </div>
-    {% include en/header.html %}
-    {% include en/portfolio_grid.html %}
-    {% include en/about.html %}
-    {% include en/footer.html %}
+    <!-- Header (English) -->
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <img class="img-responsive" src="/img/profile.png" alt="profile-pic" />
+            <div class="intro-text">
+              <span class="name">Barnabás Buzás</span>
+              <hr class="star-light" />
+              <span class="skills">Programming – Mobile Development – Database Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Portfolio Grid Section (English) -->
+    <section id="portfolio">
+      <div class="container portfolio-flex-grid">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2>Projects</h2>
+            <hr class="star-primary">
+          </div>
+        </div>
+        <div class="portfolio-flex-row">
+          <div class="portfolio-flex-item portfolio-item">
+            <a href="https://github.com/barnabas47/BerAuto" class="portfolio-link" target="_blank">
+              <div class="caption">
+                <div class="caption-content">
+                  <i class="fa fa-search-plus fa-3x"></i>
+                </div>
+              </div>
+              <img src="/img/portfolio/car.png" class="img-responsive" alt="BerAuto project logo">
+            </a>
+          </div>
+          <div class="portfolio-flex-item portfolio-item">
+            <a href="https://github.com/barnabas47/CryptoSim" class="portfolio-link" target="_blank">
+              <div class="caption">
+                <div class="caption-content">
+                  <i class="fa fa-search-plus fa-3x"></i>
+                </div>
+              </div>
+              <img src="/img/portfolio/cryp.png" class="img-responsive" alt="CryptoSim project logo">
+            </a>
+          </div>
+          <div class="portfolio-flex-item portfolio-item">
+            <a href="https://github.com/barnabas47/WaterSupplySimulator" class="portfolio-link" target="_blank">
+              <div class="caption">
+                <div class="caption-content">
+                  <i class="fa fa-search-plus fa-3x"></i>
+                </div>
+              </div>
+              <img src="/img/portfolio/water.png" class="img-responsive" alt="WaterSupplySimulator project logo">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section (English) -->
+    <section class="success" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2>About</h2>
+            <hr class="star-light">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <p>Hello! I'm Barnabás Buzás, a Computer Science student at the University of Pannonia. I mainly work with C#, Java, and Flutter, but I'm interested in any new challenge in mobile and web development. I've already completed several smaller projects, such as a cryptocurrency simulator and a car management system. I'm enthusiastic, eager to learn, and always looking for opportunities to improve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer (English) -->
+    <footer class="text-center" id="footer">
+      <div class="footer-above">
+        <div class="container">
+          <div class="row">
+            <div class="footer-col col-md-4">
+              <h3>Contact</h3>
+              <p>Herend, Veszprém county<br>Phone: +36202326414<br>Email: buzasbarnabas04@gmail.com<br>Date of birth: 2004</p>
+            </div>
+            <div class="footer-col col-md-4">
+              <h3>Social</h3>
+              <ul class="list-inline">
+                <li>
+                  <a href="https://github.com/barnabas47?tab=repositories" class="btn-social btn-outline" target="_blank"><i class="fa-brands fa-fw fa-github"></i></a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/barnabás-buzás-52324235a/" class="btn-social btn-outline" target="_blank"><i class="fa-brands fa-fw fa-linkedin"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col col-md-4">
+              <h3>Credit</h3>
+              <p>jeromelachaud</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-below">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              Copyright &copy; Barnabás Buzás 2025
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
