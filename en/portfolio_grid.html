@@ -1,0 +1,29 @@
+<!-- Portfolio Grid Section (English) -->
+<section id="portfolio">
+  <div class="container portfolio-flex-grid">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Projects</h2>
+        <hr class="star-primary">
+      </div>
+    </div>
+    <div class="portfolio-flex-row">
+      {% assign allowed_slugs = "2025-06-23-berauto,2025-06-23-cryptosim,2025-06-23-watersupplysim" | split: "," %}
+      {% for post in site.posts %}
+      {% assign slug = post.path | split: "/" | last | split: "." | first %}
+      {% if allowed_slugs contains slug %}
+      <div class="portfolio-flex-item portfolio-item">
+        <a href="{{ post.github_url }}" class="portfolio-link" target="_blank">
+          <div class="caption">
+            <div class="caption-content">
+              <i class="fa fa-search-plus fa-3x"></i>
+            </div>
+          </div>
+          <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
