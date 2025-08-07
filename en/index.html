@@ -1,9 +1,26 @@
----
-layout: default
-lang: en
-title: Barnabás Buzás
----
-{% include header.html %}
-{% include en/portfolio_grid.html %}
-{% include en/about.html %}
-{% include footer.html %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Barnabás Buzás</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="I'm Barnabás Buzás, a Computer Science student at the University of Pannonia. On this site you can find my professional experience, technology skills, and previous projects.">
+    <meta name="keywords" content="Barnabás Buzás, portfolio, computer science, C#, Java, Flutter, web development, mobile app, GitHub" />
+    <meta name="author" content="Barnabás Buzás">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/font-awesome/css/all.min.css">
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  </head>
+  <body id="page-top" class="index">
+    <div class="language-switcher" style="position: fixed; top: 10px; right: 10px; z-index: 9999;">
+      <a href="/" style="margin-right: 8px;">🇭🇺 Magyar</a>
+      <a href="/en/">🇺🇸 English</a>
+    </div>
+    {% include en/header.html %}
+    {% include en/portfolio_grid.html %}
+    {% include en/about.html %}
+    {% include en/footer.html %}
+  </body>
+</html>
