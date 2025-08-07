@@ -8,19 +8,21 @@
       </div>
     </div>
     <div class="portfolio-flex-row">
+      {% assign allowed_slugs = "2025-06-23-berauto,2025-06-23-cryptosim,2025-06-23-watersupplysim" | split: "," %}
       {% for post in site.posts %}
-      {% unless post.path contains '/en/' %}
-      <div class="portfolio-flex-item portfolio-item">
-        <a href="{{ post.github_url }}" class="portfolio-link" target="_blank">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
+        {% assign slug = post.path | split: "/" | last | split: "." | first %}
+        {% if allowed_slugs contains slug and post.path contains '/en/' == false %}
+        <div class="portfolio-flex-item portfolio-item">
+          <a href="{{ post.github_url }}" class="portfolio-link" target="_blank">
+            <div class="caption">
+              <div class="caption-content">
+                <i class="fa fa-search-plus fa-3x"></i>
+              </div>
             </div>
-          </div>
-          <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
-        </a>
-      </div>
-      {% endunless %}
+            <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+          </a>
+        </div>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
