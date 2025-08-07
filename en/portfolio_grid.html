@@ -11,7 +11,7 @@
       {% assign allowed_slugs = "2025-06-23-berauto,2025-06-23-cryptosim,2025-06-23-watersupplysim" | split: "," %}
       {% for post in site.posts %}
       {% assign slug = post.path | split: "/" | last | split: "." | first %}
-      {% if allowed_slugs contains slug %}
+      {% if allowed_slugs contains slug and post.lang == 'en' %}
       <div class="portfolio-flex-item portfolio-item">
         <a href="{{ post.github_url }}" class="portfolio-link" target="_blank">
           <div class="caption">
@@ -19,7 +19,7 @@
               <i class="fa fa-search-plus fa-3x"></i>
             </div>
           </div>
-          <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+          <img src="{{ "/img/portfolio/" | relative_url }}{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
         </a>
       </div>
       {% endif %}

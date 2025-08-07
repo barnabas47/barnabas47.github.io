@@ -1,0 +1,44 @@
+---
+layout: default
+modal-id: 1
+date: 2025-06-23
+img: car.png
+alt: BerAuto project logo
+project-date: 2024
+client: Personal project
+category: Full Stack Web Development
+github_url: https://github.com/barnabas47/BerAuto
+description: |
+  [BerAuto](https://github.com/barnabas47/BerAuto) is a modern car rental system with a .NET 9 (ASP.NET Core) backend and React + TypeScript frontend. The goal is to create a realistic, multi-role (customer, employee, admin) car rental platform.
+
+  **Main features:**
+  - List/filter cars, manage categories
+  - User registration, login, role-based access (JWT)
+  - Place rental requests, manage rentals (customer, employee, admin views)
+  - Admin: manage cars, categories, users, permissions
+  - Employee panel: approve/reject rentals, handover/return, invoice generation
+  - Profile management, address management
+  - Responsive, clean, black-white-purple UI
+
+  **Technologies:**
+  - Backend: ASP.NET Core 9, Entity Framework Core, REST API, JWT authentication
+  - Frontend: React, TypeScript, React Router, Context API, modern CSS
+  - Database: MSSQL (EF migrations, test data)
+  - Other: Docker support, multi-level permissions, clean code structure
+
+  **How to run:**
+  - Backend: enter the BerAuto folder, start the ASP.NET Core server: `dotnet run` or F5 in Visual Studio
+  - Frontend: enter the berauto-frontend folder, `npm install`, then `npm start` (http://localhost:3000)
+
+  **User roles:**
+  - Guest: browse cars, place rental requests
+  - Customer: own rentals, profile, rental requests
+  - Employee: manage rentals, handover/return, invoicing
+  - Admin: full management of cars, categories, users, permissions
+
+  **Developer info:**
+  - Frontend and backend can run separately.
+  - The project uses a responsive, clean UI.
+  - Role management is based on Context API and JWT.
+  - Backend REST APIs are documented and fully used by the frontend.
+---
