@@ -8,10 +8,8 @@
       </div>
     </div>
     <div class="portfolio-flex-row">
-      {% assign allowed_slugs = "2025-06-23-berauto,2025-06-23-cryptosim,2025-06-23-watersupplysim" | split: "," %}
       {% for post in site.posts %}
-      {% assign slug = post.path | split: "/" | last | split: "." | first %}
-      {% if allowed_slugs contains slug and post.path contains '/en/' == false %}
+      {% if post.path contains '/en/' == false %}
       <div class="portfolio-flex-item portfolio-item">
         <a href="{{ post.github_url }}" class="portfolio-link" target="_blank">
           <div class="caption">
