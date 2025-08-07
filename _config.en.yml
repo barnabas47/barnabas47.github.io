@@ -1,0 +1,32 @@
+---
+lang: en
+title: Barnabás Buzás
+email: buzasbarnabas04@gmail.com
+url: https://github.com/barnabas47/barnabas47.github.io
+description: "I'm Barnabás Buzás, a Computer Science student at the University of Pannonia. On this site you can find my professional experience, technology skills, and previous projects."
+keywords: "Barnabás Buzás, portfolio, computer science, C#, Java, Flutter, web development, mobile app, GitHub"
+skills: "Programming – Mobile Development – Database Management"
+meta_author: Barnabás Buzás
+color:
+  primary: 4fa3ff
+  primary-rgb: "79,163,255"
+  secondary: 2c3e50
+  secondary-dark: 233140
+footer:
+  copyright: Barnabás Buzás
+  location: Contact
+  social: Social
+  credits: Credit
+  credits_author: jeromelachaud
+social:
+  - title: github
+    url: https://github.com/barnabas47?tab=repositories
+  - title: linkedin
+    url: https://www.linkedin.com/in/barnabás-buzás-52324235a/
+address:
+  - line: "Herend, Veszprém county"
+  - line: "Phone: +36202326414"
+  - line: "Email: buzasbarnabas04@gmail.com"
+  - line: "Date of birth: 2004"
+markdown: kramdown
+permalink: pretty
