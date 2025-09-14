@@ -17,3 +17,11 @@ layout: style
 .intro-text .skills {
   color: #233140;
 }
+
+h2, .star-primary, .star-light {
+  color: #233140 !important;
+}
+
+.footer-col h3, .footer-col p {
+  color: #F5F5F5 !important;
+}
