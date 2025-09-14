@@ -11,11 +11,11 @@ layout: style
 }
 
 .intro-text .name {
-  color: #233140;
+  color: #233140 !important;
 }
 
 .intro-text .skills {
-  color: #233140;
+  color: #233140 !important;
 }
 
 h2, .star-primary, .star-light {
