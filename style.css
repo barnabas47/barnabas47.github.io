@@ -3,9 +3,17 @@ layout: style
 ---
 
 .navbar-brand {
-  color: #233140 !important;
+  color: #fff !important;
+}
+
+.navbar-nav > li > a {
+  color: #fff !important;
 }
 
 .intro-text .name {
+  color: #233140;
+}
+
+.intro-text .skills {
   color: #233140;
 }
