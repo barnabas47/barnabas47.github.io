@@ -1,6 +1,9 @@
 ---
-layout: style
 ---
+{% include css/bootstrap.min.css %}
+{% include css/main.css %}
+
+
 
 :root {
   --bg-color: #0b0f19;
