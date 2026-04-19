@@ -170,6 +170,8 @@ hr.star-light:after, hr.star-primary:after {
 .portfolio-item img {
   border-radius: 20px !important;
   width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
 /* Footer elements */
