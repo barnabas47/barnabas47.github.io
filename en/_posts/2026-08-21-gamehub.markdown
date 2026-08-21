@@ -1,0 +1,34 @@
+---
+layout: default
+modal-id: 6
+date: 2026-08-21
+img: gamehub.png
+alt: GameHub (GayStation 3 Party Pack) project logo
+project-date: 2026
+client: Personal project
+category: Desktop Application / C# WPF / Game Development
+github_url: https://github.com/barnabas47/gamehub
+description: |
+  [GameHub — GayStation 3 Party Pack](https://github.com/barnabas47/gamehub) is a 2-player local party game collection featuring 7 full-featured arcade games built in C# WPF with an authentic PS3 CrossMediaBar (XMB) menu interface, animated silk wave shader, and floating particle effects.
+
+  **Main features:**
+  - **PS3 CrossMediaBar (XMB) UI**: Authentic menu system with animated silk wave, floating particles, and "GayStation 3" startup screen.
+  - **7 Unique 2-Player Party Games**:
+    1. **AZ Tanks**: Bouncing bullet maze tank combat.
+    2. **Stick Fight**: 2D platformer stickman brawl.
+    3. **Penguin Sumo**: Slippery ice arena bump match with special abilities.
+    4. **Air Hockey**: High-speed neon air hockey physics.
+    5. **Duck Game**: Arcade duck duel with weapons and quacking.
+    6. **Micro Kart 2D**: Split-screen Mario Kart style kart racing with 5 thematic tracks and power-up items (Banana, Shells, Mushroom, Lightning, Star).
+    7. **Nidhogg 2D**: Fencing duel with 3 stance heights, parries, sword throw, dodge roll, and giant Nidhogg dragon execution.
+  - **Customizable Player Profiles**: Custom names and colors.
+  - **Custom Sound Effects**: Synthesized audio feedback and arcade SFX.
+
+  **Technologies:**
+  - Language & Framework: C# (.NET 8.0), WPF (Windows Presentation Foundation)
+  - UI & Graphics: XAML, Custom Canvas Rendering, DispatcherTimer game loop
+  - Audio: System.Windows.Media, procedural sound effects
+
+  **How to run:**
+  - Open the project in Visual Studio or navigate to the directory and run: `dotnet run`
+---

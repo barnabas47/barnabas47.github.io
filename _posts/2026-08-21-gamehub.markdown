@@ -1,0 +1,34 @@
+---
+layout: default
+modal-id: 6
+date: 2026-08-21
+img: gamehub.png
+alt: GameHub (GayStation 3 Party Pack) projekt logó
+project-date: 2026
+client: Személyes projekt
+category: Asztali Alkalmazás / C# WPF / Játékfejlesztés
+github_url: https://github.com/barnabas47/gamehub
+description: |
+  [GameHub — GayStation 3 Party Pack](https://github.com/barnabas47/gamehub) egy 2 személyes helyi party játék gyűjtemény (7 teljes értékű arcade játék) C# WPF keretrendszerben, autentikus PS3 CrossMediaBar (XMB) menürendszerrel, animált selyem hullámmal és lebegő részecskékkel.
+
+  **Főbb funkciók:**
+  - **PS3 CrossMediaBar (XMB) UI**: Autentikus menürendszer animált selyem hullámmal, lebegő részecske effektekkel és "GayStation 3" indító képernyővel.
+  - **7 Egyedi 2 Személyes Party Játék**:
+    1. **AZ Tanks**: Visszapattanó golyós labirintus tankcsata.
+    2. **Stick Fight**: 2D platformer pálcikaember harc.
+    3. **Penguin Sumo**: Csúszós jégpályás pingvin lökdösődés egyedi képességekkel.
+    4. **Air Hockey**: Nagy sebességű neon léghoki fizika.
+    5. **Duck Game**: Arcade kacsa párbaj fegyverekkel és hápogással.
+    6. **Micro Kart 2D**: Split-screen Mario Kart stílusú gokart verseny 5 tematikus pályával és power-up tárgyakkal (Banán, Zöld/Piros Rakéta, Gomba, Villám, Csillag).
+    7. **Nidhogg 2D**: Kardvívó párbaj 3 kardmagassággal, hárítással, karddobással, gördüléssel és óriás Nidhogg sárkánnyal.
+  - **Testreszabható Játékosnevek és Színek**: Egyedi játékos profil beállítások.
+  - **Egyedi Hangeffektek**: Szintetizált visszajelzések és arcade hanghatások.
+
+  **Technológiák:**
+  - Nyelv & Keretrendszer: C# (.NET 8.0), WPF (Windows Presentation Foundation)
+  - UI & Grafika: XAML, Custom Canvas Rendering, DispatcherTimer render ciklus
+  - Audio: System.Windows.Media, procedurális audio visszajelzések
+
+  **Futtatás:**
+  - Nyisd meg a projektet Visual Studio-ban vagy lépj be a projekt mappájába, majd futtasd: `dotnet run`
+---
