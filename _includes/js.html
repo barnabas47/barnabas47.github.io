@@ -1,26 +1,121 @@
-<!-- jQuery Version 1.11.0 -->
-<script src="{{ "/js/jquery-1.11.0.js" | relative_url }}"></script>
+<!-- Modern Vanilla JavaScript Interactive Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-<!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js" | relative_url }}"></script>
+  // 1. Category Filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const bentoCards = document.querySelectorAll('.bento-card');
 
-<!-- Plugin JavaScript -->
-<script src="{{ "/js/jquery.easing.min.js" | relative_url }}"></script>
-<script src="{{ "/js/classie.js" | relative_url }}"></script>
-<script src="{{ "/js/cbpAnimatedHeader.js" | relative_url }}"></script>
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-<!-- Contact Form JavaScript -->
-<script src="{{ "/js/jqBootstrapValidation.js" | relative_url }}"></script>
-{% if site.contact == "static" %}
-<script src="{{ "/js/contact_me_static.js" | relative_url }}"></script>
-{% else %}
-<script src="{{ "/js/contact_me.js" | relative_url }}"></script>
-{% endif %}
+      const filter = btn.getAttribute('data-filter');
 
-<!-- Custom Theme JavaScript -->
-<script src="{{ "/js/freelancer.js" | relative_url }}"></script>
+      bentoCards.forEach(card => {
+        const categories = card.getAttribute('data-category').split(' ');
+        if (filter === 'all' || categories.includes(filter)) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    });
+  });
 
-{% if site.contact == "disqus" %}
-<!-- Disqus Stuff -->
-{% include js_disqus.html %}
-{% endif %}
+  // 2. Real-time Search Input
+  const searchInput = document.getElementById('project-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+
+      bentoCards.forEach(card => {
+        const keywords = card.getAttribute('data-keywords').toLowerCase();
+        const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+        const desc = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
+
+        if (keywords.includes(term) || title.includes(term) || desc.includes(term)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // 3. Modern Modal Open & Close logic
+  const modalTriggers = document.querySelectorAll('[data-toggle="modal"]');
+  const modalOverlays = document.querySelectorAll('.modern-modal-overlay');
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = trigger.getAttribute('href').replace('#', '');
+      const modal = document.getElementById(targetId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  // Close modals
+  document.querySelectorAll('[data-dismiss="modal"], .modal-backdrop-close').forEach(closer => {
+    closer.addEventListener('click', () => {
+      modalOverlays.forEach(m => m.classList.remove('active'));
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close modal on ESC key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      modalOverlays.forEach(m => m.classList.remove('active'));
+      document.body.style.overflow = '';
+    }
+  });
+
+  // 4. Mobile Menu Navigation Drawer Toggle
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (mobileToggle && navMenu) {
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  }
+
+  // 5. Scroll to top button visibility
+  const scrollTopBtn = document.getElementById('scroll-top-btn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn?.classList.add('visible');
+    } else {
+      scrollTopBtn?.classList.remove('visible');
+    }
+  });
+
+});
+
+// Copy to Clipboard Utility
+function copyToClipboard(text, el) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = el.querySelector('span').textContent;
+    el.querySelector('span').textContent = 'Másolva!';
+    el.style.borderColor = '#10B981';
+    setTimeout(() => {
+      el.querySelector('span').textContent = original;
+      el.style.borderColor = '';
+    }, 2000);
+  });
+}
+</script>

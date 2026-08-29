@@ -1,47 +1,50 @@
-<!-- Portfolio Modals -->
+<!-- Modern Portfolio Glass Modals -->
 {% for post in site.posts %}
-<div class="portfolio-modal modal fade" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog"
-  aria-hidden="true">
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl">
-        </div>
+<div class="modern-modal-overlay" id="portfolioModal-{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-backdrop-close"></div>
+  <div class="modern-modal-card">
+    
+    <button type="button" class="modern-modal-close" data-dismiss="modal" aria-label="Close modal">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="modal-body-wrapper">
+      <div class="modal-image-header">
+        <img src="{{ "/img/portfolio/" | append: post.img | relative_url }}?v=10" alt="{{ post.alt }}" class="modal-cover-img">
+      </div>
+
+      <div class="modal-meta-pills">
+        {% if post.client %}
+        <span class="meta-pill"><i class="fa-solid fa-trophy"></i> {{ post.client }}</span>
+        {% endif %}
+        {% if post.project-date %}
+        <span class="meta-pill"><i class="fa-regular fa-calendar"></i> {{ post.project-date }}</span>
+        {% endif %}
+        {% if post.category %}
+        <span class="meta-pill"><i class="fa-solid fa-tag"></i> {{ post.category }}</span>
+        {% endif %}
+      </div>
+
+      <h2 class="modal-project-title">{{ post.title }}</h2>
+
+      {% if post.description %}
+      <div class="modal-description-content">
+        {{ post.description | markdownify }}
+      </div>
+      {% endif %}
+
+      <div class="modal-action-footer">
+        {% if post.github_url %}
+        <a href="{{ post.github_url }}" target="_blank" class="btn-modal-github">
+          <i class="fa-brands fa-github"></i> Megtekintés GitHub-on
+        </a>
+        {% endif %}
+        <button type="button" class="btn-modal-dismiss" data-dismiss="modal">
+          Bezárás
+        </button>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body">
-            <h2>{{ post.title }}</h2>
-            <hr class="star-primary">
-            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-            {% if post.description %}
-            <p>{{ post.description }}</p>
-            {% endif %}
-            <ul class="list-inline item-details">
-              {% if post.client %}
-              <li>Client:
-                <strong>{{ post.client }}</strong>
-              </li>
-              {% endif %}
-              {% if post.project-date %}
-              <li>Date:
-                <strong>{{ post.project-date }}</strong>
-              </li>
-              {% endif %}
-              {% if post.category %}
-              <li>Service:
-                <strong>{{ post.category }}</strong>
-              </li>
-              {% endif %}
-            </ul>
-            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
-              Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 {% endfor %}
