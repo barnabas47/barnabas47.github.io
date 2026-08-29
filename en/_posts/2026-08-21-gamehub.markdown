@@ -3,16 +3,16 @@ layout: default
 modal-id: 6
 date: 2026-08-21
 img: gamehub.png
-alt: GameHub (GayStation 3 Party Pack) project logo
+alt: GameHub (Station 3 Party Pack) project logo
 project-date: 2026
 client: Personal project
 category: Desktop Application / C# WPF / Game Development
 github_url: https://github.com/barnabas47/gamehub
 description: |
-  [GameHub — GayStation 3 Party Pack](https://github.com/barnabas47/gamehub) is a 2-player local party game collection featuring 7 full-featured arcade games built in C# WPF with an authentic PS3 CrossMediaBar (XMB) menu interface, animated silk wave shader, and floating particle effects.
+  [GameHub — Station 3 Party Pack](https://github.com/barnabas47/gamehub) is a 2-player local party game collection featuring 7 full-featured arcade games built in C# WPF with an authentic PS3 CrossMediaBar (XMB) menu interface, animated silk wave shader, and floating particle effects.
 
   **Main features:**
-  - **PS3 CrossMediaBar (XMB) UI**: Authentic menu system with animated silk wave, floating particles, and "GayStation 3" startup screen.
+  - **PS3 CrossMediaBar (XMB) UI**: Authentic menu system with animated silk wave, floating particles, and Station 3 startup screen.
   - **7 Unique 2-Player Party Games**:
     1. **AZ Tanks**: Bouncing bullet maze tank combat.
     2. **Stick Fight**: 2D platformer stickman brawl.

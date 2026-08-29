@@ -1,5 +1,67 @@
 {% assign lang = page.lang | default: "hu" %}
 {% assign t = site.data.locales[lang] %}
+<!-- Work Experience Section -->
+<section id="experience" class="experience-section">
+  <div class="experience-container">
+    <div class="section-header text-center">
+      <h2 class="section-title"><i class="fa-solid fa-briefcase text-indigo"></i> {{ t.experience_title }}</h2>
+      <p class="section-subtitle">Ipari és autóipari szoftverfejlesztési & tesztelési tapasztalataim.</p>
+    </div>
+
+    <div class="experience-timeline">
+      <!-- 1. evosoft (SIEMENS) -->
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div class="company-logo-badge logo-evosoft">
+            <i class="fa-solid fa-microchip"></i>
+          </div>
+          <div class="timeline-title-group">
+            <h3 class="role-title">{{ t.exp_evosoft_title }}</h3>
+            <div class="company-period">
+              <span class="company-name">{{ t.exp_evosoft_company }}</span>
+              <span class="period-badge">{{ t.exp_evosoft_period }}</span>
+            </div>
+          </div>
+        </div>
+        <p class="role-desc">
+          {{ t.exp_evosoft_desc }}
+        </p>
+        <div class="role-tags">
+          <span class="tag tag-tech">C# / .NET 9</span>
+          <span class="tag tag-ai">AI Tesztautomatizálás</span>
+          <span class="tag tag-tech">Test Framework Architecture</span>
+          <span class="tag tag-tech">SIEMENS Ecosystem</span>
+        </div>
+      </div>
+
+      <!-- 2. Continental / AUMOVIO -->
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <div class="company-logo-badge logo-continental">
+            <i class="fa-solid fa-car-burst"></i>
+          </div>
+          <div class="timeline-title-group">
+            <h3 class="role-title">{{ t.exp_conti_title }}</h3>
+            <div class="company-period">
+              <span class="company-name">{{ t.exp_conti_company }}</span>
+              <span class="period-badge">{{ t.exp_conti_period }}</span>
+            </div>
+          </div>
+        </div>
+        <p class="role-desc">
+          {{ t.exp_conti_desc }}
+        </p>
+        <div class="role-tags">
+          <span class="tag tag-tech">Beágyazott C</span>
+          <span class="tag tag-tech">Motoros Fékrendszerek</span>
+          <span class="tag tag-tech">Szoftvertesztelés & QA</span>
+          <span class="tag tag-tech">Statikus & Dinamikus Elemzés</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- About Section -->
 <section id="about" class="about-section">
   <div class="about-container">
@@ -11,7 +73,7 @@
         </div>
         <div>
           <h2 class="about-title">{{ t.about_title }}</h2>
-          <p class="about-badge"><i class="fa-solid fa-graduation-cap"></i> Pannon Egyetem — Programtervező Informatikus</p>
+          <p class="about-badge"><i class="fa-solid fa-graduation-cap"></i> Pannon Egyetem — Programtervező Informatikus (Végzés éve: 2026)</p>
         </div>
       </div>
 
@@ -21,24 +83,24 @@
 
       <div class="skills-grid">
         <div class="skill-card">
+          <i class="fa-brands fa-windows skill-icon text-cyan"></i>
+          <h4>C# / .NET Fejlesztés</h4>
+          <p>.NET 8/9, ASP.NET Core REST API, Entity Framework Core, WPF, C# Teszt Frameworkök</p>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-vial-circle-check skill-icon text-emerald"></i>
+          <h4>Szoftvertesztelés & QA</h4>
+          <p>C# Tesztautomatizálás, Beágyazott C tesztelés, AI-alapú tesztgenerálás & minőségbiztosítás</p>
+        </div>
+        <div class="skill-card">
           <i class="fa-solid fa-brain skill-icon text-indigo"></i>
           <h4>AI & Multi-Agent</h4>
-          <p>AWS Bedrock AgentCore, Strands SDK, Nebius, NVIDIA Nemotron, Vision OCR, Prompt Engineering</p>
-        </div>
-        <div class="skill-card">
-          <i class="fa-brands fa-windows skill-icon text-cyan"></i>
-          <h4>C# / .NET Ecosystem</h4>
-          <p>.NET 8/9, ASP.NET Core REST API, Entity Framework Core, WPF, Godot 4 C#</p>
-        </div>
-        <div class="skill-card">
-          <i class="fa-brands fa-python skill-icon text-emerald"></i>
-          <h4>Python & Cloud</h4>
-          <p>FastAPI, Pytest, Docker, Serverless Endpoints, Async Workers, Data Math</p>
+          <p>AWS Bedrock AgentCore, Strands SDK, Nebius, NVIDIA Nemotron, Vision OCR, Python FastAPI</p>
         </div>
         <div class="skill-card">
           <i class="fa-brands fa-react skill-icon text-violet"></i>
-          <h4>Frontend & Mobile</h4>
-          <p>React, TypeScript, Vite, Tailwind CSS, HTML5 Canvas, Flutter, Natív Android Java</p>
+          <h4>Full Stack & Mobil</h4>
+          <p>React, TypeScript, Vite, HTML5 Canvas, Flutter, Natív Android Java</p>
         </div>
       </div>
 

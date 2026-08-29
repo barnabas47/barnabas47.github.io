@@ -6,7 +6,7 @@
     
     <div class="section-header">
       <h2 class="section-title"><i class="fa-solid fa-sparkles text-cyan"></i> {{ t.projects_title }}</h2>
-      <p class="section-subtitle">Fedezd fel a legújabb autonóm AI ágens platformjaimat, szoftvereimet és játékfejlesztési projektjeimet.</p>
+      <p class="section-subtitle">Fedezd fel a legújabb C#/.NET rendszereimet, AI ágens platformjaimat és szoftvereimet.</p>
     </div>
 
     <!-- Search & Category Filters Bar -->
@@ -28,36 +28,11 @@
     <!-- Bento Grid Container -->
     <div class="bento-grid" id="bento-grid">
 
-      <!-- 1. ⭐ FEATURED AI PROJECT: OmniClaim-AI -->
-      <div class="bento-card bento-hero-card ai" data-category="ai" data-keywords="omniclaim ai aws hackathon strands agents bedrock agentcore python react android vision ocr metar legal eu261">
-        <div class="card-badge featured-badge"><i class="fa-solid fa-star"></i> AWS Hackathon</div>
-        <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/omniclaim.png?v=10" | relative_url }}" alt="OmniClaim-AI project logo" class="card-img">
-        </div>
-        <div class="card-content">
-          <div class="card-tags">
-            <span class="tag tag-ai">AI & Multi-Agent</span>
-            <span class="tag tag-aws">AWS Bedrock</span>
-            <span class="tag tag-tech">Strands SDK</span>
-          </div>
-          <h3 class="card-title">OmniClaim-AI</h3>
-          <p class="card-desc">Autonóm légiutas-jogi védő & időjárási kifogás-cáfoló multi-ágens platform Vision OCR-rel, METAR időjárás-elemzéssel és EU261 távolságszámítással.</p>
-          <div class="card-footer">
-            <a href="#portfolioModal-7" class="btn-card-action" data-toggle="modal">
-              <i class="fa-solid fa-circle-info"></i> Részletek
-            </a>
-            <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" class="btn-card-github">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. ⭐ FEATURED AI PROJECT: SafeCode-AI -->
+      <!-- 1. ⭐ LARGER FEATURED CARD: SafeCode-AI -->
       <div class="bento-card bento-hero-card ai" data-category="ai" data-keywords="safecode ai nebius nvidia hackathon nemotron ultra nano openshell python security sandbox vulnerability">
         <div class="card-badge featured-badge-nvidia"><i class="fa-solid fa-shield-halved"></i> NVIDIA Hackathon</div>
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/safecode.png?v=10" | relative_url }}" alt="SafeCode-AI project logo" class="card-img">
+          <img src="{{ "/img/portfolio/safecode.png?v=12" | relative_url }}" alt="SafeCode-AI project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
@@ -78,10 +53,60 @@
         </div>
       </div>
 
-      <!-- 3. 2D Platformer (ORIGAMI VOID) -->
+      <!-- 2. ⭐ LARGER FEATURED CARD: OmniClaim-AI -->
+      <div class="bento-card bento-hero-card ai" data-category="ai" data-keywords="omniclaim ai aws hackathon strands agents bedrock agentcore python react android vision ocr metar legal eu261">
+        <div class="card-badge featured-badge"><i class="fa-solid fa-star"></i> AWS Hackathon</div>
+        <div class="card-image-wrapper">
+          <img src="{{ "/img/portfolio/omniclaim.png?v=12" | relative_url }}" alt="OmniClaim-AI project logo" class="card-img">
+        </div>
+        <div class="card-content">
+          <div class="card-tags">
+            <span class="tag tag-ai">AI & Multi-Agent</span>
+            <span class="tag tag-aws">AWS Bedrock</span>
+            <span class="tag tag-tech">Strands SDK</span>
+          </div>
+          <h3 class="card-title">OmniClaim-AI</h3>
+          <p class="card-desc">Autonóm légiutas-jogi védő & időjárási kifogás-cáfoló multi-ágens platform Vision OCR-rel, METAR időjárás-elemzéssel és EU261 távolságszámítással.</p>
+          <div class="card-footer">
+            <a href="#portfolioModal-7" class="btn-card-action" data-toggle="modal">
+              <i class="fa-solid fa-circle-info"></i> Részletek
+            </a>
+            <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" class="btn-card-github">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. ⭐ LARGER FEATURED CARD: Minecraft Clone (C# Godot 4 Multithreaded) -->
+      <div class="bento-card bento-hero-card game" data-category="game" data-keywords="minecraft godot 4 c# .net 8 voxel multithreaded fastnoise sandbox">
+        <div class="card-badge featured-badge-csharp"><i class="fa-brands fa-windows"></i> C# Godot 4</div>
+        <div class="card-image-wrapper">
+          <img src="{{ "/img/portfolio/minecraft.png?v=12" | relative_url }}" alt="Minecraft project logo" class="card-img">
+        </div>
+        <div class="card-content">
+          <div class="card-tags">
+            <span class="tag tag-desktop">C# (.NET 8.0)</span>
+            <span class="tag tag-game">Godot Engine 4</span>
+            <span class="tag tag-tech">Multithreaded Task.Run</span>
+          </div>
+          <h3 class="card-title">Minecraft Clone</h3>
+          <p class="card-desc">Voxel-alapú 3D sandbox játék C# nyelven, aszinkron többszálú háttér-világbetöltéssel (`Task.Run`), procedurális FastNoiseLite domborzattal, barkácsolással és kemencével.</p>
+          <div class="card-footer">
+            <a href="#portfolioModal-4" class="btn-card-action" data-toggle="modal">
+              <i class="fa-solid fa-circle-info"></i> Részletek
+            </a>
+            <a href="https://github.com/barnabas47/minecraft" target="_blank" class="btn-card-github">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 2D Platformer (ORIGAMI VOID) -->
       <div class="bento-card game" data-category="game" data-keywords="2d platformer origami void canvas javascript web audio speedrun gravity">
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/2d_platformer.png?v=10" | relative_url }}" alt="2D Platformer project logo" class="card-img">
+          <img src="{{ "/img/portfolio/2d_platformer.png?v=12" | relative_url }}" alt="2D Platformer project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
@@ -101,17 +126,17 @@
         </div>
       </div>
 
-      <!-- 4. GameHub (GayStation 3 Party Pack) -->
-      <div class="bento-card desktop game" data-category="desktop game" data-keywords="gamehub c# wpf xmb party games tank fight kart nidhogg desktop">
+      <!-- 5. GameHub (Station 3 Party Pack) -->
+      <div class="bento-card desktop game" data-category="desktop game" data-keywords="gamehub c# wpf xmb party games tank fight kart nidhogg desktop station 3">
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/gamehub.png?v=10" | relative_url }}" alt="GameHub project logo" class="card-img">
+          <img src="{{ "/img/portfolio/gamehub.png?v=12" | relative_url }}" alt="GameHub project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
             <span class="tag tag-desktop">C# WPF</span>
             <span class="tag tag-game">7 Arcade Games</span>
           </div>
-          <h3 class="card-title">GameHub (GayStation 3)</h3>
+          <h3 class="card-title">GameHub (Station 3 Party Pack)</h3>
           <p class="card-desc">2 személyes party játék gyűjtemény (7 arcade játék) PS3 CrossMediaBar (XMB) stílusú selyem hullámos menürendszerrel.</p>
           <div class="card-footer">
             <a href="#portfolioModal-6" class="btn-card-action" data-toggle="modal">
@@ -124,33 +149,10 @@
         </div>
       </div>
 
-      <!-- 5. Minecraft Clone -->
-      <div class="bento-card game" data-category="game" data-keywords="minecraft godot 4 c# .net 8 voxel multithreaded fastnoise sandbox">
-        <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/minecraft.png?v=10" | relative_url }}" alt="Minecraft project logo" class="card-img">
-        </div>
-        <div class="card-content">
-          <div class="card-tags">
-            <span class="tag tag-game">Godot 4 C#</span>
-            <span class="tag tag-tech">Multithreaded</span>
-          </div>
-          <h3 class="card-title">Minecraft Clone</h3>
-          <p class="card-desc">Voxel-alapú 3D sandbox játék aszinkron többszálú világbetöltéssel, procedurális tereppel, barkácsolással és kemencével.</p>
-          <div class="card-footer">
-            <a href="#portfolioModal-4" class="btn-card-action" data-toggle="modal">
-              <i class="fa-solid fa-circle-info"></i> Részletek
-            </a>
-            <a href="https://github.com/barnabas47/minecraft" target="_blank" class="btn-card-github">
-              <i class="fa-brands fa-github"></i> GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
       <!-- 6. WaterSupplySimulator -->
       <div class="bento-card web" data-category="web" data-keywords="watersupplysim .net 8 react typescript jwt swagger simulator fullstack">
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/water.png?v=10" | relative_url }}" alt="WaterSupplySimulator project logo" class="card-img">
+          <img src="{{ "/img/portfolio/water.png?v=12" | relative_url }}" alt="WaterSupplySimulator project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
@@ -173,7 +175,7 @@
       <!-- 7. CryptoSim -->
       <div class="bento-card web" data-category="web" data-keywords="cryptosim .net 9 react typescript crypto simulator trading fullstack">
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/cryp.png?v=10" | relative_url }}" alt="CryptoSim project logo" class="card-img">
+          <img src="{{ "/img/portfolio/cryp.png?v=12" | relative_url }}" alt="CryptoSim project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
@@ -196,7 +198,7 @@
       <!-- 8. BerAuto -->
       <div class="bento-card web" data-category="web" data-keywords="berauto .net 9 react typescript car rental autókölcsönző fullstack">
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/car.png?v=10" | relative_url }}" alt="BerAuto project logo" class="card-img">
+          <img src="{{ "/img/portfolio/car.png?v=12" | relative_url }}" alt="BerAuto project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
@@ -219,7 +221,7 @@
       <!-- 9. ComicHub -->
       <div class="bento-card web" data-category="web" data-keywords="comichub web comic reader explorer flutter react">
         <div class="card-image-wrapper">
-          <img src="{{ "/img/portfolio/comichub.png?v=10" | relative_url }}" alt="ComicHub project logo" class="card-img">
+          <img src="{{ "/img/portfolio/comichub.png?v=12" | relative_url }}" alt="ComicHub project logo" class="card-img">
         </div>
         <div class="card-content">
           <div class="card-tags">
