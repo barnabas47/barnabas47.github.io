@@ -1,0 +1,37 @@
+---
+layout: default
+modal-id: 9
+date: 2026-08-29
+img: comichub.png
+alt: ComicHub projekt logó
+project-date: 2026
+client: Egyetemi Szakdolgozat / Személyes projekt
+category: Mobilfejlesztés / Android Java / Firebase & GraphQL
+github_url: https://github.com/barnabas47/ComicHub
+description: |
+  [ComicHub](https://github.com/barnabas47/ComicHub) egy modern, teljes körű (full-stack) natív Android alkalmazás képregényrajongók számára. Az alkalmazás célja egy aktív online közösség építése, ahol a felhasználók képregényeket kereshetnek, eseményeket és posztokat hozhatnak létre, véleményezhetik azokat, és testreszabhatják profiljukat. A rendszer Firebase és GraphQL alapokon nyugszik, ML-alapú fordítási funkciókkal és gamifikációs elemekkel.
+
+  **🚀 Főbb funkciók:**
+  - **Képregény Adatbázis és Keresés**: GraphQL alapú Marvel API integráció, képregények böngészése, mentése a kedvencek közé.
+  - **Közösségi Funkciók**: Események és bejegyzések létrehozása (hosszú leírással, képekkel), bejegyzések kedvelése, és többszintű kommentelési lehetőség (nested comments).
+  - **Gamifikáció és Ranglista**: Felhasználói interakciók gamifikálása, ranglisták megjelenítése.
+  - **ML Fordítás**: Gépi tanulás alapú automatikus szövegfordítás a bejegyzéseknél (ML Kit).
+  - **Dinamikus Profilkezelés**: Felhasználói profilok, bio, kapcsolattartási adatok szerkesztése, valamint saját bejegyzések és kedvelt képregények ("Discovery") megjelenítése.
+  - **Megosztás**: Posztok és események hivatkozásainak másolása/megosztása.
+
+  **🛠️ Fő technológiák:**
+  - Android / Java: Natív kliens fejlesztés
+  - Firebase: Autentikáció, valós idejű adatbázis / Firestore, Cloud Storage képekhez
+  - GraphQL: API alapú dinamikus adatlekérés (Marvel API)
+  - Machine Learning: ML Kit a tartalomfordításhoz
+
+  **🏁 Indítás:**
+  - Klónozd a tárolót: `git clone https://github.com/barnabas47/ComicHub.git`
+  - Nyisd meg a projektet Android Studio-ban.
+  - Bizonyosodj meg róla, hogy a `google-services.json` fájl be van állítva a Firebase kapcsolathoz (az `app/` mappában).
+  - Futtasd a Node.js seedert szükség esetén (`database_seeder` mappa).
+  - Építsd és futtasd az alkalmazást emulátoron vagy fizikai eszközön.
+
+  **📄 Szakdolgozati Dokumentáció:**
+  A projekt teljes szakdolgozati leírását, technológiai analízisét és architektúra tervét a [Szakdolgozati PDF Dokumentum](https://drive.google.com/file/d/1wq8buMhmMp5ol4z8L1NiBAzUL4jOwgqk/view?usp=sharing) részletesen tartalmazza.
+---

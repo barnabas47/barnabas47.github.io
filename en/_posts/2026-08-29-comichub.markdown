@@ -1,0 +1,37 @@
+---
+layout: default
+modal-id: 9
+date: 2026-08-29
+img: comichub.png
+alt: ComicHub project logo
+project-date: 2026
+client: University Thesis / Personal project
+category: Mobile Development / Android Java / Firebase & GraphQL
+github_url: https://github.com/barnabas47/ComicHub
+description: |
+  [ComicHub](https://github.com/barnabas47/ComicHub) is a modern, full-stack native Android application for comic book enthusiasts. The app is designed to build an active online community where users can discover comics, create events and posts, share opinions, and customize their profiles. The system is built on Firebase and GraphQL, featuring ML-based translations and gamification elements.
+
+  **🚀 Main Features:**
+  - **Comic Database & Search**: GraphQL-based Marvel API integration for browsing and searching comics, with the ability to save them to favorites.
+  - **Social Features**: Create events and posts (with long descriptions and images), like posts, and engage in multi-level threaded discussions (nested comments).
+  - **Gamification & Leaderboard**: Gamified user interactions and competitive leaderboards.
+  - **ML Translation**: Machine learning-based automatic text translation for community posts (ML Kit).
+  - **Dynamic Profile Management**: Editable user profiles including bio, contact information, and dedicated tabs for user posts and liked comics ("Discovery").
+  - **Sharing**: Copy and share links for specific posts and events.
+
+  **🛠️ Core Technologies:**
+  - Android / Java: Native client development
+  - Firebase: Authentication, real-time database / Firestore, Cloud Storage
+  - GraphQL: Advanced API querying for comic data
+  - Machine Learning: ML Kit integration for content translation
+
+  **🏁 Getting Started:**
+  - Clone the repository: `git clone https://github.com/barnabas47/ComicHub.git`
+  - Open the project in Android Studio.
+  - Ensure the `google-services.json` file is present in the `app/` folder.
+  - Run the data seeder if necessary from the `database_seeder` folder.
+  - Build and run the app on an Android emulator or physical device.
+
+  **📄 Thesis Documentation:**
+  The complete thesis documentation, technical analysis, and architectural design are available in the attached [Thesis PDF Document](https://drive.google.com/file/d/1wq8buMhmMp5ol4z8L1NiBAzUL4jOwgqk/view?usp=sharing).
+---
