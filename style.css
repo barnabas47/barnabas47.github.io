@@ -494,6 +494,13 @@ a {
   box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
 }
 
+.featured-badge-nasa {
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+  color: #060f1a;
+  font-weight: 800;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+}
+
 .card-image-wrapper {
   position: relative;
   width: 100%;
