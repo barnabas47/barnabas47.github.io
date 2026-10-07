@@ -1,4 +1,1237 @@
----
-layout: default
-lang: hu
----
+<!DOCTYPE html>
+<html lang="hu" class="dark scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buzás Barnabás | C# Fejlesztő &amp; Szoftvertesztelő Mérnök</title>
+  <meta name="description" content="Buzás Barnabás - C#/.NET szoftverfejlesztő, beágyazott C szoftvertesztelő mérnök (Continental, evosoft SIEMENS) és Multi-Agent AI architekt."/>
+  <meta name="keywords" content="Buzás Barnabás, C#, .NET 9, C szoftvertesztelés, Tesztautomatizálás, AI, evosoft, Continental, SIEMENS, Pannon Egyetem, GitHub"/>
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+
+  <!-- FontAwesome 6 CDN for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-dark": "#080C14",
+            "card-dark": "rgba(17, 24, 39, 0.75)",
+            "primary-cyan": "#00F5FF",
+            "primary-indigo": "#6366F1",
+            "accent-violet": "#A855F7",
+            "accent-emerald": "#10B981",
+            "accent-gold": "#F59E0B"
+          },
+          fontFamily: {
+            heading: ["Plus Jakarta Sans", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            code: ["Fira Code", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    ::-webkit-scrollbar { display: none; }
+    html { scroll-behavior: smooth; }
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    .glass-card:hover {
+      box-shadow: 0 0 35px rgba(99, 102, 241, 0.2), 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+    }
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #ffffff 30%, #00F5FF 70%, #6366F1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-[#080C14] text-slate-100 font-body antialiased selection:bg-[#00F5FF]/30 selection:text-[#00F5FF] min-h-screen relative overflow-x-hidden">
+
+  <!-- ========================================== -->
+  <!-- LIVING WEBGL SHADER PROCEDURAL BACKGROUND  -->
+  <!-- ========================================== -->
+  <div class="fixed inset-0 w-full h-full pointer-events-none z-0">
+    <canvas id="shader-canvas" class="w-full h-full block"></canvas>
+    <script>
+      (function() {
+        const canvas = document.getElementById('shader-canvas');
+        function syncSize() {
+          const w = canvas.clientWidth || window.innerWidth;
+          const h = canvas.clientHeight || window.innerHeight;
+          if (canvas.width !== w || canvas.height !== h) {
+            canvas.width = w;
+            canvas.height = h;
+          }
+        }
+        window.addEventListener('resize', syncSize);
+        syncSize();
+
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) return;
+
+        const vs = `attribute vec2 a_position;
+        varying vec2 v_texCoord;
+        void main() {
+          v_texCoord = a_position * 0.5 + 0.5;
+          gl_Position = vec4(a_position, 0.0, 1.0);
+        }`;
+
+        const fs = `precision highp float;
+        uniform float u_time;
+        uniform vec2 u_resolution;
+        uniform vec2 u_mouse;
+        varying vec2 v_texCoord;
+
+        vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+        float snoise(vec2 v) {
+            const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+            vec2 i  = floor(v + dot(v, C.yy) );
+            vec2 x0 = v - i + dot(i, C.xx);
+            vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+            vec4 x12 = x0.xyxy + C.xxzz;
+            x12.xy -= i1;
+            i = mod289(i);
+            vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 )) + i.x + vec3(0.0, i1.x, 1.0 ));
+            vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+            m = m*m; m = m*m;
+            vec3 x = 2.0 * fract(p * C.www) - 1.0;
+            vec3 h = abs(x) - 0.5;
+            vec3 ox = floor(x + 0.5);
+            vec3 a0 = x - ox;
+            m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+            vec3 g;
+            g.x  = a0.x * x0.x + h.x * x0.y;
+            g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+            return 130.0 * dot(m, g);
+        }
+
+        void main() {
+            vec2 st = gl_FragCoord.xy / u_resolution.xy;
+            vec2 mouse = u_mouse / u_resolution;
+            float t = u_time * 0.15;
+            float n1 = snoise(st * 1.5 + vec2(t * 0.4, t * 0.2));
+            float n2 = snoise(st * 2.8 - vec2(t * 0.3, n1 * 0.5));
+            float n3 = snoise(st * 4.2 + vec2(n2 * 0.4, t * 0.15));
+
+            vec3 baseColor = vec3(0.031, 0.047, 0.078);
+            vec3 cyanAurora = vec3(0.0, 0.96, 1.0);
+            vec3 indigoAurora = vec3(0.388, 0.396, 0.945);
+            vec3 violetAurora = vec3(0.658, 0.333, 0.968);
+            vec3 emeraldAurora = vec3(0.062, 0.725, 0.505);
+
+            float w1 = smoothstep(0.1, 0.7, sin(st.x * 3.14 + n1 * 1.5 + t) * 0.5 + 0.5);
+            float w2 = smoothstep(0.15, 0.75, cos(st.y * 2.8 + n2 * 1.3 - t * 0.8) * 0.5 + 0.5);
+            float w3 = smoothstep(0.2, 0.8, sin((st.x + st.y) * 2.0 + n3 * 1.2 + t * 0.5) * 0.5 + 0.5);
+
+            float distMouse = distance(st, mouse);
+            float mouseGlow = exp(-distMouse * 3.5) * 0.25;
+
+            vec3 aurora = mix(baseColor, indigoAurora * 0.35, w1 * 0.45);
+            aurora = mix(aurora, cyanAurora * 0.4, w2 * 0.4);
+            aurora = mix(aurora, violetAurora * 0.35, w3 * 0.35);
+            aurora += emeraldAurora * 0.18 * smoothstep(0.6, 0.95, n2);
+            aurora += cyanAurora * mouseGlow;
+
+            float vignette = 1.0 - smoothstep(0.4, 1.4, distance(st, vec2(0.5)));
+            aurora *= (vignette * 0.85 + 0.15);
+
+            gl_FragColor = vec4(aurora, 1.0);
+        }`;
+
+        function cs(type, src) {
+          const s = gl.createShader(type);
+          gl.shaderSource(s, src);
+          gl.compileShader(s);
+          return s;
+        }
+        const prog = gl.createProgram();
+        gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+        gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+        gl.linkProgram(prog);
+        gl.useProgram(prog);
+
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+        const pos = gl.getAttribLocation(prog, 'a_position');
+        gl.enableVertexAttribArray(pos);
+        gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+        const uTime = gl.getUniformLocation(prog, 'u_time');
+        const uRes = gl.getUniformLocation(prog, 'u_resolution');
+        const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+        let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+        window.addEventListener('mousemove', (e) => {
+          mouse.x = e.clientX;
+          mouse.y = canvas.height - e.clientY;
+        });
+
+        function render(t) {
+          gl.viewport(0, 0, canvas.width, canvas.height);
+          if (uTime) gl.uniform1f(uTime, t * 0.001);
+          if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+          if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+          requestAnimationFrame(render);
+        }
+        render(0);
+      })();
+    </script>
+  </div>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="fixed top-24 left-1/4 w-[600px] h-[600px] bg-[#00F5FF]/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+  <div class="fixed top-[45%] right-10 w-[550px] h-[550px] bg-[#6366F1]/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
+
+  <!-- ========================================== -->
+  <!-- FLOATING GLASS NAVBAR                       -->
+  <!-- ========================================== -->
+  <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+    <div class="h-16 w-full max-w-7xl mx-auto flex items-center justify-between px-6 rounded-full bg-[#080C14]/70 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-[#6366F1] to-[#A855F7] flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-code text-lg"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-white text-base tracking-tight" id="nav-brand-name">Buzás Barnabás</span>
+          <span class="font-code text-[11px] text-[#00F5FF] tracking-wider uppercase" id="nav-brand-title">C# Dev &amp; AI Architect</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#projektek" class="text-sm font-semibold text-slate-300 hover:text-[#00F5FF] transition-colors flex items-center gap-2" id="nav-item-projects">
+          <i class="fa-solid fa-layer-group text-[#00F5FF]"></i> <span data-key="nav_projects">Projektek</span>
+        </a>
+        <a href="#tapasztalat" class="text-sm font-semibold text-slate-300 hover:text-[#00F5FF] transition-colors flex items-center gap-2" id="nav-item-exp">
+          <i class="fa-solid fa-briefcase text-[#6366F1]"></i> <span data-key="nav_experience">Tapasztalat</span>
+        </a>
+        <a href="#rolam" class="text-sm font-semibold text-slate-300 hover:text-[#00F5FF] transition-colors flex items-center gap-2" id="nav-item-about">
+          <i class="fa-solid fa-user text-[#A855F7]"></i> <span data-key="nav_about">Rólam</span>
+        </a>
+        <a href="#kapcsolat" class="text-sm font-semibold text-slate-300 hover:text-[#00F5FF] transition-colors flex items-center gap-2" id="nav-item-contact">
+          <i class="fa-solid fa-paper-plane text-[#10B981]"></i> <span data-key="nav_contact">Kapcsolat</span>
+        </a>
+      </nav>
+
+      <!-- Language Toggle & Mobile Drawer Toggle -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center rounded-full bg-slate-800/80 px-3 py-1.5 border border-white/10 text-xs font-semibold text-slate-300">
+          <button id="lang-btn-hu" onclick="switchLanguage('hu')" class="px-2 py-0.5 rounded-full transition-colors font-bold text-[#00F5FF]">HU</button>
+          <span class="text-slate-600">/</span>
+          <button id="lang-btn-en" onclick="switchLanguage('en')" class="px-2 py-0.5 rounded-full transition-colors text-slate-400 hover:text-white">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN CONTENT CONTAINER                     -->
+  <!-- ========================================== -->
+  <main class="w-full pt-28 pb-20 relative z-10">
+    <div class="w-full max-w-[1320px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col gap-24">
+
+      <!-- ================= ========================== -->
+      <!-- SECTION 1: HERO HEADER                       -->
+      <!-- ============================================ -->
+      <section id="top" class="relative flex flex-col items-center text-center pt-8 sm:pt-16">
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-pill border border-emerald-500/30 text-emerald-400 font-code text-xs tracking-wider uppercase mb-8 shadow-xl">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span data-key="hero_badge">Buzás Barnabás — C# Fejlesztő &amp; Szoftvertesztelő Mérnök</span>
+        </div>
+
+        <h1 class="font-heading text-5xl sm:text-7xl font-extrabold text-gradient-cyan tracking-tight leading-tight mb-6" data-key="hero_title">
+          Buzás Barnabás
+        </h1>
+
+        <p class="font-heading text-xl sm:text-2xl font-bold text-[#00F5FF] max-w-3xl mb-4" data-key="hero_subtitle">
+          C# Fejlesztő &amp; Szoftvertesztelő | AI Tesztautomatizálási Mérnök
+        </p>
+
+        <p class="font-body text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed mb-10" data-key="hero_tagline">
+          C#/.NET 9 szoftverfejlesztés, beágyazott C szoftvertesztelés, intelligens AI-alapú tesztautomatizálás és autonóm multi-ágens architektúrák.
+        </p>
+
+        <!-- Tech Stack Pills -->
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl mb-12">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 text-xs font-semibold text-slate-200 hover:border-[#00F5FF] transition-all hover:scale-105">
+            <i class="fa-brands fa-windows text-[#00F5FF]"></i> C# / .NET 9
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 text-xs font-semibold text-slate-200 hover:border-[#6366F1] transition-all hover:scale-105">
+            <i class="fa-solid fa-vial-circle-check text-[#6366F1]"></i> C# Tesztautomatizálás &amp; AI
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 text-xs font-semibold text-slate-200 hover:border-[#10B981] transition-all hover:scale-105">
+            <i class="fa-solid fa-microchip text-[#10B981]"></i> C Szoftvertesztelés
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 text-xs font-semibold text-slate-200 hover:border-[#A855F7] transition-all hover:scale-105">
+            <i class="fa-solid fa-brain text-[#A855F7]"></i> Multi-Agent AI (AWS / NVIDIA)
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 text-xs font-semibold text-slate-200 hover:border-[#F59E0B] transition-all hover:scale-105">
+            <i class="fa-brands fa-python text-[#F59E0B]"></i> Python FastAPI
+          </span>
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-white/10 text-xs font-semibold text-slate-200 hover:border-[#00F5FF] transition-all hover:scale-105">
+            <i class="fa-brands fa-react text-[#00F5FF]"></i> React TypeScript
+          </span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap justify-center items-center gap-5">
+          <a href="#projektek" class="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#6366F1] to-[#A855F7] text-white font-heading font-bold text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_45px_rgba(99,102,241,0.7)] hover:scale-105 transition-all">
+            <i class="fa-solid fa-rocket"></i> <span data-key="btn_projects">Projektek Felfedezése</span>
+          </a>
+          <a href="#tapasztalat" class="inline-flex items-center gap-3 px-8 py-4 rounded-full glass-card border border-white/10 hover:border-[#00F5FF] text-white font-heading font-semibold text-sm uppercase tracking-wider hover:scale-105 transition-all">
+            <i class="fa-solid fa-briefcase text-[#00F5FF]"></i> <span data-key="btn_exp">Szakmai Tapasztalat</span>
+          </a>
+          <div class="flex items-center gap-3 ml-2">
+            <a href="https://github.com/barnabas47?tab=repositories" target="_blank" rel="noreferrer" class="w-12 h-12 rounded-full glass-card border border-white/10 hover:border-[#00F5FF] flex items-center justify-center text-slate-300 hover:text-[#00F5FF] transition-all hover:scale-110" title="GitHub Repozitóriumok">
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/barnab%C3%A1s-buz%C3%A1s-52324235a/" target="_blank" rel="noreferrer" class="w-12 h-12 rounded-full glass-card border border-white/10 hover:border-[#00F5FF] flex items-center justify-center text-slate-300 hover:text-[#00F5FF] transition-all hover:scale-110" title="LinkedIn Profil">
+              <i class="fa-brands fa-linkedin-in text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ========================== -->
+      <!-- SECTION 2: WORK EXPERIENCE (TIMELINE)        -->
+      <!-- ============================================ -->
+      <section id="tapasztalat" class="flex flex-col gap-10">
+        <div class="text-center sm:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill border border-[#6366F1]/30 text-[#6366F1] font-code text-xs uppercase tracking-widest mb-3">
+            <i class="fa-solid fa-briefcase"></i> <span data-key="exp_badge">Karrierút &amp; Minőségbiztosítás</span>
+          </div>
+          <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-key="experience_title">
+            Szakmai Tapasztalat
+          </h2>
+          <p class="font-body text-slate-400 mt-2 max-w-2xl" data-key="exp_subtitle">
+            Ipari és autóipari szoftverfejlesztési &amp; tesztelési tapasztalataim beágyazott C és C# környezetben.
+          </p>
+        </div>
+
+        <!-- Timeline Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Experience Card 1: evosoft (SIEMENS) -->
+          <div class="glass-card rounded-2xl p-8 border border-white/10 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00F5FF]/10 text-[#00F5FF] font-code text-xs font-semibold uppercase">
+                  <span class="w-2 h-2 rounded-full bg-[#00F5FF] animate-pulse"></span>
+                  <span data-key="exp_current">Jelenlegi pozíció</span>
+                </span>
+                <span class="font-code text-xs text-slate-400">2026 – Jelenleg</span>
+              </div>
+
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl shadow-lg">
+                  <i class="fa-solid fa-microchip"></i>
+                </div>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white">evosoft (SIEMENS)</h3>
+                  <p class="font-heading text-sm font-semibold text-[#00F5FF]" data-key="exp_evosoft_title">C# Tesztautomatizálási Mérnök &amp; AI Integráció</p>
+                </div>
+              </div>
+
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6" data-key="exp_evosoft_desc">
+                Intelligens C# alapú automatizált tesztrendszerek fejlesztése, komplex tesztkörnyezetek architektúrája és mesterséges intelligencia (AI) megoldások integrálása a szoftveres tesztelési folyamatok hatékonyságának növelésére.
+              </p>
+
+              <div class="p-4 rounded-xl bg-slate-950/60 border border-white/5 mb-6">
+                <div class="font-heading text-xs font-semibold text-[#00F5FF] mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check"></i> <span data-key="exp_highlights">Kiemelt Eredmények</span>
+                </div>
+                <ul class="font-body text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                  <li>Teljes ipari regressziós tesztciklusok időtartamának drasztikus redukálása.</li>
+                  <li>Multi-agent AI alapú hibadiagnosztikai és teszteset-generáló modulok élesítése.</li>
+                  <li>Modularizált C# teszt-framework tervezés modern CI/CD integrációval.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs font-semibold">C# / .NET 9</span>
+              <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs font-semibold">AI Tesztautomatizálás</span>
+              <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs font-semibold">SIEMENS Ecosystem</span>
+            </div>
+          </div>
+
+          <!-- Experience Card 2: Continental / AUMOVIO -->
+          <div class="glass-card rounded-2xl p-8 border border-white/10 flex flex-col justify-between hover:-translate-y-1 transition-transform">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 font-code text-xs font-semibold uppercase">
+                  <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                  <span>Autóipar &amp; Beágyazott</span>
+                </span>
+                <span class="font-code text-xs text-slate-400">2025 – 2026</span>
+              </div>
+
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-orange-600/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-2xl shadow-lg">
+                  <i class="fa-solid fa-car-burst"></i>
+                </div>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white">Continental / AUMOVIO</h3>
+                  <p class="font-heading text-sm font-semibold text-orange-400" data-key="exp_conti_title">C Szoftvertesztelő Mérnök</p>
+                </div>
+              </div>
+
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6" data-key="exp_conti_desc">
+                Motoros fékrendszerek beágyazott C kódjának szoftveres tesztelése, statikus és dinamikus tesztelési eljárások kidolgozása, hibaanalízis, valamint autóipari minőségbiztosítási szabványok követése.
+              </p>
+
+              <div class="p-4 rounded-xl bg-slate-950/60 border border-white/5 mb-6">
+                <div class="font-heading text-xs font-semibold text-orange-400 mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-circle-check"></i> <span data-key="exp_highlights">Kiemelt Eredmények</span>
+                </div>
+                <ul class="font-body text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                  <li>SIL (Software-in-the-Loop) és HIL tesztelési protokollok sikeres végrehajtása.</li>
+                  <li>Kritikus kódlefedettségi (MC/DC) mutatók maximalizálása.</li>
+                  <li>ASPICE megfelelőség és biztonságkritikus autóipari szabványok garantálása.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="px-3 py-1 rounded-md bg-slate-800/80 text-orange-400 font-code text-xs font-semibold">Beágyazott C</span>
+              <span class="px-3 py-1 rounded-md bg-slate-800/80 text-orange-300 font-code text-xs font-semibold">Motoros Fékrendszerek</span>
+              <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs font-semibold">Szoftvertesztelés &amp; QA</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ========================== -->
+      <!-- SECTION 3: BENTO GRID PROJECTS SHOWCASE      -->
+      <!-- ============================================ -->
+      <section id="projektek" class="flex flex-col gap-8">
+        <!-- Controls Bar -->
+        <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 p-6 rounded-2xl glass-card border border-white/10 shadow-xl">
+          <div class="relative flex-1 max-w-xl">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="projectSearch" placeholder="Keresés projektek, technológiák vagy kulcsszavak szerint..." class="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-950/80 text-white font-body text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00F5FF] transition-all"/>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2" id="filterPills">
+            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-bold bg-[#6366F1] text-white shadow-md transition-all active" data-filter="all">Összes (10)</button>
+            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="ai">AI &amp; Multi-Agent</button>
+            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="web">Full Stack &amp; Web</button>
+            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="game">Játékfejlesztés</button>
+            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="desktop">Asztali &amp; Mobil</button>
+          </div>
+        </div>
+
+        <!-- Bento Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8" id="projectsGrid">
+
+          <!-- 1. ⭐ SafeCode-AI (Featured 6 Cols) -->
+          <div class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 hover:-translate-y-1.5 transition-transform group" data-category="ai">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-shield-halved"></i> NVIDIA Hackathon Kiemelt
+                </span>
+                <span class="font-code text-xs text-slate-400">Multi-Agent AI</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/safecode.png?v=15" alt="SafeCode-AI logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">SafeCode-AI</h3>
+                  <p class="font-body text-xs text-slate-400">Nebius &amp; NVIDIA Nemotron Sandbox Governance</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Elszigetelt (sandboxed) kód sérülékenység-javító multi-ágens rendszer NVIDIA Nemotron 3 Ultra/Nano többmodell-útválasztással és OpenShell L7 proxyval.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs">NVIDIA Nemotron</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">Nebius Cloud</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Docker Sandbox</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                <button onclick="openProjectModal('safecode')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366F1] text-white font-heading text-xs font-bold hover:bg-[#A855F7] transition-all shadow-md">
+                  <i class="fa-solid fa-circle-info"></i> Részletek
+                </button>
+                <a href="https://github.com/barnabas47/SafeCode-AI" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill border border-white/10 hover:border-white text-slate-300 hover:text-white font-code text-xs transition-all">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. ⭐ OmniClaim-AI (Featured 6 Cols) -->
+          <div class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 hover:-translate-y-1.5 transition-transform group" data-category="ai">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-trophy"></i> AWS Hackathon Kiemelt
+                </span>
+                <span class="font-code text-xs text-slate-400">Strands Agents SDK</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/omniclaim.png?v=15" alt="OmniClaim-AI logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">OmniClaim-AI</h3>
+                  <p class="font-body text-xs text-slate-400">AWS Bedrock AgentCore EU261 Protection</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Autonóm légiutas-jogi védő &amp; időjárási kifogás-cáfoló multi-ágens platform Vision OCR-rel, METAR időjárás-elemzéssel és EU261 távolságszámítással.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-amber-400 font-code text-xs">AWS Bedrock</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">Strands SDK</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Vision OCR</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                <button onclick="openProjectModal('omniclaim')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366F1] text-white font-heading text-xs font-bold hover:bg-[#A855F7] transition-all shadow-md">
+                  <i class="fa-solid fa-circle-info"></i> Részletek
+                </button>
+                <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill border border-white/10 hover:border-white text-slate-300 hover:text-white font-code text-xs transition-all">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. ⭐ Cosmic Trade-off (Featured 6 Cols) -->
+          <div class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 hover:-translate-y-1.5 transition-transform group" data-category="web game">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-[#00F5FF] font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-shuttle-space"></i> NASA Space Apps Challenge
+                </span>
+                <span class="font-code text-xs text-slate-400">Astrodynamics Lab</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/cosmic.png?v=15" alt="Cosmic-Trade-off logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">Cosmic Trade-off</h3>
+                  <p class="font-body text-xs text-slate-400">Keplerian Flight Director Cockpit</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Mélyűri küldetéstervező &amp; repülésirányító kokpit Keplerian pálya-szimulációval, Tsiolkovsky rakétamátrixszal és interaktív Web Audio szintetizátorral.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs">React &amp; TypeScript</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#A855F7] font-code text-xs">Keplerian Solver</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Web Audio Synth</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                <button onclick="openProjectModal('cosmic')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366F1] text-white font-heading text-xs font-bold hover:bg-[#A855F7] transition-all shadow-md">
+                  <i class="fa-solid fa-circle-info"></i> Részletek
+                </button>
+                <a href="https://github.com/barnabas47/Cosmic-Trade-off" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill border border-white/10 hover:border-white text-slate-300 hover:text-white font-code text-xs transition-all">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. ⭐ Minecraft Clone (Featured 6 Cols) -->
+          <div class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 hover:-translate-y-1.5 transition-transform group" data-category="game">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-brands fa-windows"></i> C# Godot 4 Multithreaded
+                </span>
+                <span class="font-code text-xs text-slate-400">3D Voxel Engine</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/minecraft.png?v=15" alt="Minecraft logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">Minecraft Clone</h3>
+                  <p class="font-body text-xs text-slate-400">Aszinkron Task.Run Multithreaded Engine</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Voxel-alapú 3D sandbox játék C# nyelven, aszinkron többszálú háttér-világbetöltéssel (Task.Run), FastNoiseLite domborzatgenerálással és kemencével.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-blue-400 font-code text-xs">C# (.NET 8/9)</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">Godot Engine 4</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Task.Run Multithreading</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                <button onclick="openProjectModal('minecraft')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#6366F1] text-white font-heading text-xs font-bold hover:bg-[#A855F7] transition-all shadow-md">
+                  <i class="fa-solid fa-circle-info"></i> Részletek
+                </button>
+                <a href="https://github.com/barnabas47/minecraft" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill border border-white/10 hover:border-white text-slate-300 hover:text-white font-code text-xs transition-all">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. 2D Platformer (4 Cols) -->
+          <div class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 hover:-translate-y-1 transition-transform group" data-category="game">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/2d_platformer.png?v=15" alt="2D Platformer logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">2D Platformer (ORIGAMI)</h4>
+                  <p class="font-body text-xs text-slate-400">HTML5 Canvas &amp; Web Audio API</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                2D-s dimenzió-hajtogató speedrun puzzle-platformer relatív falon/plafonon járással.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+              <a href="https://barnabas47.github.io/2d_platformer/" target="_blank" rel="noreferrer" class="px-3 py-1.5 rounded-full bg-[#00F5FF] text-slate-950 font-heading text-xs font-bold hover:bg-white transition-all">
+                <i class="fa-solid fa-play"></i> Élő Játék
+              </a>
+              <a href="https://github.com/barnabas47/2d_platformer" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 6. GameHub (4 Cols) -->
+          <div class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 hover:-translate-y-1 transition-transform group" data-category="desktop game">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/gamehub.png?v=15" alt="GameHub logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">GameHub (Station 3)</h4>
+                  <p class="font-body text-xs text-slate-400">C# WPF Arcade Party Pack</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                2 személyes party játék gyűjtemény (7 arcade játék) PS3 CrossMediaBar (XMB) menüvel.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+              <button onclick="openProjectModal('gamehub')" class="text-[#00F5FF] hover:underline font-heading text-xs font-semibold">
+                <i class="fa-solid fa-circle-info"></i> Részletek
+              </button>
+              <a href="https://github.com/barnabas47/gamehub" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 7. WaterSupplySimulator (4 Cols) -->
+          <div class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 hover:-translate-y-1 transition-transform group" data-category="web">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/water.png?v=15" alt="WaterSupplySimulator logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">WaterSupplySimulator</h4>
+                  <p class="font-body text-xs text-slate-400">.NET 8 &amp; React Full Stack</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                Vízellátás-szimulátor REST API-val, JWT autentikációval és élő szenzor-naplózással.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+              <button onclick="openProjectModal('water')" class="text-[#00F5FF] hover:underline font-heading text-xs font-semibold">
+                <i class="fa-solid fa-circle-info"></i> Részletek
+              </button>
+              <a href="https://github.com/barnabas47/WaterSupplySimulator" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 8. CryptoSim (4 Cols) -->
+          <div class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 hover:-translate-y-1 transition-transform group" data-category="web">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/cryp.png?v=15" alt="CryptoSim logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">CryptoSim</h4>
+                  <p class="font-body text-xs text-slate-400">ASP.NET Core 9 &amp; React TS</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                Full-stack kriptovaluta kereskedési szimulátor portfóliókezeléssel és valósághű adatokkal.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+              <button onclick="openProjectModal('cryptosim')" class="text-[#00F5FF] hover:underline font-heading text-xs font-semibold">
+                <i class="fa-solid fa-circle-info"></i> Részletek
+              </button>
+              <a href="https://github.com/barnabas47/CryptoSim" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 9. BerAuto ERP (4 Cols) -->
+          <div class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 hover:-translate-y-1 transition-transform group" data-category="web">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/car.png?v=15" alt="BerAuto logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">BerAuto ERP</h4>
+                  <p class="font-body text-xs text-slate-400">ASP.NET Core 9 &amp; React TS</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                Modern autókölcsönző ERP rendszer több szerepkörös bérléskezeléssel és számlázással.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+              <button onclick="openProjectModal('berauto')" class="text-[#00F5FF] hover:underline font-heading text-xs font-semibold">
+                <i class="fa-solid fa-circle-info"></i> Részletek
+              </button>
+              <a href="https://github.com/barnabas47/BerAuto" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 10. ComicHub (4 Cols) -->
+          <div class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 hover:-translate-y-1 transition-transform group" data-category="desktop">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/comichub.png?v=15" alt="ComicHub logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">ComicHub</h4>
+                  <p class="font-body text-xs text-slate-400">Natív Android Java &amp; GraphQL</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                Képregény közösségi alkalmazás Marvel API GraphQL integrációval, Firebase-szel és ML Kit-tel.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-white/5">
+              <button onclick="openProjectModal('comichub')" class="text-[#00F5FF] hover:underline font-heading text-xs font-semibold">
+                <i class="fa-solid fa-circle-info"></i> Részletek
+              </button>
+              <a href="https://github.com/barnabas47/ComicHub" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= ========================== -->
+      <!-- SECTION 4: ABOUT & EDUCATION                 -->
+      <!-- ============================================ -->
+      <section id="rolam" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Education Box (5 Cols) -->
+        <div class="lg:col-span-5 glass-card rounded-2xl p-8 border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill border border-[#00F5FF]/30 text-[#00F5FF] font-code text-xs uppercase tracking-widest mb-6">
+              <i class="fa-solid fa-graduation-cap"></i> <span>Egyetemi Tanulmányok</span>
+            </div>
+
+            <h3 class="font-heading text-3xl font-extrabold text-white mb-2">Pannon Egyetem</h3>
+            <p class="font-heading text-sm font-semibold text-[#00F5FF] mb-4">Műszaki Informatikai Kar (MIK)</p>
+
+            <div class="p-4 rounded-xl bg-slate-950/80 border border-white/5 mb-6">
+              <span class="font-code text-xs text-slate-400 uppercase">Megszerzett Oklevél</span>
+              <p class="font-heading text-lg font-bold text-white">Programtervező Informatikus BSc</p>
+              <p class="font-body text-xs text-[#10B981] font-semibold">Végzés éve: 2026</p>
+            </div>
+
+            <p class="font-body text-slate-300 text-sm leading-relaxed mb-4">
+              Mély elméleti és gyakorlati felkészültség C#/.NET szoftverarchitektúrákból, beágyazott tesztelésből, párhuzamos rendszerekből és formális minőségbiztosításból.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Szoftverarchitektúrák</span>
+            <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">C# Tesztautomatizálás</span>
+            <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Multi-Agent AI</span>
+          </div>
+        </div>
+
+        <!-- Competency Matrix (7 Cols) -->
+        <div class="lg:col-span-7 glass-card rounded-2xl p-8 sm:p-10 border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill border border-[#A855F7]/30 text-[#A855F7] font-code text-xs uppercase tracking-widest mb-6">
+              <i class="fa-solid fa-code"></i> <span>Készségtérkép</span>
+            </div>
+
+            <h3 class="font-heading text-3xl font-extrabold text-white tracking-tight mb-8">
+              Kompetencia Mátrix
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Skill Group 1 -->
+              <div class="p-5 rounded-xl bg-slate-950/70 border border-white/5">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-brands fa-windows text-[#00F5FF] text-xl"></i>
+                  <h4 class="font-heading text-base font-bold text-white">C# / .NET Rendszerek</h4>
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-1.5">
+                  <li>• .NET 9 &amp; Modern C# Nyelvi Elemek</li>
+                  <li>• Task.Run, TPL &amp; Aszinkron Szálkezelés</li>
+                  <li>• ASP.NET Core REST API Architektúra</li>
+                  <li>• Entity Framework Core &amp; SQL</li>
+                </ul>
+              </div>
+
+              <!-- Skill Group 2 -->
+              <div class="p-5 rounded-xl bg-slate-950/70 border border-white/5">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-vial-circle-check text-[#6366F1] text-xl"></i>
+                  <h4 class="font-heading text-base font-bold text-white">Szoftvertesztelés &amp; QA</h4>
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-1.5">
+                  <li>• Beágyazott C Statikus &amp; Dinamikus Tesztelés</li>
+                  <li>• SIL &amp; HIL Tesztelési Protokollok</li>
+                  <li>• MC/DC Kódlefedettség Mérés</li>
+                  <li>• ASPICE &amp; Siemens Megfelelőség</li>
+                </ul>
+              </div>
+
+              <!-- Skill Group 3 -->
+              <div class="p-5 rounded-xl bg-slate-950/70 border border-white/5">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-solid fa-brain text-[#A855F7] text-xl"></i>
+                  <h4 class="font-heading text-base font-bold text-white">AI &amp; Multi-Agent</h4>
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-1.5">
+                  <li>• AWS Bedrock &amp; Claude 3.5 Sonnet</li>
+                  <li>• NVIDIA Nemotron Modell-Útválasztás</li>
+                  <li>• Autonóm Hibakereső Ágensek</li>
+                  <li>• Vision OCR &amp; METAR Integráció</li>
+                </ul>
+              </div>
+
+              <!-- Skill Group 4 -->
+              <div class="p-5 rounded-xl bg-slate-950/70 border border-white/5">
+                <div class="flex items-center gap-3 mb-3">
+                  <i class="fa-brands fa-react text-[#10B981] text-xl"></i>
+                  <h4 class="font-heading text-base font-bold text-white">Full Stack &amp; Mobil</h4>
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-1.5">
+                  <li>• React, Next.js &amp; TypeScript</li>
+                  <li>• Tailwind CSS &amp; Glassmorphic UI</li>
+                  <li>• Flutter &amp; Natív Android Java</li>
+                  <li>• Docker Konténerizáció &amp; CI/CD</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= ========================== -->
+      <!-- SECTION 5: CONTACT & 1-CLICK COPY            -->
+      <!-- ============================================ -->
+      <section id="kapcsolat" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        <!-- Contact Information Cards (5 Cols) -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill border border-[#10B981]/30 text-[#10B981] font-code text-xs uppercase tracking-widest mb-3">
+              <i class="fa-solid fa-paper-plane"></i> <span>Közvetlen Elérhetőség</span>
+            </div>
+            <h2 class="font-heading text-3xl font-extrabold text-white tracking-tight mb-2">
+              Lépjünk Kapcsolatba
+            </h2>
+            <p class="font-body text-slate-300 text-sm">
+              Nyitott vagyok innovatív C# fejlesztési projektekre, tesztautomatizálási mérnöki feladatokra és AI-architektúra együttműködésekre.
+            </p>
+          </div>
+
+          <!-- Email Copy Card -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-[#00F5FF] text-xl shadow-lg">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <span class="font-code text-xs text-slate-400 uppercase">Email Cím</span>
+                <p class="font-heading text-sm font-bold text-white" id="emailVal">buzasbarnabas04@gmail.com</p>
+              </div>
+            </div>
+            <button onclick="copyToClipboard('buzasbarnabas04@gmail.com', this)" class="p-3 rounded-full bg-slate-800/80 hover:bg-[#00F5FF] hover:text-slate-950 text-[#00F5FF] transition-all" title="Másolás vágólapra">
+              <i class="fa-regular fa-copy text-lg"></i>
+            </button>
+          </div>
+
+          <!-- Phone Copy Card -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-[#6366F1] text-xl shadow-lg">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <span class="font-code text-xs text-slate-400 uppercase">Telefonszám</span>
+                <p class="font-heading text-sm font-bold text-white" id="phoneVal">+36 20 232 6414</p>
+              </div>
+            </div>
+            <button onclick="copyToClipboard('+36202326414', this)" class="p-3 rounded-full bg-slate-800/80 hover:bg-[#6366F1] hover:text-white text-[#6366F1] transition-all" title="Másolás vágólapra">
+              <i class="fa-regular fa-copy text-lg"></i>
+            </button>
+          </div>
+
+          <!-- Location Info Card -->
+          <div class="glass-card rounded-2xl p-6 border border-white/10 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-[#A855F7] text-xl shadow-lg">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <span class="font-code text-xs text-slate-400 uppercase">Helyszínek</span>
+              <p class="font-heading text-sm font-bold text-white">Budapest XI. kerület / Herend, Veszprém megye</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form (7 Cols) -->
+        <div class="lg:col-span-7 glass-card rounded-2xl p-8 sm:p-10 border border-white/10 flex flex-col justify-between">
+          <div>
+            <h3 class="font-heading text-2xl font-extrabold text-white mb-2">Üzenet Küldése</h3>
+            <p class="font-body text-slate-300 text-sm mb-6">
+              Közvetlen kapcsolatfelvétel mérnöki megkeresésekhez vagy projektajánlatokhoz.
+            </p>
+
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-heading text-xs font-semibold text-slate-300 mb-2">Az Ön Neve / Cége</label>
+                  <input type="text" id="senderName" required placeholder="pl. Kovács Péter" class="w-full px-4 py-3 rounded-xl bg-slate-950/80 text-white font-body text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00F5FF] transition-all"/>
+                </div>
+                <div>
+                  <label class="block font-heading text-xs font-semibold text-slate-300 mb-2">Email Címe</label>
+                  <input type="email" id="senderEmail" required placeholder="pl. peter@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-950/80 text-white font-body text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00F5FF] transition-all"/>
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-heading text-xs font-semibold text-slate-300 mb-2">Téma</label>
+                <input type="text" id="msgSubject" required placeholder="pl. C# Tesztautomatizálás / AI Architektúra megkeresés" class="w-full px-4 py-3 rounded-xl bg-slate-950/80 text-white font-body text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00F5FF] transition-all"/>
+              </div>
+
+              <div>
+                <label class="block font-heading text-xs font-semibold text-slate-300 mb-2">Üzenet</label>
+                <textarea id="msgBody" required rows="4" placeholder="Írja le a projekt célját vagy a megkeresés részleteit..." class="w-full px-4 py-3 rounded-xl bg-slate-950/80 text-white font-body text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00F5FF] transition-all resize-none"></textarea>
+              </div>
+
+              <button type="submit" id="submitBtn" class="w-full py-4 rounded-full bg-gradient-to-r from-[#6366F1] to-[#A855F7] text-white font-heading text-sm font-bold uppercase tracking-wider shadow-[0_0_24px_rgba(99,102,241,0.4)] hover:shadow-[0_0_36px_rgba(99,102,241,0.7)] transition-all flex items-center justify-center gap-2">
+                <span>Üzenet Elküldése</span> <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+
+            <div id="formFeedback" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-body text-sm text-center">
+              <i class="fa-solid fa-circle-check"></i> Köszönöm az üzenetet! Az levelezőprogramod megnyílt az elküldéshez.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-[#080C14]/90 border-t border-white/10 py-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-[#00F5FF] shadow-[0_0_8px_#00f5ff]"></div>
+        <p class="font-body text-xs text-slate-400">© 2026 Buzás Barnabás. Minden jog fenntartva. High-Performance C# &amp; AI Systems.</p>
+      </div>
+
+      <div class="flex items-center gap-6 text-slate-400 text-xs font-semibold">
+        <a href="https://github.com/barnabas47?tab=repositories" target="_blank" rel="noreferrer" class="hover:text-[#00F5FF] transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/barnab%C3%A1s-buz%C3%A1s-52324235a/" target="_blank" rel="noreferrer" class="hover:text-[#00F5FF] transition-colors">LinkedIn</a>
+        <a href="#top" class="hover:text-white transition-colors"><i class="fa-solid fa-arrow-up"></i> Vissza a tetejére</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL POPUP OVERLAY                        -->
+  <!-- ========================================== -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-2xl">
+    <div class="w-full max-w-2xl rounded-2xl glass-card border border-white/10 p-8 shadow-2xl flex flex-col gap-6 relative">
+      <button onclick="closeProjectModal()" class="absolute top-6 right-6 p-2 rounded-full bg-slate-800/80 text-slate-300 hover:text-white transition-colors">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div>
+        <span id="modalCategory" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00F5FF]/10 text-[#00F5FF] font-code text-xs uppercase tracking-wider mb-2">Kiemelt Projekt</span>
+        <h3 id="modalTitle" class="font-heading text-2xl font-extrabold text-white">Projekt Címe</h3>
+      </div>
+
+      <p id="modalDesc" class="font-body text-slate-300 text-sm leading-relaxed">Projekt részletes leírása.</p>
+
+      <div class="p-4 rounded-xl bg-slate-950/80 border border-white/5">
+        <p class="font-code text-xs text-slate-400 uppercase mb-2">Telepítés &amp; Futtatás:</p>
+        <code id="modalCode" class="font-code text-xs text-[#00F5FF] block overflow-x-auto whitespace-pre p-2 bg-black/40 rounded-lg">git clone ...</code>
+      </div>
+
+      <div class="flex items-center justify-end gap-4 pt-2 border-t border-white/5">
+        <button onclick="closeProjectModal()" class="px-6 py-2.5 rounded-full bg-slate-800 text-slate-300 font-heading text-xs font-semibold hover:bg-slate-700 transition-colors">Bezárás</button>
+        <a id="modalLink" href="https://github.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#6366F1] text-white font-heading text-xs font-bold shadow-md hover:bg-[#A855F7] transition-all">
+          <span>GitHub Repozitórium</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-8 right-8 z-50 hidden items-center gap-3 px-5 py-3 rounded-xl bg-emerald-500 text-slate-950 font-heading text-xs font-bold shadow-2xl transition-all">
+    <i class="fa-solid fa-circle-check text-base"></i> <span id="toastMsg">Vágólapra másolva!</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT LOGIC & INTERACTION             -->
+  <!-- ========================================== -->
+  <script>
+    // Project Data Dictionary
+    const modalData = {
+      safecode: {
+        category: "NVIDIA Hackathon Kiemelt • Multi-Agent",
+        title: "SafeCode-AI",
+        desc: "Elszigetelt (sandboxed) kód sérülékenység-javító multi-ágens rendszer NVIDIA Nemotron 3 Ultra/Nano többmodell-útválasztással és OpenShell L7 proxyval. Valós idejű kód-elemzés és automatizált CVE javítás generálás.",
+        code: "git clone https://github.com/barnabas47/SafeCode-AI\ndocker-compose up --build",
+        link: "https://github.com/barnabas47/SafeCode-AI"
+      },
+      omniclaim: {
+        category: "AWS Hackathon Kiemelt • AI Claims",
+        title: "OmniClaim-AI",
+        desc: "Autonóm légiutas-jogi védő & időjárási kifogás-cáfoló multi-ágens platform Vision OCR-rel, METAR időjárás-elemzéssel és EU261 távolságszámítással.",
+        code: "git clone https://github.com/barnabas47/OmniClaim-AI\nnpm install && npm run dev",
+        link: "https://github.com/barnabas47/OmniClaim-AI"
+      },
+      cosmic: {
+        category: "NASA Space Apps • Küldetésvezérlő",
+        title: "Cosmic Trade-off",
+        desc: "Mélyűri küldetéstervező & repülésirányító kokpit Keplerian pálya-szimulációval, Tsiolkovsky rakétamátrixszal és interaktív Web Audio szintetizátorral.",
+        code: "git clone https://github.com/barnabas47/Cosmic-Trade-off\nnpm install && npm run dev",
+        link: "https://github.com/barnabas47/Cosmic-Trade-off"
+      },
+      minecraft: {
+        category: "3D Játékmotor & Szálkezelés",
+        title: "Minecraft Clone (C# Godot 4)",
+        desc: "Voxel-alapú 3D sandbox játék C# nyelven, aszinkron többszálú háttér-világbetöltéssel (Task.Run), FastNoiseLite domborzatgenerálással és kemencével.",
+        code: "git clone https://github.com/barnabas47/minecraft\ndotnet run",
+        link: "https://github.com/barnabas47/minecraft"
+      },
+      gamehub: {
+        category: "Asztali Alkalmazás / C# WPF / Játékfejlesztés",
+        title: "GameHub (Station 3 Party Pack)",
+        desc: "2 személyes helyi party játék gyűjtemény (7 arcade játék) C# WPF keretrendszerben, autentikus PS3 CrossMediaBar (XMB) menürendszerrel.",
+        code: "git clone https://github.com/barnabas47/gamehub\ndotnet run",
+        link: "https://github.com/barnabas47/gamehub"
+      },
+      water: {
+        category: "Web / .NET 8 & React Full Stack",
+        title: "WaterSupplySimulator",
+        desc: "Vízellátás-szimulátor rendszer REST API-val, JWT admin autentikációval, élő szenzoradatokkal és naplózással.",
+        code: "git clone https://github.com/barnabas47/WaterSupplySimulator\ndotnet run",
+        link: "https://github.com/barnabas47/WaterSupplySimulator"
+      },
+      cryptosim: {
+        category: "Web / ASP.NET Core 9 & React TS",
+        title: "CryptoSim",
+        desc: "Full-stack kriptovaluta kereskedési szimulátor valósághű coin adatokkal, szerepkörökkel és portfóliókezeléssel.",
+        code: "git clone https://github.com/barnabas47/CryptoSim\ndotnet run",
+        link: "https://github.com/barnabas47/CryptoSim"
+      },
+      berauto: {
+        category: "Web / ASP.NET Core 9 & React TS",
+        title: "BerAuto ERP",
+        desc: "Modern autókölcsönző rendszer több szerepkörös (ügyfél, alkalmazott, admin) bérléskezeléssel és számlázással.",
+        code: "git clone https://github.com/barnabas47/BerAuto\ndotnet run",
+        link: "https://github.com/barnabas47/BerAuto"
+      },
+      comichub: {
+        category: "Mobilfejlesztés / Android Java / Firebase & GraphQL",
+        title: "ComicHub",
+        desc: "Natív Android alkalmazás Java környezetben, Apollo GraphQL klienssel, Marvel API integrációval és ML Kit fordítással.",
+        code: "git clone https://github.com/barnabas47/ComicHub",
+        link: "https://github.com/barnabas47/ComicHub"
+      }
+    };
+
+    function openProjectModal(key) {
+      const data = modalData[key];
+      if (!data) return;
+      document.getElementById('modalCategory').innerText = data.category;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalDesc').innerText = data.desc;
+      document.getElementById('modalCode').innerText = data.code;
+      document.getElementById('modalLink').href = data.link;
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+
+    // 1-Click Clipboard Copy with Toast Feedback
+    function copyToClipboard(text, btnElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 2200);
+      });
+    }
+
+    // Category Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.className = 'filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all';
+        });
+        btn.className = 'filter-btn px-4 py-2 rounded-full font-heading text-xs font-bold bg-[#6366F1] text-white shadow-md transition-all active';
+
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const cats = card.getAttribute('data-category').split(' ');
+          if (filter === 'all' || cats.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Real-Time Search Filtering
+    const searchInput = document.getElementById('projectSearch');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase().trim();
+        projectCards.forEach(card => {
+          const text = card.innerText.toLowerCase();
+          if (text.includes(val)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // Contact Form Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      const email = document.getElementById('senderEmail').value;
+      const subject = document.getElementById('msgSubject').value;
+      const body = document.getElementById('msgBody').value;
+
+      const mailtoUrl = `mailto:buzasbarnabas04@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Név: " + name + "\nEmail: " + email + "\n\nÜzenet:\n" + body)}`;
+      window.location.href = mailtoUrl;
+
+      document.getElementById('formFeedback').classList.remove('hidden');
+    }
+
+    // Dual-Language Dictionary Switcher
+    const i18n = {
+      hu: {
+        nav_projects: "Projektek",
+        nav_experience: "Tapasztalat",
+        nav_about: "Rólam",
+        nav_contact: "Kapcsolat",
+        hero_badge: "Buzás Barnabás — C# Fejlesztő & Szoftvertesztelő Mérnök",
+        hero_title: "Buzás Barnabás",
+        hero_subtitle: "C# Fejlesztő & Szoftvertesztelő | AI Tesztautomatizálási Mérnök",
+        hero_tagline: "C#/.NET 9 szoftverfejlesztés, beágyazott C szoftvertesztelés, intelligens AI-alapú tesztautomatizálás és autonóm multi-ágens architektúrák.",
+        btn_projects: "Projektek Felfedezése",
+        btn_exp: "Szakmai Tapasztalat",
+        exp_badge: "Karrierút & Minőségbiztosítás",
+        experience_title: "Szakmai Tapasztalat",
+        exp_subtitle: "Ipari és autóipari szoftverfejlesztési & tesztelési tapasztalataim beágyazott C és C# környezetben.",
+        exp_current: "Jelenlegi pozíció",
+        exp_evosoft_title: "C# Tesztautomatizálási Mérnök & AI Integráció",
+        exp_evosoft_desc: "Intelligens C# alapú automatizált tesztrendszerek fejlesztése, komplex tesztkörnyezetek architektúrája és mesterséges intelligencia (AI) megoldások integrálása a szoftveres tesztelési folyamatok hatékonyságának növelésére.",
+        exp_conti_title: "C Szoftvertesztelő Mérnök",
+        exp_conti_desc: "Motoros fékrendszerek beágyazott C kódjának szoftveres tesztelése, statikus és dinamikus tesztelési eljárások kidolgozása, hibaanalízis, valamint autóipari minőségbiztosítási szabványok követése.",
+        exp_highlights: "Kiemelt Eredmények"
+      },
+      en: {
+        nav_projects: "Projects",
+        nav_experience: "Experience",
+        nav_about: "About Me",
+        nav_contact: "Contact",
+        hero_badge: "Barnabás Buzás — C# Developer & Test Automation Engineer",
+        hero_title: "Barnabás Buzás",
+        hero_subtitle: "C# Developer & Software Test Automation Engineer",
+        hero_tagline: "C#/.NET 9 software engineering, embedded C software testing, AI-driven test automation, and autonomous multi-agent systems.",
+        btn_projects: "Explore Projects",
+        btn_exp: "Work Experience",
+        exp_badge: "Career Track & Quality Assurance",
+        experience_title: "Work Experience",
+        exp_subtitle: "Industrial and automotive software engineering & testing experience in C# and embedded C environments.",
+        exp_current: "Current Role",
+        exp_evosoft_title: "C# Test Automation Engineer & AI Integration",
+        exp_evosoft_desc: "Developing intelligent C#-based automated testing frameworks, designing test environments, and integrating AI solutions to maximize testing efficiency, coverage, and reliability.",
+        exp_conti_title: "C Software Test Engineer",
+        exp_conti_desc: "Software testing of embedded C codebase for motorized brake systems, executing static and dynamic test suites, defect analysis, and enforcing automotive quality compliance.",
+        exp_highlights: "Key Achievements"
+      }
+    };
+
+    function switchLanguage(lang) {
+      document.getElementById('lang-btn-hu').className = lang === 'hu' ? 'px-2 py-0.5 rounded-full transition-colors font-bold text-[#00F5FF]' : 'px-2 py-0.5 rounded-full transition-colors text-slate-400 hover:text-white';
+      document.getElementById('lang-btn-en').className = lang === 'en' ? 'px-2 py-0.5 rounded-full transition-colors font-bold text-[#00F5FF]' : 'px-2 py-0.5 rounded-full transition-colors text-slate-400 hover:text-white';
+
+      const dict = i18n[lang];
+      if (!dict) return;
+
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (dict[key]) {
+          el.innerText = dict[key];
+        }
+      });
+    }
+  </script>
+</body>
+</html>
