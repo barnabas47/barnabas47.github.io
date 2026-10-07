@@ -1,7 +1,7 @@
 ---
 layout: default
 modal-id: 10
-date: 2026-10-06
+date: 2024-10-06
 img: cosmic.png
 alt: Cosmic-Trade-off projekt logó
 project-date: 2026
@@ -13,7 +13,7 @@ description: |
 
   **🚀 Főbb funkciók:**
   - **Keplerian 2-Body Orbital Solver**: Heliocentrikus kúpkúp-pálya terjedési szimuláció Hohmann-pályákkal és Oberth-hatású gravitációs hintamanőverekkel.
-  - **Tsiolkovsky Rakéta Mátrix**: Nedves/száraz tömegarány számítás, fajlagos impulzus ($I_{sp}$) mérlegelések és $\Delta v$ költségvetési tartalék ellenőrzés.
+  - **Tsiolkovsky Rakéta Mátrix**: Nedves/száraz tömegarány számítás, fajlagos impulzus (I_sp) mérlegelések és Delta-V költségvetési tartalék ellenőrzés.
   - **HTML5 2.5D/3D Canvas Engine**: Folyamatos 360°-os szférikus kameramozgás, bolygópályák és részecske-alapú RCS/fúvóka hajtóműcsóvák.
   - **Web Audio Synth**: Eljárásilag szintetizált Apollo/Artemis Quindar sípszók, kriogén gyújtási robaj, hideggáz kiáramlások és küldetésirányítási C-dúr fanfár.
   - **5 Interaktív Repülésirányítói Minijáték**: RCS dokkolás, hőszigetelő pajzs beállítás, napelemes panel irányzék, pályára állás és jeldekódolás.

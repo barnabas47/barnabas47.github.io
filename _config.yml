@@ -2,7 +2,7 @@
 title: Buzás Barnabás
 email: buzasbarnabas04@gmail.com
 url: https://github.com/barnabas47/barnabas47.github.io
-description: "Buzás Barnabás vagyok, programtervező informatikus hallgató a Pannon Egyetemen. Ezen az oldalon megtalálod a szakmai tapasztalataimat, technológiai ismereteimet és korábbi projektjeimet."
+description: "Buzás Barnabás vagyok, programtervező informatikus. Ezen az oldalon megtalálod a szakmai tapasztalataimat, technológiai ismereteimet és szoftverfejlesztési projektjeimet."
 keywords: "Buzás Barnabás, portfólió, programtervező informatikus, C#, Java, Flutter, webfejlesztés, mobilalkalmazás, GitHub"
 skills: "Programozás – Mobilfejlesztés – Adatbázis-kezelés"
 meta_author: Buzás Barnabás
@@ -14,21 +14,17 @@ google_verify:
 bing_verify:
 
 # Contact form:
-# - static : pass through formspree.io to validate email sending
-# - disqus : replace contact form by disqus thread
-# - comment the line below if you want to stick with the default PHP contact form
 contact: static
 
-# If you use disqus you need disqus shortname
-# https://help.disqus.com/customer/portal/articles/466208
+# Disqus shortname
 disqus_shortname: myshortname
 
-# Color settings (hex-codes without the leading hash-tag)
+# Color settings
 color:
-  primary: 4fa3ff # világoskék
+  primary: 4fa3ff
   primary-rgb: "79,163,255"
-  secondary: 2c3e50 #FD6E8A
-  secondary-dark: 233140 #A2122F
+  secondary: 2c3e50
+  secondary-dark: 233140
 
 # Footer settings
 footer:
@@ -38,7 +34,7 @@ footer:
   credits: Kredit
   credits_author: jeromelachaud
 
-# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+# Social networks
 social:
   - title: github
     url: https://github.com/barnabas47?tab=repositories
@@ -47,6 +43,7 @@ social:
 
 # Postal address
 address:
+  - line: "Budapest, XI. kerület"
   - line: "Herend, Veszprém megye"
   - line: "Telefon: +36202326414"
   - line: "Email: buzasbarnabas04@gmail.com"
@@ -54,8 +51,9 @@ address:
 # Build settings
 markdown: kramdown
 permalink: pretty
+future: true
 
-#for posts
+# Defaults for posts
 defaults:
   - scope:
       path: ""
