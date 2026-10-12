@@ -1,0 +1,34 @@
+---
+layout: default
+modal-id: 11
+date: 2026-08-30
+img: nihilpet.png
+alt: NihilPet 9000 project logo
+project-date: 2026
+client: Retro Handheld Console Simulator & GameBoy Game
+category: Game Development / React & TypeScript / Web Audio API
+github_url: https://github.com/barnabas47/NihilPet
+live_url: https://nihil-pet.vercel.app/
+description: |
+  [NihilPet 9000](https://github.com/barnabas47/NihilPet) is a cursed 8-bit virtual pet simulation and retro handheld console survival game running in a molded GameBoy shell, combating inevitable entropy decay.
+
+  **🕹️ Play Live Online (Zero Installation):**
+  - 👉 [https://nihil-pet.vercel.app/](https://nihil-pet.vercel.app/)
+
+  **👾 Key Features:**
+  - **6-Minute Operational Entropy Budget**: Continuous countdown scoring (+15 PTS/sec) with streak multipliers. The session ends in either Pixel Nirvana (<=15% entropy) or Entropy Collapse with an autopsy report.
+  - **⚡ Urgent Quick-Time Events (QTE Engine)**: Dynamic reflex crises every 20-30s (Ravenous Starvation, Asphyxiation, 3.3V Short Circuit, Dimensional Tear) with strict penalties and rewards.
+  - **🎛️ Left Modular Hardware Accessory Bay**: Sine-wave oscilloscope, 8-bit pocket calculator, live global weather radar powered by Open-Meteo API, fluctuating $NIHIL crypto ticker, and somatic EKG pulse monitor.
+  - **🎶 Procedural Web Audio API Synthesizer**: 100% mathematically generated chiptune music and authentic 8-bit sound effects using pure browser oscillators (zero external audio file downloads).
+  - **🏆 16 Unlockable Trophies & Wardrobe**: 12 achievement-gated skins (Astronaut, Wizard, Crown, Tinfoil) and 6 retro LCD color palettes (GameBoy DMG, Pocket Gray, Virtual Boy, Cyberpunk, CRT Amber, Matrix).
+
+  **🛠️ Tech Stack:**
+  - Frontend: React 18, TypeScript 5.7, Vite 5, Tailwind CSS, Framer Motion
+  - Audio: Pure Web Audio API Synthesis Engine
+  - Telemetry: Open-Meteo Atmospheric Weather API, LocalStorage State Sync
+
+  **🏁 Getting Started:**
+  - Clone: `git clone https://github.com/barnabas47/NihilPet.git`
+  - Install: `npm install`
+  - Dev server: `npm run dev`
+---

@@ -450,7 +450,7 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-2" id="filterPills">
-            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-bold bg-[#6366F1] text-white shadow-md transition-all active" data-filter="all">Összes (10)</button>
+            <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-bold bg-[#6366F1] text-white shadow-md transition-all active" data-filter="all">Összes (11)</button>
             <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="ai">AI &amp; Multi-Agent</button>
             <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="web">Full Stack &amp; Web</button>
             <button class="filter-btn px-4 py-2 rounded-full font-heading text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all" data-filter="game">Játékfejlesztés</button>
@@ -563,7 +563,44 @@
             </div>
           </div>
 
-          <!-- 4. ⭐ Minecraft Clone (Featured 6 Cols) -->
+          <!-- 4. ⭐ NihilPet 9000 (Featured 6 Cols) -->
+          <div onclick="openProjectModal('nihilpet')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="web game">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-500/10 text-fuchsia-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-gamepad"></i> Retro Zsebkonzol Szimulátor
+                </span>
+                <span class="font-code text-xs text-slate-400">Web Audio &amp; QTE Engine</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/nihilpet.png?v=17" alt="NihilPet 9000 logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">NihilPet 9000</h3>
+                  <p class="font-body text-xs text-slate-400">Existential Retro Tamagotchi Console</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Cursed 8-bites virtuális kisállat-szimuláció és zsebkonzol: 6 perces entrópia-számlálóval, reflex quick-time eseményekkel (QTE), moduláris hardver bővítőhellyel és szintetizált Web Audio chiptune-nal.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-fuchsia-400 font-code text-xs">React &amp; TypeScript</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs">Web Audio Synth</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-amber-400 font-code text-xs">QTE Reflex Engine</span>
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-white/5">
+                <a href="https://nihil-pet.vercel.app" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="px-3.5 py-1.5 rounded-full bg-[#00F5FF] text-slate-950 font-heading text-xs font-bold hover:bg-white hover:shadow-[0_0_15px_#00f5ff] transition-all inline-flex items-center gap-1.5">
+                  <i class="fa-solid fa-play text-[10px]"></i> Élő Játék
+                </a>
+                <a href="https://github.com/barnabas47/NihilPet" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. ⭐ Minecraft Clone (Featured 6 Cols) -->
           <div onclick="openProjectModal('minecraft')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="game">
             <div>
               <div class="flex items-center justify-between gap-2 mb-4">
@@ -597,7 +634,41 @@
             </div>
           </div>
 
-          <!-- 5. 2D Platformer (4 Cols) -->
+          <!-- 6. ⭐ GameHub (Featured 6 Cols) -->
+          <div onclick="openProjectModal('gamehub')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="desktop game">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-trophy"></i> C# WPF Arcade Party Pack
+                </span>
+                <span class="font-code text-xs text-slate-400">PS3 XMB UI &amp; Audio</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/gamehub.png?v=16" alt="GameHub logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+                <div>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">GameHub (Station 3)</h3>
+                  <p class="font-body text-xs text-slate-400">7-in-1 Local Multiplayer Suite</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                2 személyes helyi party játék gyűjtemény (7 teljes értékű arcade játék) C# WPF keretrendszerben, autentikus PS3 CrossMediaBar (XMB) menürendszerrel és animált hullámmal.
+              </p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-indigo-400 font-code text-xs">C# (.NET 8)</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">WPF &amp; XAML</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">PS3 XMB Engine</span>
+              </div>
+              <div class="flex items-center justify-end pt-3 border-t border-white/5">
+                <a href="https://github.com/barnabas47/gamehub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. 2D Platformer (4 Cols) -->
           <div onclick="openProjectModal('platformer')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="game">
             <div>
               <div class="flex items-center gap-4 mb-3">
@@ -621,28 +692,7 @@
             </div>
           </div>
 
-          <!-- 6. GameHub (4 Cols) -->
-          <div onclick="openProjectModal('gamehub')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="desktop game">
-            <div>
-              <div class="flex items-center gap-4 mb-3">
-                <img src="img/portfolio/gamehub.png?v=16" alt="GameHub logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
-                <div>
-                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">GameHub (Station 3)</h4>
-                  <p class="font-body text-xs text-slate-400">C# WPF Arcade Party Pack</p>
-                </div>
-              </div>
-              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
-                2 személyes party játék gyűjtemény (7 arcade játék) PS3 CrossMediaBar (XMB) menüvel.
-              </p>
-            </div>
-            <div class="flex items-center justify-end pt-3 border-t border-white/5">
-              <a href="https://github.com/barnabas47/gamehub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
-                GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- 7. WaterSupplySimulator (4 Cols) -->
+          <!-- 8. WaterSupplySimulator (4 Cols) -->
           <div onclick="openProjectModal('water')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="web">
             <div>
               <div class="flex items-center gap-4 mb-3">
@@ -663,7 +713,7 @@
             </div>
           </div>
 
-          <!-- 8. CryptoSim (4 Cols) -->
+          <!-- 9. CryptoSim (4 Cols) -->
           <div onclick="openProjectModal('cryptosim')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="web">
             <div>
               <div class="flex items-center gap-4 mb-3">
@@ -684,45 +734,71 @@
             </div>
           </div>
 
-          <!-- 9. BerAuto ERP (4 Cols) -->
-          <div onclick="openProjectModal('berauto')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="web">
+          <!-- 10. BerAuto ERP (6 Cols) -->
+          <div onclick="openProjectModal('berauto')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="web">
             <div>
-              <div class="flex items-center gap-4 mb-3">
-                <img src="img/portfolio/car.png?v=16" alt="BerAuto logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-car"></i> Flottakezelő &amp; Bérlés ERP
+                </span>
+                <span class="font-code text-xs text-slate-400">ASP.NET Core 9 &amp; React</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/car.png?v=16" alt="BerAuto logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
                 <div>
-                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">BerAuto ERP</h4>
-                  <p class="font-body text-xs text-slate-400">ASP.NET Core 9 &amp; React TS</p>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">BerAuto ERP</h3>
+                  <p class="font-body text-xs text-slate-400">Enterprise Autókölcsönző Rendszer</p>
                 </div>
               </div>
-              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
-                Modern autókölcsönző ERP rendszer több szerepkörös bérléskezeléssel és számlázással.
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Modern autókölcsönző és flottakezelő ERP rendszer több szerepkörös (ügyfél, dolgozó, admin) bérléskezeléssel, automatikus díjkalkulációval és számlázó modullal.
               </p>
             </div>
-            <div class="flex items-center justify-end pt-3 border-t border-white/5">
-              <a href="https://github.com/barnabas47/BerAuto" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
-                GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </a>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-emerald-400 font-code text-xs">ASP.NET Core 9</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">React TypeScript</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">SQL Server</span>
+              </div>
+              <div class="flex items-center justify-end pt-3 border-t border-white/5">
+                <a href="https://github.com/barnabas47/BerAuto" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
             </div>
           </div>
 
-          <!-- 10. ComicHub (4 Cols) -->
-          <div onclick="openProjectModal('comichub')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="desktop">
+          <!-- 11. ComicHub (6 Cols) -->
+          <div onclick="openProjectModal('comichub')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="desktop">
             <div>
-              <div class="flex items-center gap-4 mb-3">
-                <img src="img/portfolio/comichub.png?v=16" alt="ComicHub logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 font-code text-xs uppercase font-bold">
+                  <i class="fa-solid fa-mobile-screen"></i> Natív Android &amp; Közösségi App
+                </span>
+                <span class="font-code text-xs text-slate-400">Marvel API &amp; Firebase</span>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/portfolio/comichub.png?v=16" alt="ComicHub logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
                 <div>
-                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">ComicHub</h4>
-                  <p class="font-body text-xs text-slate-400">Natív Android Java &amp; GraphQL</p>
+                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">ComicHub</h3>
+                  <p class="font-body text-xs text-slate-400">Képregény Adatbázis &amp; Fórum</p>
                 </div>
               </div>
-              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
-                Képregény közösségi alkalmazás Marvel API GraphQL integrációval, Firebase-szel és ML Kit-tel.
+              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
+                Natív Android alkalmazás Java nyelven képregényrajongók számára: GraphQL Marvel API integrációval, Firebase Realtime Database-zel, ML Kit fordítással és ranglistákkal.
               </p>
             </div>
-            <div class="flex items-center justify-end pt-3 border-t border-white/5">
-              <a href="https://github.com/barnabas47/ComicHub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
-                GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </a>
+            <div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-red-400 font-code text-xs">Android Java</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">GraphQL &amp; Marvel API</span>
+                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-amber-400 font-code text-xs">Firebase &amp; ML Kit</span>
+              </div>
+              <div class="flex items-center justify-end pt-3 border-t border-white/5">
+                <a href="https://github.com/barnabas47/ComicHub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
+                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -926,10 +1002,13 @@
         <code id="modalCode" class="font-code text-xs text-[#00F5FF] block overflow-x-auto whitespace-pre p-3 bg-black/40 rounded-lg">git clone ...</code>
       </div>
 
-      <div class="flex items-center justify-end gap-4 pt-4 border-t border-white/10">
-        <button onclick="closeProjectModal()" class="px-6 py-3 rounded-full bg-slate-800 text-slate-300 font-heading text-xs font-semibold hover:bg-slate-700 transition-colors">Bezárás</button>
-        <a id="modalLink" href="https://github.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#6366F1] to-[#A855F7] text-white font-heading text-xs font-bold shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all">
-          <i class="fa-brands fa-github text-sm"></i> <span>GitHub Repozitórium Megtekintése</span>
+      <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-white/10">
+        <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-full bg-slate-800 text-slate-300 font-heading text-xs font-semibold hover:bg-slate-700 transition-colors">Bezárás</button>
+        <a id="modalLiveLink" href="#" target="_blank" rel="noreferrer" class="hidden items-center gap-2 px-6 py-2.5 rounded-full bg-[#00F5FF] text-slate-950 font-heading text-xs font-bold shadow-lg hover:shadow-[0_0_20px_#00f5ff] hover:bg-white transition-all">
+          <i class="fa-solid fa-play text-xs"></i> <span>Élő Játék Megnyitása</span>
+        </a>
+        <a id="modalLink" href="https://github.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-7 py-2.5 rounded-full bg-gradient-to-r from-[#6366F1] to-[#A855F7] text-white font-heading text-xs font-bold shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] transition-all">
+          <i class="fa-brands fa-github text-sm"></i> <span>GitHub Repozitórium</span>
         </a>
       </div>
     </div>
@@ -967,6 +1046,14 @@
         code: "git clone https://github.com/barnabas47/Cosmic-Trade-off\nnpm install && npm run dev",
         link: "https://github.com/barnabas47/Cosmic-Trade-off"
       },
+      nihilpet: {
+        category: "Retro Zsebkonzol Szimulátor • Web Audio API & React",
+        title: "NihilPet 9000",
+        desc: "Cursed 8-bites virtuális kisállat-szimuláció és retro zsebkonzol túlélő játék egy öntött GameBoy shellben. A játék a könyörtelen entrópia-számláló ellen küzd: 6 perces túlélési büdzsével kell megőrizned a kedvenced egyensúlyát a Pixel Nirvána eléréséhez, vagy szembe kell nézned az Entrópia Összeomlással és a részletes boncolási dossier-val. A játék tartalmaz véletlenszerű pánik reflex-vészhelyzeteket (QTE események: csillapíthatatlan éhség, fulladás, 3.3V zárlat, dimenzió-hasadás), egy interaktív bal oldali moduláris hardver bővítőhelyet (oszcilloszkóp, zsebszámológép, élő meteorológiai radar Open-Meteo API-val, átkozott $NIHIL kripto ticker és pulzusmérő EKG), valamint 100%-ban procedurális Web Audio API szintetizátort nulla külső hangfájllal.",
+        code: "git clone https://github.com/barnabas47/NihilPet\nnpm install && npm run dev",
+        link: "https://github.com/barnabas47/NihilPet",
+        liveUrl: "https://nihil-pet.vercel.app"
+      },
       minecraft: {
         category: "3D Játékmotor & Szálkezelés • C# / .NET",
         title: "Minecraft Clone (C# Godot 4)",
@@ -979,7 +1066,8 @@
         title: "2D Platformer (ORIGAMI VOID)",
         desc: "2D-s dimenzió-hajtogató speedrun puzzle-platformer játék HTML5 Canvas és szintetizált Web Audio API alapokon. A játékos a tér hajtogatásával tud falakon és plafonon közlekedni, kihasználva a relatív gravitációs mezőket. Egyedi pályatervezéssel, időfutam (speedrun) mérővel és procedurális hangeffektekkel rendelkezik.",
         code: "git clone https://github.com/barnabas47/2d_platformer",
-        link: "https://github.com/barnabas47/2d_platformer"
+        link: "https://github.com/barnabas47/2d_platformer",
+        liveUrl: "https://barnabas47.github.io/2d_platformer/"
       },
       gamehub: {
         category: "Asztali Alkalmazás / C# WPF / Party Játékok",
@@ -1026,6 +1114,18 @@
       document.getElementById('modalDesc').innerText = data.desc;
       document.getElementById('modalCode').innerText = data.code;
       document.getElementById('modalLink').href = data.link;
+
+      const liveBtn = document.getElementById('modalLiveLink');
+      if (liveBtn) {
+        if (data.liveUrl) {
+          liveBtn.href = data.liveUrl;
+          liveBtn.classList.remove('hidden');
+          liveBtn.classList.add('inline-flex');
+        } else {
+          liveBtn.classList.add('hidden');
+          liveBtn.classList.remove('inline-flex');
+        }
+      }
 
       const modal = document.getElementById('projectModal');
       modal.classList.remove('hidden');

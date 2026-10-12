@@ -1,0 +1,34 @@
+---
+layout: default
+modal-id: 11
+date: 2026-08-30
+img: nihilpet.png
+alt: NihilPet 9000 projekt logó
+project-date: 2026
+client: Retro Zsebkonzol Szimulátor & GameBoy Játék
+category: Játékfejlesztés / React & TypeScript / Web Audio API
+github_url: https://github.com/barnabas47/NihilPet
+live_url: https://nihil-pet.vercel.app/
+description: |
+  [NihilPet 9000](https://github.com/barnabas47/NihilPet) egy cursed 8-bites virtuális kisállat-szimuláció és zsebkonzol túlélő játék, amely egy vintage öntött GameBoy shellben fut. A játék a könyörtelen entrópia-számláló ellen küzd.
+
+  **🕹️ Élőben játszható online (Telepítés nélkül):**
+  - 👉 [https://nihil-pet.vercel.app/](https://nihil-pet.vercel.app/)
+
+  **👾 Főbb funkciók:**
+  - **6 Perces Entrópia Büdzsé**: Folyamatos visszaszámlálás (+15 PTS/sec) szorzókkal. A menet Pixel Nirvánában (<=15% entrópia) vagy Entrópia Összeomlásban ér véget boncolási jelentéssel.
+  - **⚡ Pánik Reflex QTE Motor**: Véletlenszerű vészhelyzetek 20-30 másodpercenként (Starvation, Asphyxiation, 3.3V Short Circuit, Dimensional Tear) szigorú büntetésekkel és jutalmakkal.
+  - **🎛️ Bal Oldali Moduláris Hardver Bay**: Oszcilloszkóp szinuszhullámmal, 8-bites zsebszámológép, valós idejű globális időjárási radar Open-Meteo API-val, $NIHIL kriptovaluta ticker és EKG pulzusmérő.
+  - **🎶 Procedurális Web Audio API Szintetizátor**: 100%-ban matematikai oszcillátorokkal szintetizált chiptune háttérzene és autentikus hangeffektek (zero külső MP3/WAV letöltés).
+  - **🏆 16 Trófea & Ruhatár**: 12 feloldható skin (Űrhajós, Varázsló, Korona, Alufólia) és 6 autentikus LCD színpaletta (GameBoy DMG, Pocket Gray, Virtual Boy, Cyberpunk, CRT Amber, Matrix).
+
+  **🛠️ Fő technológiák:**
+  - Frontend: React 18, TypeScript 5.7, Vite 5, Tailwind CSS, Framer Motion
+  - Sound: Web Audio API Synthesis Engine
+  - Telemetria & API: Open-Meteo Weather API, LocalStorage Sync
+
+  **🏁 Indítás:**
+  - Klónozd a tárolót: `git clone https://github.com/barnabas47/NihilPet.git`
+  - Telepítsd a függőségeket: `npm install`
+  - Indítsd el a fejlesztői szervert: `npm run dev`
+---
