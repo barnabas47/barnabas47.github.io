@@ -461,214 +461,324 @@
         <!-- Bento Grid Container (Entire Card Clickable, Slower Smooth Hover) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8" id="projectsGrid">
 
-          <!-- 1. ⭐ SafeCode-AI (Featured 6 Cols) -->
-          <div onclick="openProjectModal('safecode')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="ai">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-shield-halved"></i> NVIDIA Hackathon Kiemelt
-                </span>
-                <span class="font-code text-xs text-slate-400">Multi-Agent AI</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/safecode.png?v=16" alt="SafeCode-AI logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
-                <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">SafeCode-AI</h3>
-                  <p class="font-body text-xs text-slate-400">Nebius &amp; NVIDIA Nemotron Sandbox Governance</p>
-                </div>
-              </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Elszigetelt (sandboxed) kód sérülékenység-javító multi-ágens rendszer NVIDIA Nemotron 3 Ultra/Nano többmodell-útválasztással és OpenShell L7 proxyval.
-              </p>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs">NVIDIA Nemotron</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">Nebius Cloud</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Docker Sandbox</span>
-              </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/SafeCode-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+          <!-- ======================================================== -->
+          <!-- FLAGSHIP HERO PROJECTS (1 PER ROW, EXPANDED TELEMETRY)      -->
+          <!-- ======================================================== -->
 
-          <!-- 2. ⭐ OmniClaim-AI (Featured 6 Cols) -->
-          <div onclick="openProjectModal('omniclaim')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="ai">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-trophy"></i> AWS Hackathon Kiemelt
-                </span>
-                <span class="font-code text-xs text-slate-400">Strands Agents SDK</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/omniclaim.png?v=16" alt="OmniClaim-AI logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
-                <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">OmniClaim-AI</h3>
-                  <p class="font-body text-xs text-slate-400">AWS Bedrock AgentCore EU261 Protection</p>
+          <!-- 1. ⭐ NihilPet 9000 (Featured Hero 12 Cols - FIRST PROJECT) -->
+          <div onclick="openProjectModal('nihilpet')" class="project-card lg:col-span-12 flex flex-col lg:flex-row items-stretch justify-between gap-8 p-8 sm:p-10 rounded-3xl glass-card border border-white/10 group hover:border-fuchsia-500/30 transition-all" data-category="web game">
+            <div class="flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-fuchsia-500/10 text-fuchsia-400 font-code text-xs uppercase font-bold border border-fuchsia-500/20 shadow-[0_0_15px_rgba(217,70,239,0.15)]">
+                    <i class="fa-solid fa-gamepad"></i> Retro Zsebkonzol Szimulátor
+                  </span>
+                  <span class="font-code text-xs text-slate-400 tracking-wider">Web Audio API &amp; QTE Reflex Engine • 2026</span>
                 </div>
-              </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Autonóm légiutas-jogi védő &amp; időjárási kifogás-cáfoló multi-ágens platform Vision OCR-rel, METAR időjárás-elemzéssel és EU261 távolságszámítással.
-              </p>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-amber-400 font-code text-xs">AWS Bedrock</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">Strands SDK</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Vision OCR</span>
-              </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-              </div>
-            </div>
-          </div>
 
-          <!-- 3. ⭐ Cosmic Trade-off (Featured 6 Cols) -->
-          <div onclick="openProjectModal('cosmic')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="web game">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-[#00F5FF] font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-shuttle-space"></i> NASA Space Apps Challenge
-                </span>
-                <span class="font-code text-xs text-slate-400">Astrodynamics Lab</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/cosmic.png?v=16" alt="Cosmic-Trade-off logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
-                <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">Cosmic Trade-off</h3>
-                  <p class="font-body text-xs text-slate-400">Keplerian Flight Director Cockpit</p>
+                <div class="flex items-center gap-5 mb-4">
+                  <img src="img/portfolio/nihilpet.png?v=17" alt="NihilPet 9000 logo" class="w-20 h-20 rounded-2xl object-cover border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500 shrink-0"/>
+                  <div>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#00F5FF] transition-colors tracking-tight">NihilPet 9000</h3>
+                    <p class="font-body text-sm sm:text-base text-fuchsia-400 font-semibold mt-0.5">Existential Retro Tamagotchi Console Simulation</p>
+                  </div>
                 </div>
-              </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Mélyűri küldetéstervező &amp; repülésirányító kokpit Keplerian pálya-szimulációval, Tsiolkovsky rakétamátrixszal és interaktív Web Audio szintetizátorral.
-              </p>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs">React &amp; TypeScript</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#A855F7] font-code text-xs">Keplerian Solver</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Web Audio Synth</span>
-              </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/Cosmic-Trade-off" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-              </div>
-            </div>
-          </div>
 
-          <!-- 4. ⭐ NihilPet 9000 (Featured 6 Cols) -->
-          <div onclick="openProjectModal('nihilpet')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="web game">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-500/10 text-fuchsia-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-gamepad"></i> Retro Zsebkonzol Szimulátor
-                </span>
-                <span class="font-code text-xs text-slate-400">Web Audio &amp; QTE Engine</span>
+                <p class="font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Cursed 8-bites virtuális kisállat-szimuláció és retro zsebkonzol túlélő játék: 6 perces könyörtelen entrópia-számlálóval, pánik reflex quick-time eseményekkel (QTE), moduláris hardver bővítőhellyel (oszcilloszkóp, számológép, Open-Meteo időjárási radar, $NIHIL kripto ticker, EKG) és 100%-ban szintetizált Web Audio chiptune-nal nulla külső audio assetből.
+                </p>
               </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/nihilpet.png?v=17" alt="NihilPet 9000 logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
-                <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">NihilPet 9000</h3>
-                  <p class="font-body text-xs text-slate-400">Existential Retro Tamagotchi Console</p>
-                </div>
+
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-fuchsia-400 font-code text-xs font-semibold">React &amp; TypeScript</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#00F5FF] font-code text-xs font-semibold">Web Audio Synth</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-amber-400 font-code text-xs font-semibold">QTE Reflex Engine</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-slate-300 font-code text-xs font-semibold">Open-Meteo API</span>
               </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Cursed 8-bites virtuális kisállat-szimuláció és zsebkonzol: 6 perces entrópia-számlálóval, reflex quick-time eseményekkel (QTE), moduláris hardver bővítőhellyel és szintetizált Web Audio chiptune-nal.
-              </p>
             </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-fuchsia-400 font-code text-xs">React &amp; TypeScript</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#00F5FF] font-code text-xs">Web Audio Synth</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-amber-400 font-code text-xs">QTE Reflex Engine</span>
+
+            <!-- Right Telemetry & Actions Box -->
+            <div class="lg:w-80 xl:w-96 flex flex-col justify-between gap-6 p-6 rounded-2xl bg-slate-950/70 border border-white/10 shrink-0">
+              <div class="space-y-3">
+                <div class="font-heading text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-[#00F5FF]"></i> Kiemelt Eredmények
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-2 list-none">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-[#00F5FF] text-[11px] mt-0.5"></i>
+                    <span>6 perces entrópia visszaszámlálás &amp; Pixel Nirvána</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-[#00F5FF] text-[11px] mt-0.5"></i>
+                    <span>0 külső audio asset, tiszta Web Audio oszcillátorok</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-[#00F5FF] text-[11px] mt-0.5"></i>
+                    <span>16 feloldható trófea &amp; 12 achievement ruhatár</span>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center justify-between pt-3 border-t border-white/5">
-                <a href="https://nihil-pet.vercel.app" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="px-3.5 py-1.5 rounded-full bg-[#00F5FF] text-slate-950 font-heading text-xs font-bold hover:bg-white hover:shadow-[0_0_15px_#00f5ff] transition-all inline-flex items-center gap-1.5">
-                  <i class="fa-solid fa-play text-[10px]"></i> Élő Játék
+
+              <div class="flex items-center justify-between gap-3 pt-4 border-t border-white/10">
+                <a href="https://nihil-pet.vercel.app" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="px-5 py-2.5 rounded-full bg-[#00F5FF] text-slate-950 font-heading text-xs font-extrabold hover:bg-white hover:shadow-[0_0_20px_#00f5ff] transition-all inline-flex items-center gap-2">
+                  <i class="fa-solid fa-play text-xs"></i> Élő Játék (0 Install)
                 </a>
                 <a href="https://github.com/barnabas47/NihilPet" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                  <i class="fa-brands fa-github text-base"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- 5. ⭐ Minecraft Clone (Featured 6 Cols) -->
-          <div onclick="openProjectModal('minecraft')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="game">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-brands fa-windows"></i> C# Godot 4 Multithreaded
-                </span>
-                <span class="font-code text-xs text-slate-400">3D Voxel Engine</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/minecraft.png?v=16" alt="Minecraft logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
-                <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">Minecraft Clone</h3>
-                  <p class="font-body text-xs text-slate-400">Aszinkron Task.Run Multithreaded Engine</p>
+          <!-- 2. ⭐ SafeCode-AI (Featured Hero 12 Cols) -->
+          <div onclick="openProjectModal('safecode')" class="project-card lg:col-span-12 flex flex-col lg:flex-row items-stretch justify-between gap-8 p-8 sm:p-10 rounded-3xl glass-card border border-white/10 group hover:border-emerald-500/30 transition-all" data-category="ai">
+            <div class="flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-code text-xs uppercase font-bold border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                    <i class="fa-solid fa-shield-halved"></i> NVIDIA Hackathon Kiemelt
+                  </span>
+                  <span class="font-code text-xs text-slate-400 tracking-wider">Multi-Agent AI &amp; Cloud Sandboxing • 2026</span>
                 </div>
-              </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Voxel-alapú 3D sandbox játék C# nyelven, aszinkron többszálú háttér-világbetöltéssel (Task.Run), FastNoiseLite domborzatgenerálással és kemencével.
-              </p>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-blue-400 font-code text-xs">C# (.NET 8/9)</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">Godot Engine 4</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">Task.Run Multithreading</span>
-              </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/minecraft" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-              </div>
-            </div>
-          </div>
 
-          <!-- 6. ⭐ GameHub (Featured 6 Cols) -->
-          <div onclick="openProjectModal('gamehub')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="desktop game">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-trophy"></i> C# WPF Arcade Party Pack
-                </span>
-                <span class="font-code text-xs text-slate-400">PS3 XMB UI &amp; Audio</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/gamehub.png?v=16" alt="GameHub logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
-                <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">GameHub (Station 3)</h3>
-                  <p class="font-body text-xs text-slate-400">7-in-1 Local Multiplayer Suite</p>
+                <div class="flex items-center gap-5 mb-4">
+                  <img src="img/portfolio/safecode.png?v=16" alt="SafeCode-AI logo" class="w-20 h-20 rounded-2xl object-cover border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500 shrink-0"/>
+                  <div>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#00F5FF] transition-colors tracking-tight">SafeCode-AI</h3>
+                    <p class="font-body text-sm sm:text-base text-emerald-400 font-semibold mt-0.5">Nebius &amp; NVIDIA Nemotron Sandbox Governance</p>
+                  </div>
                 </div>
+
+                <p class="font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Elszigetelt (sandboxed) kód sérülékenység-javító multi-ágens rendszer NVIDIA Nemotron 3 Ultra/Nano többmodell-útválasztással és OpenShell L7 proxyval. Valós időben analizálja a kódbázist, detektálja az OWASP és CVE kockázatokat, majd automatikusan tesztelt javító patch-eket készít.
+                </p>
               </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                2 személyes helyi party játék gyűjtemény (7 teljes értékű arcade játék) C# WPF keretrendszerben, autentikus PS3 CrossMediaBar (XMB) menürendszerrel és animált hullámmal.
-              </p>
+
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#00F5FF] font-code text-xs font-semibold">NVIDIA Nemotron</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#6366F1] font-code text-xs font-semibold">Nebius Cloud</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-emerald-400 font-code text-xs font-semibold">Docker Sandbox</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-slate-300 font-code text-xs font-semibold">OpenShell L7 Proxy</span>
+              </div>
             </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-indigo-400 font-code text-xs">C# (.NET 8)</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">WPF &amp; XAML</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">PS3 XMB Engine</span>
+
+            <div class="lg:w-80 xl:w-96 flex flex-col justify-between gap-6 p-6 rounded-2xl bg-slate-950/70 border border-white/10 shrink-0">
+              <div class="space-y-3">
+                <div class="font-heading text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-emerald-400"></i> Főbb Funkciók
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-2 list-none">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-[11px] mt-0.5"></i>
+                    <span>Multi-model routing (Nemotron 3 Ultra &amp; Nano)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-[11px] mt-0.5"></i>
+                    <span>L7 OpenShell proxy hálózati kimenő izoláció</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-[11px] mt-0.5"></i>
+                    <span>Automatizált, tesztelt patch generálás és diff nézet</span>
+                  </li>
+                </ul>
               </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/gamehub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+
+              <div class="flex items-center justify-end pt-4 border-t border-white/10">
+                <a href="https://github.com/barnabas47/SafeCode-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-300 hover:text-[#00F5FF] font-code text-xs font-semibold transition-colors">
+                  <i class="fa-brands fa-github text-base"></i> GitHub Repozitórium <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- 7. 2D Platformer (4 Cols) -->
+          <!-- 3. ⭐ OmniClaim-AI (Featured Hero 12 Cols) -->
+          <div onclick="openProjectModal('omniclaim')" class="project-card lg:col-span-12 flex flex-col lg:flex-row items-stretch justify-between gap-8 p-8 sm:p-10 rounded-3xl glass-card border border-white/10 group hover:border-amber-500/30 transition-all" data-category="ai">
+            <div class="flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-400 font-code text-xs uppercase font-bold border border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+                    <i class="fa-solid fa-trophy"></i> AWS Hackathon Kiemelt
+                  </span>
+                  <span class="font-code text-xs text-slate-400 tracking-wider">Strands Agents SDK &amp; Legal Tech • 2026</span>
+                </div>
+
+                <div class="flex items-center gap-5 mb-4">
+                  <img src="img/portfolio/omniclaim.png?v=16" alt="OmniClaim-AI logo" class="w-20 h-20 rounded-2xl object-cover border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500 shrink-0"/>
+                  <div>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#00F5FF] transition-colors tracking-tight">OmniClaim-AI</h3>
+                    <p class="font-body text-sm sm:text-base text-amber-400 font-semibold mt-0.5">AWS Bedrock AgentCore EU261 Protection</p>
+                  </div>
+                </div>
+
+                <p class="font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Autonóm légiutas-jogi védő &amp; időjárási kifogás-cáfoló multi-ágens platform AWS Bedrock és Strands Agents SDK alapokon. Vision OCR-rel elemzi a beszállókártyákat, valós idejű METAR/TAF meteorológiai adatokkal cáfolja a légitársaságok alaptalan vis maior kifogásait, és kiszámítja a kártérítést.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-amber-400 font-code text-xs font-semibold">AWS Bedrock</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#6366F1] font-code text-xs font-semibold">Strands SDK</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#00F5FF] font-code text-xs font-semibold">Vision OCR</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-slate-300 font-code text-xs font-semibold">METAR Weather API</span>
+              </div>
+            </div>
+
+            <div class="lg:w-80 xl:w-96 flex flex-col justify-between gap-6 p-6 rounded-2xl bg-slate-950/70 border border-white/10 shrink-0">
+              <div class="space-y-3">
+                <div class="font-heading text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-amber-400"></i> Főbb Funkciók
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-2 list-none">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-amber-400 text-[11px] mt-0.5"></i>
+                    <span>EU261 légiutas-jogvédelem &amp; kártérítés-kalkuláció</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-amber-400 text-[11px] mt-0.5"></i>
+                    <span>Meteorológiai METAR/TAF vis maior cáfoló motor</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-amber-400 text-[11px] mt-0.5"></i>
+                    <span>Multi-agent koordináció Claude 3.5 Sonnet alapon</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-end pt-4 border-t border-white/10">
+                <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-300 hover:text-[#00F5FF] font-code text-xs font-semibold transition-colors">
+                  <i class="fa-brands fa-github text-base"></i> GitHub Repozitórium <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. ⭐ Cosmic Trade-off (Featured Hero 12 Cols) -->
+          <div onclick="openProjectModal('cosmic')" class="project-card lg:col-span-12 flex flex-col lg:flex-row items-stretch justify-between gap-8 p-8 sm:p-10 rounded-3xl glass-card border border-white/10 group hover:border-cyan-500/30 transition-all" data-category="web game">
+            <div class="flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 text-[#00F5FF] font-code text-xs uppercase font-bold border border-cyan-500/20 shadow-[0_0_15px_rgba(0,245,255,0.15)]">
+                    <i class="fa-solid fa-shuttle-space"></i> NASA Space Apps Challenge
+                  </span>
+                  <span class="font-code text-xs text-slate-400 tracking-wider">Astrodynamics Lab &amp; Keplerian Solver • 2026</span>
+                </div>
+
+                <div class="flex items-center gap-5 mb-4">
+                  <img src="img/portfolio/cosmic.png?v=16" alt="Cosmic-Trade-off logo" class="w-20 h-20 rounded-2xl object-cover border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500 shrink-0"/>
+                  <div>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#00F5FF] transition-colors tracking-tight">Cosmic Trade-off</h3>
+                    <p class="font-body text-sm sm:text-base text-[#00F5FF] font-semibold mt-0.5">Keplerian Flight Director Cockpit &amp; Mission Design</p>
+                  </div>
+                </div>
+
+                <p class="font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Interaktív, 0-scroll 100vh mélyűri küldetéstervező laboratórium és valós idejű repülésirányító kokpit a NASA International Space Apps Challenge versenyre. Egyesíti a Keplerian 2-test pálya-szimulációt (Hohmann átmenetek, Oberth-hatás) a Tsiolkovsky rakétaegyenlet tömegarány mérlegeléseivel és Web Audio szintetizátorral.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#00F5FF] font-code text-xs font-semibold">React &amp; TypeScript</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#A855F7] font-code text-xs font-semibold">Keplerian Orbit Solver</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-cyan-400 font-code text-xs font-semibold">Tsiolkovsky Matrix</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-slate-300 font-code text-xs font-semibold">Web Audio Synth</span>
+              </div>
+            </div>
+
+            <div class="lg:w-80 xl:w-96 flex flex-col justify-between gap-6 p-6 rounded-2xl bg-slate-950/70 border border-white/10 shrink-0">
+              <div class="space-y-3">
+                <div class="font-heading text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-[#00F5FF]"></i> Főbb Funkciók
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-2 list-none">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-[#00F5FF] text-[11px] mt-0.5"></i>
+                    <span>Valós idejű Keplerian pálya-propagáció &amp; hintamanőver</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-[#00F5FF] text-[11px] mt-0.5"></i>
+                    <span>60 FPS HTML5 Canvas visualizer &amp; 360° kamera</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-[#00F5FF] text-[11px] mt-0.5"></i>
+                    <span>Procedurális Apollo Quindar és hajtómű szintetizátor</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-end pt-4 border-t border-white/10">
+                <a href="https://github.com/barnabas47/Cosmic-Trade-off" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-300 hover:text-[#00F5FF] font-code text-xs font-semibold transition-colors">
+                  <i class="fa-brands fa-github text-base"></i> GitHub Repozitórium <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. ⭐ Minecraft Clone (Featured Hero 12 Cols) -->
+          <div onclick="openProjectModal('minecraft')" class="project-card lg:col-span-12 flex flex-col lg:flex-row items-stretch justify-between gap-8 p-8 sm:p-10 rounded-3xl glass-card border border-white/10 group hover:border-blue-500/30 transition-all" data-category="game">
+            <div class="flex-1 flex flex-col justify-between gap-5">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 text-blue-400 font-code text-xs uppercase font-bold border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                    <i class="fa-brands fa-windows"></i> C# Godot 4 Multithreaded
+                  </span>
+                  <span class="font-code text-xs text-slate-400 tracking-wider">3D Voxel Engine &amp; Multithreading • 2026</span>
+                </div>
+
+                <div class="flex items-center gap-5 mb-4">
+                  <img src="img/portfolio/minecraft.png?v=16" alt="Minecraft logo" class="w-20 h-20 rounded-2xl object-cover border border-white/10 shadow-2xl group-hover:scale-105 transition-transform duration-500 shrink-0"/>
+                  <div>
+                    <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white group-hover:text-[#00F5FF] transition-colors tracking-tight">Minecraft Clone (C# Godot 4)</h3>
+                    <p class="font-body text-sm sm:text-base text-blue-400 font-semibold mt-0.5">Aszinkron Task.Run Multithreaded 3D Voxel Engine</p>
+                  </div>
+                </div>
+
+                <p class="font-body text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Voxel-alapú 3D sandbox játék C# nyelven Godot 4 motorban. Az architektúra a C# aszinkron többszálú háttér-világbetöltésére (Task.Run) épül, garantálva a 60+ FPS futást világépítés közben. Tartalmaz procedurális FastNoiseLite domborzatot, kemencét, barkácsolást és optimalizált greedy meshing felülethálót.
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-blue-400 font-code text-xs font-semibold">C# (.NET 8/9)</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-[#6366F1] font-code text-xs font-semibold">Godot Engine 4</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-emerald-400 font-code text-xs font-semibold">Task.Run Multithreading</span>
+                <span class="px-3.5 py-1.5 rounded-lg bg-slate-900/90 border border-white/5 text-slate-300 font-code text-xs font-semibold">FastNoiseLite</span>
+              </div>
+            </div>
+
+            <div class="lg:w-80 xl:w-96 flex flex-col justify-between gap-6 p-6 rounded-2xl bg-slate-950/70 border border-white/10 shrink-0">
+              <div class="space-y-3">
+                <div class="font-heading text-xs uppercase tracking-wider text-slate-400 font-bold flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-blue-400"></i> Főbb Funkciók
+                </div>
+                <ul class="font-body text-xs text-slate-300 space-y-2 list-none">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-blue-400 text-[11px] mt-0.5"></i>
+                    <span>Aszinkron háttérszálú chunk generálás &amp; meshing</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-blue-400 text-[11px] mt-0.5"></i>
+                    <span>Komplett barkácsolási rendszer és kemence logika</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-blue-400 text-[11px] mt-0.5"></i>
+                    <span>Nagy teljesítményű C# adatstruktúrák és fizika</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="flex items-center justify-end pt-4 border-t border-white/10">
+                <a href="https://github.com/barnabas47/minecraft" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-300 hover:text-[#00F5FF] font-code text-xs font-semibold transition-colors">
+                  <i class="fa-brands fa-github text-base"></i> GitHub Repozitórium <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======================================================== -->
+          <!-- COMPACT PROJECTS GRID (ALL 6 IDENTICAL SMALL 4-COL CARDS) -->
+          <!-- ======================================================== -->
+
+          <!-- 6. 2D Platformer (4 Cols) -->
           <div onclick="openProjectModal('platformer')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="game">
             <div>
               <div class="flex items-center gap-4 mb-3">
@@ -687,6 +797,27 @@
                 <i class="fa-solid fa-play"></i> Élő Játék
               </a>
               <a href="https://github.com/barnabas47/2d_platformer" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- 7. GameHub (4 Cols) -->
+          <div onclick="openProjectModal('gamehub')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="desktop game">
+            <div>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/gamehub.png?v=16" alt="GameHub logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
+                <div>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">GameHub (Station 3)</h4>
+                  <p class="font-body text-xs text-slate-400">C# WPF Arcade Party Pack</p>
+                </div>
+              </div>
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                2 személyes party játék gyűjtemény (7 arcade játék) PS3 CrossMediaBar (XMB) menüvel.
+              </p>
+            </div>
+            <div class="flex items-center justify-end pt-3 border-t border-white/5">
+              <a href="https://github.com/barnabas47/gamehub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
                 GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
             </div>
@@ -734,71 +865,45 @@
             </div>
           </div>
 
-          <!-- 10. BerAuto ERP (6 Cols) -->
-          <div onclick="openProjectModal('berauto')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="web">
+          <!-- 10. BerAuto ERP (4 Cols) -->
+          <div onclick="openProjectModal('berauto')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="web">
             <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-car"></i> Flottakezelő &amp; Bérlés ERP
-                </span>
-                <span class="font-code text-xs text-slate-400">ASP.NET Core 9 &amp; React</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/car.png?v=16" alt="BerAuto logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/car.png?v=16" alt="BerAuto logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
                 <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">BerAuto ERP</h3>
-                  <p class="font-body text-xs text-slate-400">Enterprise Autókölcsönző Rendszer</p>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">BerAuto ERP</h4>
+                  <p class="font-body text-xs text-slate-400">ASP.NET Core 9 &amp; React TS</p>
                 </div>
               </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Modern autókölcsönző és flottakezelő ERP rendszer több szerepkörös (ügyfél, dolgozó, admin) bérléskezeléssel, automatikus díjkalkulációval és számlázó modullal.
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                Modern autókölcsönző ERP rendszer több szerepkörös bérléskezeléssel és számlázással.
               </p>
             </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-emerald-400 font-code text-xs">ASP.NET Core 9</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">React TypeScript</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-slate-300 font-code text-xs">SQL Server</span>
-              </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/BerAuto" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-              </div>
+            <div class="flex items-center justify-end pt-3 border-t border-white/5">
+              <a href="https://github.com/barnabas47/BerAuto" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
             </div>
           </div>
 
-          <!-- 11. ComicHub (6 Cols) -->
-          <div onclick="openProjectModal('comichub')" class="project-card lg:col-span-6 flex flex-col justify-between p-8 rounded-2xl glass-card border border-white/10 group" data-category="desktop">
+          <!-- 11. ComicHub (4 Cols) -->
+          <div onclick="openProjectModal('comichub')" class="project-card lg:col-span-4 flex flex-col justify-between p-6 rounded-2xl glass-card border border-white/10 group" data-category="desktop">
             <div>
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-400 font-code text-xs uppercase font-bold">
-                  <i class="fa-solid fa-mobile-screen"></i> Natív Android &amp; Közösségi App
-                </span>
-                <span class="font-code text-xs text-slate-400">Marvel API &amp; Firebase</span>
-              </div>
-              <div class="flex items-center gap-4 mb-4">
-                <img src="img/portfolio/comichub.png?v=16" alt="ComicHub logo" class="w-16 h-16 rounded-xl object-cover border border-white/10 shadow-lg"/>
+              <div class="flex items-center gap-4 mb-3">
+                <img src="img/portfolio/comichub.png?v=16" alt="ComicHub logo" class="w-12 h-12 rounded-lg object-cover border border-white/10"/>
                 <div>
-                  <h3 class="font-heading text-2xl font-bold text-white group-hover:text-[#00F5FF] transition-colors">ComicHub</h3>
-                  <p class="font-body text-xs text-slate-400">Képregény Adatbázis &amp; Fórum</p>
+                  <h4 class="font-heading text-lg font-bold text-white group-hover:text-[#00F5FF] transition-colors">ComicHub</h4>
+                  <p class="font-body text-xs text-slate-400">Natív Android Java &amp; GraphQL</p>
                 </div>
               </div>
-              <p class="font-body text-slate-300 text-sm leading-relaxed mb-6">
-                Natív Android alkalmazás Java nyelven képregényrajongók számára: GraphQL Marvel API integrációval, Firebase Realtime Database-zel, ML Kit fordítással és ranglistákkal.
+              <p class="font-body text-slate-300 text-xs leading-relaxed mb-4">
+                Képregény közösségi alkalmazás Marvel API GraphQL integrációval, Firebase-szel és ML Kit-tel.
               </p>
             </div>
-            <div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-red-400 font-code text-xs">Android Java</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-[#6366F1] font-code text-xs">GraphQL &amp; Marvel API</span>
-                <span class="px-3 py-1 rounded-md bg-slate-800/80 text-amber-400 font-code text-xs">Firebase &amp; ML Kit</span>
-              </div>
-              <div class="flex items-center justify-end pt-3 border-t border-white/5">
-                <a href="https://github.com/barnabas47/ComicHub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#00F5FF] font-code text-xs transition-colors">
-                  <i class="fa-brands fa-github text-sm"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                </a>
-              </div>
+            <div class="flex items-center justify-end pt-3 border-t border-white/5">
+              <a href="https://github.com/barnabas47/ComicHub" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="text-slate-400 hover:text-[#00F5FF] font-code text-xs">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
             </div>
           </div>
 
