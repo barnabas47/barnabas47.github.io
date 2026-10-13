@@ -62,15 +62,35 @@
       outline-offset: 3px !important;
     }
 
-    /* Subtle hairline borders & crisp solid cards — NO heavy neon blurs */
+    /* Subtle hairline borders & crisp solid cards — with smooth, elegant hover lift & zoom */
     .card-solid {
       background-color: #111726;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
     }
     .card-solid:hover {
+      transform: translateY(-4px) scale(1.012);
       border-color: rgba(0, 245, 255, 0.35);
       background-color: #141c2e;
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.55);
+    }
+
+    .project-card {
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease;
+      will-change: transform;
+    }
+    .project-card:hover {
+      transform: translateY(-4px) scale(1.012);
+      border-color: rgba(0, 245, 255, 0.4);
+      background-color: #131b2d;
+      box-shadow: 0 16px 36px -12px rgba(0, 245, 255, 0.1), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    }
+    .project-card img {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover img {
+      transform: scale(1.08);
     }
 
     /* Tabular numeric telemetry */
@@ -96,13 +116,13 @@
   <!-- TOP EDITORIAL NAVIGATION (CLEAN, SOLID, HIGH LEGIBILITY) -->
   <!-- ======================================================== -->
   <header class="sticky top-0 z-50 w-full border-b border-white/10 bg-canvas/90 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+    <div class="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-12 h-16 flex items-center justify-between gap-6">
       <a href="#top" class="flex items-center gap-3 group focus-visible:rounded-md">
         <span class="w-8 h-8 rounded-lg bg-surface border border-white/10 flex items-center justify-center font-mono font-bold text-accent text-sm">
           B
         </span>
         <div class="flex flex-col">
-          <span class="font-heading font-bold text-white text-sm sm:text-base tracking-tight leading-none">Buzás Barnabás</span>
+          <span class="font-heading font-extrabold text-white text-sm sm:text-base tracking-tight leading-none"><span class="text-accent">Buzás</span> Barnabás</span>
           <span class="font-mono text-[11px] text-muted mt-1 leading-none">C# Software &amp; Test Engineer</span>
         </div>
       </a>
@@ -117,8 +137,7 @@
 
       <!-- Language selector & Availability indicator -->
       <div class="flex items-center gap-4">
-        <div class="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[11px]">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <div class="hidden sm:inline-flex items-center px-3 py-1 rounded-md bg-surface border border-white/10 text-slate-300 font-mono text-[11px]">
           <span>Open for C# roles</span>
         </div>
 
@@ -133,18 +152,24 @@
   <!-- ======================================================== -->
   <!-- MAIN WORKSPACE                                           -->
   <!-- ======================================================== -->
-  <main class="flex-1 w-full max-w-6xl mx-auto px-6 py-12 md:py-16 flex flex-col gap-20">
+  <main class="flex-1 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 py-12 md:py-16 flex flex-col gap-20">
 
     <!-- HERO SECTION: CLEAR STATEMENT, REAL NUMBERS & TELEMETRY -->
     <section id="top" class="flex flex-col gap-8 pt-4">
       <div class="flex flex-col lg:flex-row items-start justify-between gap-10">
-        <div class="flex-1 max-w-2xl">
-          <div class="inline-flex items-center gap-2 font-mono text-xs text-accent font-semibold uppercase tracking-wider mb-4">
-            <span>●</span>
-            <span data-key="hero_badge">Budapest XI. &amp; Herend, Magyarország</span>
+        <div class="flex-1 max-w-3xl">
+          <div class="flex flex-col gap-2 mb-4">
+            <div class="font-mono text-xs text-slate-400 font-medium uppercase tracking-wider">
+              <span data-key="hero_badge">Budapest XI. &amp; Herend, Magyarország</span>
+            </div>
+            <div>
+              <span class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-accent via-cyan-300 to-indigo-300 inline-block drop-shadow-sm">
+                Buzás Barnabás
+              </span>
+            </div>
           </div>
 
-          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6" data-key="hero_title">
+          <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mb-6" data-key="hero_title">
             Nagy teljesítményű C# rendszerek és megbízható tesztautomatizálás.
           </h1>
 
@@ -171,9 +196,8 @@
 
         <!-- Real Telemetry Card: Live Subject Inventory -->
         <div class="w-full lg:w-80 card-solid p-6 rounded-xl flex flex-col justify-between gap-5 font-mono text-xs">
-          <div class="flex items-center justify-between border-b border-white/10 pb-3">
-            <span class="text-muted uppercase">Mérnöki Státusz</span>
-            <span class="text-accent font-semibold">2026 AKTÍV</span>
+          <div class="border-b border-white/10 pb-3">
+            <span class="text-muted uppercase text-xs font-semibold tracking-wider">Mérnöki Áttekintés</span>
           </div>
 
           <div class="space-y-3">
@@ -197,7 +221,7 @@
 
           <div class="pt-3 border-t border-white/10 text-[11px] text-muted flex items-center justify-between">
             <span>Budapest XI. &amp; Herend</span>
-            <span class="text-emerald-400">● Elérhető</span>
+            <span class="text-slate-400">Magyarország</span>
           </div>
         </div>
       </div>
@@ -410,7 +434,7 @@
 
             <div class="pt-3 border-t border-white/10">
               <a href="https://github.com/barnabas47/SafeCode-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="w-full py-2 rounded bg-surface border border-white/10 text-white font-heading font-semibold text-xs flex items-center justify-center gap-2 hover:border-white/30 transition-colors">
-                <i class="fa-brands fa-github text-sm"></i> GitHub Repozitórium
+                <i class="fa-brands fa-github text-sm"></i> GitHub Repo
               </a>
             </div>
           </div>
@@ -455,9 +479,12 @@
               <div class="text-slate-200">→ Claude 3.5 Sonnet ágens-koordináció</div>
             </div>
 
-            <div class="pt-3 border-t border-white/10">
-              <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="w-full py-2 rounded bg-surface border border-white/10 text-white font-heading font-semibold text-xs flex items-center justify-center gap-2 hover:border-white/30 transition-colors">
-                <i class="fa-brands fa-github text-sm"></i> GitHub Repozitórium
+            <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+              <a href="https://omniclaim-ai.onrender.com" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="flex-1 py-2 rounded bg-accent text-slate-950 font-heading font-bold text-xs text-center hover:bg-white transition-colors">
+                Élő App
+              </a>
+              <a href="https://github.com/barnabas47/OmniClaim-AI" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="px-3 py-2 rounded bg-panel border border-white/10 text-muted hover:text-white transition-colors" title="GitHub Repo">
+                <i class="fa-brands fa-github text-sm"></i>
               </a>
             </div>
           </div>
@@ -504,7 +531,7 @@
 
             <div class="pt-3 border-t border-white/10">
               <a href="https://github.com/barnabas47/Cosmic-Trade-off" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="w-full py-2 rounded bg-surface border border-white/10 text-white font-heading font-semibold text-xs flex items-center justify-center gap-2 hover:border-white/30 transition-colors">
-                <i class="fa-brands fa-github text-sm"></i> GitHub Repozitórium
+                <i class="fa-brands fa-github text-sm"></i> GitHub Repo
               </a>
             </div>
           </div>
@@ -551,7 +578,7 @@
 
             <div class="pt-3 border-t border-white/10">
               <a href="https://github.com/barnabas47/minecraft" target="_blank" rel="noreferrer" onclick="event.stopPropagation()" class="w-full py-2 rounded bg-surface border border-white/10 text-white font-heading font-semibold text-xs flex items-center justify-center gap-2 hover:border-white/30 transition-colors">
-                <i class="fa-brands fa-github text-sm"></i> GitHub Repozitórium
+                <i class="fa-brands fa-github text-sm"></i> GitHub Repo
               </a>
             </div>
           </div>
@@ -704,11 +731,11 @@
         <div class="lg:col-span-8 card-solid rounded-xl p-6 sm:p-8 flex flex-col justify-between gap-6">
           <div>
             <div class="flex items-center justify-between text-xs font-mono text-muted mb-2">
-              <span>PANNON EGYETEM</span>
-              <span class="text-emerald-400 font-semibold">2026 // MEGSZERZETT OKLEVÉL</span>
+              <span class="text-accent font-semibold tracking-wider">PANNON EGYETEM</span>
+              <span class="text-slate-400 font-mono">2026 // MEGSZERZETT OKLEVÉL</span>
             </div>
-            <h3 class="font-heading text-2xl font-bold text-white mb-2">Műszaki Informatikai Kar (MIK)</h3>
-            <p class="font-body text-sm font-semibold text-accent mb-4">Programtervező informatikus BSc</p>
+            <h3 class="font-heading text-2xl font-bold text-white mb-1">Programtervező informatikus BSc</h3>
+            <p class="font-body text-xs sm:text-sm text-slate-400 mb-4">Műszaki Informatikai Kar (MIK)</p>
             <p class="font-body text-sm text-slate-300 leading-relaxed">
               Mély elméleti és gyakorlati felkészültség C#/.NET szoftverarchitektúrákból, beágyazott C tesztelésből, párhuzamos rendszerekből, automatizált minőségbiztosításból és elosztott ágens-architektúrákból.
             </p>
@@ -856,7 +883,7 @@
   <!-- FOOTER                                                   -->
   <!-- ======================================================== -->
   <footer class="w-full border-t border-white/10 bg-canvas py-8 text-xs font-mono text-muted">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-[1440px] w-full mx-auto px-6 sm:px-10 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>© 2026 Buzás Barnabás — C# &amp; QA Engineering.</div>
       <div class="flex items-center gap-6">
         <a href="https://github.com/barnabas47?tab=repositories" target="_blank" rel="noreferrer" class="hover:text-white transition-colors">GitHub</a>
@@ -890,10 +917,10 @@
       <div class="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-white/10">
         <button onclick="closeProjectModal()" class="px-4 py-2 rounded-lg bg-surface text-muted hover:text-white font-mono text-xs transition-colors">Bezárás</button>
         <a id="modalLiveLink" href="#" target="_blank" rel="noreferrer" class="hidden items-center gap-2 px-5 py-2 rounded-lg bg-accent text-slate-950 font-heading font-bold text-xs hover:bg-white transition-colors">
-          <span>Élő Játék Megnyitása</span>
+          <span>Élő Megnyitása</span>
         </a>
         <a id="modalLink" href="https://github.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-surface border border-white/10 text-white font-heading font-semibold text-xs hover:border-white/30 transition-colors">
-          <i class="fa-brands fa-github text-sm" aria-hidden="true"></i> <span>GitHub Repozitórium</span>
+          <i class="fa-brands fa-github text-sm" aria-hidden="true"></i> <span>GitHub Repo</span>
         </a>
       </div>
     </div>
@@ -921,7 +948,8 @@
         title: "OmniClaim-AI",
         desc: "Autonóm légiutas-jogi védő és időjárási kifogás-cáfoló platform AWS Bedrock AgentCore és Strands Agents SDK alapokon. Vision OCR-rel elemzi a beszállókártyákat, valós idejű METAR/TAF meteorológiai adatbázisokból cáfolja a légitársaságok alaptalan vis maior kifogásait, és kiszámítja a jog szerinti kártérítést.",
         code: "git clone https://github.com/barnabas47/OmniClaim-AI\nnpm install && npm run dev",
-        link: "https://github.com/barnabas47/OmniClaim-AI"
+        link: "https://github.com/barnabas47/OmniClaim-AI",
+        liveUrl: "https://omniclaim-ai.onrender.com"
       },
       cosmic: {
         category: "NASA Space Apps Challenge • Pályaszimuláció & Küldetéstervezés",
