@@ -923,7 +923,7 @@
   <!-- ======================================================== -->
   <!-- JAVASCRIPT STATE ENGINE                                  -->
   <!-- ======================================================== -->
-  <script src="js/portrait-dots.js?v=20261013_pure_indigo_v7"></script>
+  <script src="js/portrait-dots.js?v=20261013_clean_blue_3col_v8"></script>
   <script>
     const modalData = {
       safecode: {
@@ -1164,13 +1164,12 @@
       const W = canvas.width;
       const H = canvas.height;
 
-      // 5-Color Sophisticated Indigo & Slate Palette (Zero light blue/cyan):
-      // 0: Soft Indigo Highlight (#818CF8)
-      // 1: Indigo Midtone (#6366F1)
-      // 2: Deep Indigo Contour (#4F46E5)
-      // 3: Muted Slate Shadow (#475569)
-      // 4: Subtle Background Slate (#334155)
-      const PALETTE = ['#818CF8', '#6366F1', '#4F46E5', '#475569', '#334155'];
+      // Clean 3-Color Portrait + Background (Zero purple/lila, no harsh lightest cyan #00F5FF):
+      // Level 0 & 1: Sky Blue Highlight (#38BDF8) - pure blue, replaces lightest cyan
+      // Level 2: Rich Cobalt Blue Contour (#0284C7) - pure ocean blue, zero purple
+      // Level 3: Muted Slate Shadow (#475569) - hair & deep facial shadows
+      // Level 4: Subtle Background Slate (#334155) - edge-fading background dots
+      const PALETTE = ['#38BDF8', '#38BDF8', '#0284C7', '#475569', '#334155'];
 
       const dots = PORTRAIT_DOTS.map(([ox, oy, r, c]) => ({
         ox, oy,
