@@ -923,7 +923,7 @@
   <!-- ======================================================== -->
   <!-- JAVASCRIPT STATE ENGINE                                  -->
   <!-- ======================================================== -->
-  <script src="js/portrait-dots.js"></script>
+  <script src="js/portrait-dots.js?v=20261013_pixel_v1"></script>
   <script>
     const modalData = {
       safecode: {
@@ -1170,14 +1170,20 @@
       // 2: Soft Indigo Contour (#818CF8)
       // 3: Muted Slate Shadow (#475569)
       const PALETTE = ['#00F5FF', '#38BDF8', '#818CF8', '#475569'];
+      const PIXEL_SIZE = 2.2;
 
-      const dots = PORTRAIT_DOTS.map(([ox, oy, r, c]) => ({
+      const dots = PORTRAIT_DOTS.map(([ox, oy, c]) => ({
         ox, oy,
         x: ox, y: oy,
         vx: 0, vy: 0,
-        r,
-        color: PALETTE[c] || '#00F5FF'
+        c: c || 0
       }));
+
+      // Bucket by color index for ultra-fast batched drawing
+      const colorBuckets = [[], [], [], []];
+      for (let i = 0; i < dots.length; i++) {
+        colorBuckets[dots[i].c].push(dots[i]);
+      }
 
       let prevMouse = { x: -1000, y: -1000 };
       let mouse = { x: -1000, y: -1000, active: false };
@@ -1196,8 +1202,8 @@
 
           // Only wave when dragging / moving mouse across canvas!
           if (speed > 0.4) {
-            const impulse = Math.min(speed * 0.6, 15);
-            const radius = 80;
+            const impulse = Math.min(speed * 0.45, 12);
+            const radius = 65;
 
             for (let i = 0; i < dots.length; i++) {
               const d = dots[i];
@@ -1205,9 +1211,9 @@
               if (dist < radius) {
                 const factor = (radius - dist) / radius;
                 const angle = Math.atan2(d.y - currentY, d.x - currentX);
-                // Push proportional to drag direction and velocity!
-                d.vx += (mdx / speed) * impulse * factor * 0.75 + Math.cos(angle) * impulse * factor * 0.45;
-                d.vy += (mdy / speed) * impulse * factor * 0.75 + Math.sin(angle) * impulse * factor * 0.45;
+                // Push proportional to drag direction and velocity
+                d.vx += (mdx / speed) * impulse * factor * 0.7 + Math.cos(angle) * impulse * factor * 0.35;
+                d.vy += (mdy / speed) * impulse * factor * 0.7 + Math.sin(angle) * impulse * factor * 0.35;
               }
             }
           }
@@ -1239,29 +1245,35 @@
       canvas.addEventListener('mouseleave', handleLeave);
       canvas.addEventListener('touchend', handleLeave);
 
-      // Render smooth circular dot with clear space around it
-      function drawDot(x, y, r, color) {
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
       function renderFrame() {
         ctx.clearRect(0, 0, W, H);
 
+        // Update physics
         for (let i = 0; i < dots.length; i++) {
           const d = dots[i];
+          if (Math.abs(d.vx) > 0.01 || Math.abs(d.vy) > 0.01 || Math.abs(d.x - d.ox) > 0.01 || Math.abs(d.y - d.oy) > 0.01) {
+            d.vx += (d.ox - d.x) * 0.16;
+            d.vy += (d.oy - d.y) * 0.16;
+            d.vx *= 0.82;
+            d.vy *= 0.82;
+            d.x += d.vx;
+            d.y += d.vy;
+          } else {
+            d.x = d.ox;
+            d.y = d.oy;
+            d.vx = 0;
+            d.vy = 0;
+          }
+        }
 
-          // Natural spring physics to anchor (ox, oy)
-          d.vx += (d.ox - d.x) * 0.16;
-          d.vy += (d.oy - d.y) * 0.16;
-          d.vx *= 0.82;
-          d.vy *= 0.82;
-          d.x += d.vx;
-          d.y += d.vy;
-
-          drawDot(d.x, d.y, d.r, d.color);
+        // Render in 4 batched draw calls by palette color
+        for (let c = 0; c < 4; c++) {
+          ctx.fillStyle = PALETTE[c];
+          const bucket = colorBuckets[c];
+          for (let i = 0; i < bucket.length; i++) {
+            const d = bucket[i];
+            ctx.fillRect(d.x, d.y, PIXEL_SIZE, PIXEL_SIZE);
+          }
         }
 
         requestAnimationFrame(renderFrame);
