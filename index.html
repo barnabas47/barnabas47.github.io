@@ -185,53 +185,32 @@
               <i class="fa-brands fa-linkedin-in text-lg" aria-hidden="true"></i>
             </a>
           </div>
-        </div>
 
-        <!-- Right Wing: Interactive Dot-Art Portrait & Real Telemetry Card -->
-        <div class="w-full lg:w-80 flex flex-col gap-6 shrink-0">
-          <!-- Interactive Dot-Art Portrait Card -->
-          <div class="card-solid p-4 rounded-xl flex flex-col items-center justify-between gap-3 text-center">
-            <div class="w-full flex items-center justify-between text-muted text-[11px] font-mono border-b border-white/10 pb-2">
-              <span class="tracking-wider">PORTRÉ // DOT-ART</span>
-              <span class="text-accent text-[10px]">Interaktív hullám</span>
+          <!-- Horizontal Telemetry Metric Grid (Balances hero layout, zero empty void) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/10 mt-6 font-mono text-xs">
+            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
+              <div class="text-muted text-[10px] uppercase">Fő Technológia</div>
+              <div class="text-white font-bold text-xs mt-1">C# / .NET 9 &amp; C</div>
             </div>
-            <div class="relative overflow-hidden rounded-lg bg-[#0b0f17]/80 flex items-center justify-center p-2 w-full border border-white/5">
-              <canvas id="portraitCanvas" width="300" height="360" class="cursor-crosshair select-none max-w-full h-auto rounded block"></canvas>
+            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
+              <div class="text-muted text-[10px] uppercase">Ipari Háttér</div>
+              <div class="text-white font-semibold text-xs mt-1">evosoft &amp; Conti</div>
             </div>
-            <div class="text-[11px] font-mono text-muted/80">
-              Mozgasd az egeret a kép felett a hullámzáshoz
+            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
+              <div class="text-muted text-[10px] uppercase">Végzettség</div>
+              <div class="text-white font-semibold text-xs mt-1">Pannon Egyetem</div>
+            </div>
+            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
+              <div class="text-muted text-[10px] uppercase">Kódbázis</div>
+              <div class="text-white font-semibold text-xs mt-1 num-tabular">11 projekt</div>
             </div>
           </div>
+        </div>
 
-          <!-- Real Telemetry Card: Live Subject Inventory -->
-          <div class="card-solid p-6 rounded-xl flex flex-col justify-between gap-5 font-mono text-xs">
-            <div class="border-b border-white/10 pb-3">
-              <span class="text-muted uppercase text-xs font-semibold tracking-wider">Mérnöki Áttekintés</span>
-            </div>
-
-            <div class="space-y-3">
-              <div>
-                <div class="text-muted text-[11px]">ELSŐDLEGES TECHNOLÓGIA</div>
-                <div class="text-white font-bold text-sm">C# / .NET 9 &amp; Beágyazott C</div>
-              </div>
-              <div>
-                <div class="text-muted text-[11px]">IPARI TAPASZTALAT</div>
-                <div class="text-white font-semibold">evosoft (SIEMENS) &amp; Continental</div>
-              </div>
-              <div>
-                <div class="text-muted text-[11px]">VÉGZETTSÉG</div>
-                <div class="text-white font-semibold">Pannon Egyetem — Prog. Info (2026)</div>
-              </div>
-              <div>
-                <div class="text-muted text-[11px]">NYILVÁNOS KÓDBÁZIS</div>
-                <div class="text-white font-semibold num-tabular">11 ellenőrzött projekt</div>
-              </div>
-            </div>
-
-            <div class="pt-3 border-t border-white/10 text-[11px] text-muted flex items-center justify-between">
-              <span>Budapest XI. &amp; Herend</span>
-              <span class="text-slate-400">Magyarország</span>
-            </div>
+        <!-- Right Wing: Clean Interactive Hexagon Portrait (No captions, pure presence) -->
+        <div class="w-full lg:w-[324px] shrink-0 flex items-center justify-center self-center lg:self-start">
+          <div class="card-solid p-3 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-2xl">
+            <canvas id="portraitCanvas" width="300" height="360" class="cursor-grab active:cursor-grabbing select-none max-w-full h-auto rounded-xl block bg-[#0b0f17]/90"></canvas>
           </div>
         </div>
       </div>
@@ -1170,7 +1149,7 @@
     }
 
     // ========================================================
-    // INTERACTIVE DOT-ART CANVAS WAVE ENGINE
+    // INTERACTIVE 4-COLOR HEXAGON PORTRAIT (DRAG-VELOCITY WAVE)
     // ========================================================
     (function initPortraitCanvas() {
       const canvas = document.getElementById('portraitCanvas');
@@ -1185,82 +1164,111 @@
       const W = canvas.width;
       const H = canvas.height;
 
-      // Initialize dot objects
+      // 4-Color Palette:
+      // 0: Ice White / Aqua Highlight (#F0FDFA)
+      // 1: Electric Cyan Accent Midtone (#00F5FF)
+      // 2: Soft Vibrant Indigo (#818CF8)
+      // 3: Deep Contrast Indigo (#4338CA)
+      const PALETTE = ['#F0FDFA', '#00F5FF', '#818CF8', '#4338CA'];
+
       const dots = PORTRAIT_DOTS.map(([ox, oy, r, c]) => ({
         ox, oy,
         x: ox, y: oy,
         vx: 0, vy: 0,
         r,
-        color: c === 0 ? '#00F5FF' : '#818cf8'
+        color: PALETTE[c] || '#00F5FF'
       }));
 
+      let prevMouse = { x: -1000, y: -1000 };
       let mouse = { x: -1000, y: -1000, active: false };
-      let time = 0;
 
-      function updateMousePos(clientX, clientY) {
+      function handleMove(clientX, clientY) {
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
-        mouse.x = (clientX - rect.left) * scaleX;
-        mouse.y = (clientY - rect.top) * scaleY;
+        const currentX = (clientX - rect.left) * scaleX;
+        const currentY = (clientY - rect.top) * scaleY;
+
+        if (mouse.active && prevMouse.x !== -1000) {
+          const mdx = currentX - prevMouse.x;
+          const mdy = currentY - prevMouse.y;
+          const speed = Math.hypot(mdx, mdy);
+
+          // Only wave when dragging / moving mouse across canvas!
+          if (speed > 0.4) {
+            const impulse = Math.min(speed * 0.55, 14);
+            const radius = 75;
+
+            for (let i = 0; i < dots.length; i++) {
+              const d = dots[i];
+              const dist = Math.hypot(d.x - currentX, d.y - currentY);
+              if (dist < radius) {
+                const factor = (radius - dist) / radius;
+                const angle = Math.atan2(d.y - currentY, d.x - currentX);
+                // Push proportional to drag direction and velocity!
+                d.vx += (mdx / speed) * impulse * factor * 0.75 + Math.cos(angle) * impulse * factor * 0.45;
+                d.vy += (mdy / speed) * impulse * factor * 0.75 + Math.sin(angle) * impulse * factor * 0.45;
+              }
+            }
+          }
+        }
+
+        prevMouse.x = currentX;
+        prevMouse.y = currentY;
+        mouse.x = currentX;
+        mouse.y = currentY;
         mouse.active = true;
       }
 
       canvas.addEventListener('mousemove', (e) => {
-        updateMousePos(e.clientX, e.clientY);
+        handleMove(e.clientX, e.clientY);
       });
 
       canvas.addEventListener('touchmove', (e) => {
         if (e.touches && e.touches.length > 0) {
-          updateMousePos(e.touches[0].clientX, e.touches[0].clientY);
+          handleMove(e.touches[0].clientX, e.touches[0].clientY);
         }
       }, { passive: true });
 
-      canvas.addEventListener('mouseleave', () => {
+      function handleLeave() {
         mouse.active = false;
-      });
+        prevMouse.x = -1000;
+        prevMouse.y = -1000;
+      }
 
-      canvas.addEventListener('touchend', () => {
-        mouse.active = false;
-      });
+      canvas.addEventListener('mouseleave', handleLeave);
+      canvas.addEventListener('touchend', handleLeave);
+
+      // Render regular hexagon at (x, y)
+      function drawHex(x, y, r, color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        for (let i = 0; i < 6; i++) {
+          const a = (i * Math.PI) / 3 - Math.PI / 6;
+          const hx = x + r * Math.cos(a);
+          const hy = y + r * Math.sin(a);
+          if (i === 0) ctx.moveTo(hx, hy);
+          else ctx.lineTo(hx, hy);
+        }
+        ctx.closePath();
+        ctx.fill();
+      }
 
       function renderFrame() {
-        time += 0.045;
         ctx.clearRect(0, 0, W, H);
 
         for (let i = 0; i < dots.length; i++) {
           const d = dots[i];
-          let targetX = d.ox;
-          let targetY = d.oy;
 
-          if (mouse.active) {
-            const dx = d.ox - mouse.x;
-            const dy = d.oy - mouse.y;
-            const dist = Math.hypot(dx, dy);
-            const maxDist = 95;
-
-            if (dist < maxDist) {
-              const angle = Math.atan2(dy, dx);
-              const factor = (maxDist - dist) / maxDist;
-              // Gentle sinusoidal outward wave ripple
-              const wave = Math.sin(dist * 0.14 - time * 5.5) * factor * 7.5;
-              targetX = d.ox + Math.cos(angle) * wave;
-              targetY = d.oy + Math.sin(angle) * wave;
-            }
-          }
-
-          // Spring damping mechanics
-          d.vx += (targetX - d.x) * 0.18;
-          d.vy += (targetY - d.y) * 0.18;
-          d.vx *= 0.78;
-          d.vy *= 0.78;
+          // Natural spring physics to anchor (ox, oy)
+          d.vx += (d.ox - d.x) * 0.16;
+          d.vy += (d.oy - d.y) * 0.16;
+          d.vx *= 0.82;
+          d.vy *= 0.82;
           d.x += d.vx;
           d.y += d.vy;
 
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-          ctx.fillStyle = d.color;
-          ctx.fill();
+          drawHex(d.x, d.y, d.r, d.color);
         }
 
         requestAnimationFrame(renderFrame);
