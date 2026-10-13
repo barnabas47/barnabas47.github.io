@@ -1164,12 +1164,12 @@
       const W = canvas.width;
       const H = canvas.height;
 
-      // 4-Color Palette:
-      // 0: Ice White / Aqua Highlight (#F0FDFA)
-      // 1: Electric Cyan Accent Midtone (#00F5FF)
-      // 2: Soft Vibrant Indigo (#818CF8)
-      // 3: Deep Contrast Indigo (#4338CA)
-      const PALETTE = ['#F0FDFA', '#00F5FF', '#818CF8', '#4338CA'];
+      // 4-Color Harmonious Palette (No white speckles, cohesive dark-theme balance):
+      // 0: Electric Cyan Accent (#00F5FF)
+      // 1: Sky Aqua Midtone (#38BDF8)
+      // 2: Soft Indigo Contour (#818CF8)
+      // 3: Muted Slate Shadow (#475569)
+      const PALETTE = ['#00F5FF', '#38BDF8', '#818CF8', '#475569'];
 
       const dots = PORTRAIT_DOTS.map(([ox, oy, r, c]) => ({
         ox, oy,
@@ -1196,8 +1196,8 @@
 
           // Only wave when dragging / moving mouse across canvas!
           if (speed > 0.4) {
-            const impulse = Math.min(speed * 0.55, 14);
-            const radius = 75;
+            const impulse = Math.min(speed * 0.6, 15);
+            const radius = 80;
 
             for (let i = 0; i < dots.length; i++) {
               const d = dots[i];
@@ -1239,18 +1239,11 @@
       canvas.addEventListener('mouseleave', handleLeave);
       canvas.addEventListener('touchend', handleLeave);
 
-      // Render regular hexagon at (x, y)
-      function drawHex(x, y, r, color) {
+      // Render smooth circular dot with clear space around it
+      function drawDot(x, y, r, color) {
         ctx.fillStyle = color;
         ctx.beginPath();
-        for (let i = 0; i < 6; i++) {
-          const a = (i * Math.PI) / 3 - Math.PI / 6;
-          const hx = x + r * Math.cos(a);
-          const hy = y + r * Math.sin(a);
-          if (i === 0) ctx.moveTo(hx, hy);
-          else ctx.lineTo(hx, hy);
-        }
-        ctx.closePath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -1268,7 +1261,7 @@
           d.x += d.vx;
           d.y += d.vy;
 
-          drawHex(d.x, d.y, d.r, d.color);
+          drawDot(d.x, d.y, d.r, d.color);
         }
 
         requestAnimationFrame(renderFrame);
