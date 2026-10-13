@@ -209,8 +209,10 @@
 
         <!-- Right Wing: Clean Interactive Hexagon Portrait (No captions, pure presence) -->
         <div class="w-full lg:w-[324px] shrink-0 flex items-center justify-center self-center lg:self-start">
-          <div class="card-solid p-3 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
-            <canvas id="portraitCanvas" width="300" height="360" class="cursor-grab active:cursor-grabbing select-none max-w-full h-auto rounded-xl block bg-[#0b0f17]"></canvas>
+          <div class="card-solid p-3 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 bg-[#0b0f17]">
+            <!-- Subtle Dot Matrix Background with Smooth Radial Fade to Edges -->
+            <div class="absolute inset-0 pointer-events-none opacity-20" style="background-image: radial-gradient(#38bdf8 1.2px, transparent 1.2px); background-size: 14px 14px; mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);"></div>
+            <canvas id="portraitCanvas" width="300" height="360" class="cursor-grab active:cursor-grabbing select-none max-w-full h-auto rounded-xl block relative z-10 bg-transparent"></canvas>
           </div>
         </div>
       </div>
@@ -923,7 +925,7 @@
   <!-- ======================================================== -->
   <!-- JAVASCRIPT STATE ENGINE                                  -->
   <!-- ======================================================== -->
-  <script src="js/portrait-dots.js?v=20261013_bg_dots_v4"></script>
+  <script src="js/portrait-dots.js?v=20261013_darkblue_v5"></script>
   <script>
     const modalData = {
       safecode: {
@@ -1164,24 +1166,23 @@
       const W = canvas.width;
       const H = canvas.height;
 
-      // 5-Color Palette:
-      // 0: Electric Cyan Accent (#00F5FF)
-      // 1: Sky Aqua Midtone (#38BDF8)
-      // 2: Soft Indigo Contour (#818CF8)
-      // 3: Muted Slate Shadow (#475569)
-      // 4: Subtle Background Slate (#334155)
-      const PALETTE = ['#00F5FF', '#38BDF8', '#818CF8', '#475569', '#334155'];
+      // Darkened Sophisticated Palette (No harsh neon cyan):
+      // 0: Sky Blue Highlight (#38BDF8) - soft, pleasant highlight
+      // 1: Deep Cobalt Blue Body (#0284C7) - rich, darkened blue
+      // 2: Royal Indigo Contour (#6366F1)
+      // 3: Muted Slate Hair & Shadow (#475569)
+      const PALETTE = ['#38BDF8', '#0284C7', '#6366F1', '#475569'];
 
       const dots = PORTRAIT_DOTS.map(([ox, oy, r, c]) => ({
         ox, oy,
         x: ox, y: oy,
         vx: 0, vy: 0,
-        r: r || 1.25,
-        c: c !== undefined ? c : 4
+        r: r || 1.45,
+        c: c !== undefined ? c : 0
       }));
 
       // Bucket by color index for ultra-fast batched drawing
-      const colorBuckets = [[], [], [], [], []];
+      const colorBuckets = [[], [], [], []];
       for (let i = 0; i < dots.length; i++) {
         const c = dots[i].c;
         if (colorBuckets[c]) {
@@ -1270,8 +1271,8 @@
           }
         }
 
-        // Render in 5 batched draw calls by palette color (smooth circular halftone dots)
-        for (let c = 0; c < 5; c++) {
+        // Render in 4 batched draw calls by palette color (smooth circular halftone dots)
+        for (let c = 0; c < 4; c++) {
           ctx.fillStyle = PALETTE[c];
           const bucket = colorBuckets[c];
           if (!bucket || bucket.length === 0) continue;
