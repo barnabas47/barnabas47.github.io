@@ -185,32 +185,34 @@
               <i class="fa-brands fa-linkedin-in text-lg" aria-hidden="true"></i>
             </a>
           </div>
-
-          <!-- Horizontal Telemetry Metric Grid (Balances hero layout, zero empty void) -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/10 mt-6 font-mono text-xs">
-            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
-              <div class="text-muted text-[10px] uppercase">Fő Technológia</div>
-              <div class="text-white font-bold text-xs mt-1">C# / .NET 9 &amp; C</div>
-            </div>
-            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
-              <div class="text-muted text-[10px] uppercase">Ipari Háttér</div>
-              <div class="text-white font-semibold text-xs mt-1">evosoft &amp; Conti</div>
-            </div>
-            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
-              <div class="text-muted text-[10px] uppercase">Végzettség</div>
-              <div class="text-white font-semibold text-xs mt-1">Pannon Egyetem</div>
-            </div>
-            <div class="p-3.5 rounded-lg bg-surface/80 border border-white/5">
-              <div class="text-muted text-[10px] uppercase">Kódbázis</div>
-              <div class="text-white font-semibold text-xs mt-1 num-tabular">11 projekt</div>
-            </div>
-          </div>
         </div>
 
-        <!-- Right Wing: Clean Interactive Hexagon Portrait (No captions, pure presence) -->
-        <div class="w-full lg:w-[324px] shrink-0 flex items-center justify-center self-center lg:self-start">
-          <div class="card-solid p-3 rounded-2xl flex items-center justify-center relative overflow-hidden shadow-2xl border border-white/10 hover:border-indigo-500/30 transition-all duration-300">
-            <canvas id="portraitCanvas" width="300" height="360" class="cursor-grab active:cursor-grabbing select-none max-w-full h-auto rounded-xl block bg-[#0b0f17]"></canvas>
+        <!-- Right Wing: Mérnöki Áttekintés Telemetry Card -->
+        <div class="w-full lg:w-80 shrink-0 self-start">
+          <div class="card-solid p-6 rounded-xl flex flex-col justify-between gap-5 font-mono text-xs">
+            <div class="border-b border-white/10 pb-3">
+              <span class="text-accent uppercase text-xs font-semibold tracking-wider">Mérnöki Áttekintés</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <div class="text-muted text-[11px] uppercase tracking-wide">Fő Technológia</div>
+                <div class="text-white font-bold text-sm mt-0.5">C# / .NET 9 &amp; C</div>
+              </div>
+              <div>
+                <div class="text-muted text-[11px] uppercase tracking-wide">Ipari Háttér</div>
+                <div class="text-white font-semibold text-sm mt-0.5">evosoft &amp; Conti</div>
+              </div>
+              <div>
+                <div class="text-muted text-[11px] uppercase tracking-wide">Végzettség</div>
+                <div class="text-white font-semibold text-sm mt-0.5">Pannon Egyetem</div>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-white/10 text-[11px] text-muted flex items-center justify-between">
+              <span>Budapest XI. &amp; Herend</span>
+              <span class="text-slate-400">Magyarország</span>
+            </div>
           </div>
         </div>
       </div>
@@ -923,7 +925,6 @@
   <!-- ======================================================== -->
   <!-- JAVASCRIPT STATE ENGINE                                  -->
   <!-- ======================================================== -->
-  <script src="js/portrait-dots.js?v=20261013_jaw_separation_v9"></script>
   <script>
     const modalData = {
       safecode: {
@@ -1147,147 +1148,6 @@
         }
       });
     }
-
-    // ========================================================
-    // INTERACTIVE 4-COLOR HEXAGON PORTRAIT (DRAG-VELOCITY WAVE)
-    // ========================================================
-    (function initPortraitCanvas() {
-      const canvas = document.getElementById('portraitCanvas');
-      if (!canvas) return;
-
-      if (typeof PORTRAIT_DOTS === 'undefined') {
-        console.warn('PORTRAIT_DOTS not loaded');
-        return;
-      }
-
-      const ctx = canvas.getContext('2d');
-      const W = canvas.width;
-      const H = canvas.height;
-
-      // Clean 3-Color Portrait + Background (Zero purple/lila, no harsh lightest cyan #00F5FF):
-      // Level 0 & 1: Sky Blue Highlight (#38BDF8) - pure blue, replaces lightest cyan
-      // Level 2: Rich Cobalt Blue Contour (#0284C7) - pure ocean blue, zero purple
-      // Level 3: Muted Slate Shadow (#475569) - hair & deep facial shadows
-      // Level 4: Subtle Background Slate (#334155) - edge-fading background dots
-      const PALETTE = ['#38BDF8', '#38BDF8', '#0284C7', '#475569', '#334155'];
-
-      const dots = PORTRAIT_DOTS.map(([ox, oy, r, c]) => ({
-        ox, oy,
-        x: ox, y: oy,
-        vx: 0, vy: 0,
-        r: r || 1.25,
-        c: c !== undefined ? c : 4
-      }));
-
-      // Bucket by color index for ultra-fast batched drawing
-      const colorBuckets = [[], [], [], [], []];
-      for (let i = 0; i < dots.length; i++) {
-        const c = dots[i].c;
-        if (colorBuckets[c]) {
-          colorBuckets[c].push(dots[i]);
-        }
-      }
-
-      let prevMouse = { x: -1000, y: -1000 };
-      let mouse = { x: -1000, y: -1000, active: false };
-
-      function handleMove(clientX, clientY) {
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
-        const currentX = (clientX - rect.left) * scaleX;
-        const currentY = (clientY - rect.top) * scaleY;
-
-        if (mouse.active && prevMouse.x !== -1000) {
-          const mdx = currentX - prevMouse.x;
-          const mdy = currentY - prevMouse.y;
-          const speed = Math.hypot(mdx, mdy);
-
-          // Only wave when dragging / moving mouse across canvas!
-          if (speed > 0.4) {
-            const impulse = Math.min(speed * 0.5, 14);
-            const radius = 80;
-
-            for (let i = 0; i < dots.length; i++) {
-              const d = dots[i];
-              const dist = Math.hypot(d.x - currentX, d.y - currentY);
-              if (dist < radius) {
-                const factor = (radius - dist) / radius;
-                const angle = Math.atan2(d.y - currentY, d.x - currentX);
-                // Push proportional to drag direction and velocity
-                d.vx += (mdx / speed) * impulse * factor * 0.75 + Math.cos(angle) * impulse * factor * 0.4;
-                d.vy += (mdy / speed) * impulse * factor * 0.75 + Math.sin(angle) * impulse * factor * 0.4;
-              }
-            }
-          }
-        }
-
-        prevMouse.x = currentX;
-        prevMouse.y = currentY;
-        mouse.x = currentX;
-        mouse.y = currentY;
-        mouse.active = true;
-      }
-
-      canvas.addEventListener('mousemove', (e) => {
-        handleMove(e.clientX, e.clientY);
-      });
-
-      canvas.addEventListener('touchmove', (e) => {
-        if (e.touches && e.touches.length > 0) {
-          handleMove(e.touches[0].clientX, e.touches[0].clientY);
-        }
-      }, { passive: true });
-
-      function handleLeave() {
-        mouse.active = false;
-        prevMouse.x = -1000;
-        prevMouse.y = -1000;
-      }
-
-      canvas.addEventListener('mouseleave', handleLeave);
-      canvas.addEventListener('touchend', handleLeave);
-
-      function renderFrame() {
-        ctx.clearRect(0, 0, W, H);
-
-        // Update physics
-        for (let i = 0; i < dots.length; i++) {
-          const d = dots[i];
-          if (Math.abs(d.vx) > 0.01 || Math.abs(d.vy) > 0.01 || Math.abs(d.x - d.ox) > 0.01 || Math.abs(d.y - d.oy) > 0.01) {
-            d.vx += (d.ox - d.x) * 0.16;
-            d.vy += (d.oy - d.y) * 0.16;
-            d.vx *= 0.82;
-            d.vy *= 0.82;
-            d.x += d.vx;
-            d.y += d.vy;
-          } else {
-            d.x = d.ox;
-            d.y = d.oy;
-            d.vx = 0;
-            d.vy = 0;
-          }
-        }
-
-        // Render in 5 batched draw calls by palette color (smooth circular halftone dots)
-        for (let c = 0; c < 5; c++) {
-          ctx.fillStyle = PALETTE[c];
-          const bucket = colorBuckets[c];
-          if (!bucket || bucket.length === 0) continue;
-          ctx.beginPath();
-          for (let i = 0; i < bucket.length; i++) {
-            const d = bucket[i];
-            ctx.moveTo(d.x + d.r, d.y);
-            ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-          }
-          ctx.fill();
-        }
-
-        requestAnimationFrame(renderFrame);
-      }
-
-      requestAnimationFrame(renderFrame);
-    })();
   </script>
 </body>
 </html>
